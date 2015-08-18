@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Mount error=2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Mount%20error%3D2&In-Reply-To=%3C200806140853.19786.alexander.reinholdt%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000038.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Mount error=2</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Mount%20error%3D2&In-Reply-To=%3C200806140853.19786.alexander.reinholdt%40web.de%3E"
+       TITLE="[smb4k-general] Mount error=2">alexander.reinholdt at web.de
+       </A><BR>
+    <I>Sat Jun 14 08:53:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000038.html">[smb4k-general] Mount error=2
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You can set the port globally in the configuration dialog (Samba-&gt;General 
+Options), or you can define a custom port for a particular server with the 
+Custom Options menu entry (Network Browser-&gt;popup menu-&gt;Custom Options, 
+recommended). The port that you need to set should be 445.
+
+Smb4K always sends the port, so its usage cannot be switched off.
+
+I hope this helps.
+
+Alexander
+
+Am Thursday 12 June 2008 schrieb Jos Ewert:
+&gt;<i> After some tries I found out that the option : &quot;port=139&quot; is the cause
+</I>&gt;<i> of the error, I tried exactly the same line smb4k will use without the
+</I>&gt;<i> port option and the share is mounted without any problem.
+</I>&gt;<i> Now I am wondering what might cause this , and how I could avoid this
+</I>&gt;<i> error.
+</I>&gt;<i>
+</I>&gt;<i> the line that works is :
+</I>&gt;<i> smb4k_mount -n -t cifs -o
+</I>&gt;<i> netbiosname='JACKFLASH',uid=1000,gid=1000,rw,file_mode=0755,dir_mode=0755,p
+</I>&gt;<i>erm,nosetuids,noserverino,nomapchars,domain='WORKGROUP',ip=192.168.178.22,us
+</I>&gt;<i>er=User -- //'host'/'share' '/mount/point/'
+</I>&gt;<i>
+</I>&gt;<i> it does not work for :
+</I>&gt;<i> smb4k_mount -n -t cifs -o
+</I>&gt;<i> netbiosname='JACKFLASH',uid=1000,gid=1000,port=139,rw,file_mode=0755,dir_mo
+</I>&gt;<i>de=0755,perm,nosetuids,noserverino,nomapchars,domain='WORKGROUP',ip=192.168.
+</I>&gt;<i>178.22,user=User -- //'host'/'share' '/mount/point'
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Greetings,
+</I>&gt;<i> Jos Ewert
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Smb4K-general mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>
+
+-- 
+&quot;Never argue with idiots. They drag you down to their level and beat you with 
+experience...&quot; (unknown)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000038.html">[smb4k-general] Mount error=2
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

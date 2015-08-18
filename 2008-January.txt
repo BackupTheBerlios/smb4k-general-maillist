@@ -1,0 +1,21 @@
+From legolas.w at gmail.com  Tue Jan  1 12:38:31 2008
+From: legolas.w at gmail.com (legolas wood)
+Date: Tue, 01 Jan 2008 15:08:31 +0330
+Subject: [smb4k-general] How does smb4k perform authentication and
+ authorization when accessing a shared resource?
+Message-ID: <477A2637.4040902@gmail.com>
+
+Hi
+Thank you for reading my post.
+Can you please let me know whether smb4k support authentication when it 
+want to access a shared folder?
+for example, does it integrate with 
+http://www.likewisesoftware.com/community/index.php/download/ for 
+authentication?
+What I can not understand is whether this package integrate our linux 
+desktop with active directory or not?
+
+Thanks
+
+
+

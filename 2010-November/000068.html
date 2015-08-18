@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] the share could not be mounted
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20%3D%3Futf-8%3Fq%3Fthe_share_could_not_be_mounted%3F%3D&In-Reply-To=%3C1PJOhq-2A7SxU0%40fwd06.aul.t-online.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000067.html">
+   <LINK REL="Next"  HREF="000069.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] the share could not be mounted</H1>
+    <B>alexander.reinholdt at t-online.de</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20%3D%3Futf-8%3Fq%3Fthe_share_could_not_be_mounted%3F%3D&In-Reply-To=%3C1PJOhq-2A7SxU0%40fwd06.aul.t-online.de%3E"
+       TITLE="[smb4k-general] the share could not be mounted">alexander.reinholdt at t-online.de
+       </A><BR>
+    <I>Fri Nov 19 12:00:37 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000067.html">[smb4k-general] the share could not be mounted
+</A></li>
+        <LI>Next message: <A HREF="000069.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello!
+
+The problem arises because the new mount.cifs binary is not installed setuid root, i.e. only root is allowed to mount remote shares. However, you can go to Smb4K's configuration dialog and enable super user privileges using sudo for mounting and unmounting (Super User -&gt; Use super user privileges for mounting and unmounting shares). After that, mounting should work again.
+
+Best regards
+Alexander
+
+-----Original-Nachricht-----
+Subject: [smb4k-general] the share could not be mounted
+Date: Thu, 18 Nov 2010 22:57:20 +0100
+From: Carlos Enrique B&#228;hren &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">cebaehren at gmail.com</A>&gt;
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">smb4k-general at lists.berlios.de</A>
+
+hello together
+I use OpenSUSE 11.3 x64 with all the possible updates
+I reinstalled at yast the updated files for all the samba and smb4k
+modules
+Read for an hour and I dont know what to do...
+here is my blog site about my research
+
+*Mount remote windows shares under Linux [1]
+	*CIFS -The share could not be mounted [2]
+
+What is going on?
+Please give me an URL with the possible workaround
+Thanks a lot
+
+Links:
+------
+[1]
+<A HREF="http://tecnicambalandia.blogspot.com/2010/11/mount-remote-windows-shares-under-linux.html">http://tecnicambalandia.blogspot.com/2010/11/mount-remote-windows-shares-under-linux.html</A>
+[2]
+<A HREF="http://tecnicambalandia.blogspot.com/2010/11/cifs-share-could-not-be-mounted.html">http://tecnicambalandia.blogspot.com/2010/11/cifs-share-could-not-be-mounted.html</A>
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000067.html">[smb4k-general] the share could not be mounted
+</A></li>
+	<LI>Next message: <A HREF="000069.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

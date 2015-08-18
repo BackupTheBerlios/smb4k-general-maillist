@@ -1,0 +1,322 @@
+From moerf at t-burg.de  Sun Nov 23 13:20:35 2008
+From: moerf at t-burg.de (moerf)
+Date: Sun, 23 Nov 2008 13:20:35 +0100
+Subject: [smb4k-general] error message libsmb4kcore.so.3.0.0
+Message-ID: <200811231320.35605.moerf@t-burg.de>
+
+Hi,
+
+today I tried to compile smb4k 0.10.1 and got the follwoing error message:
+
+~/Dokumente/smb4k/smb4k-0.10.1/build$ make && sudo make install
+make[2]: *** Keine Regel vorhanden, um das Target 
+?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+  ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.  Schluss.
+make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+make: *** [all] Fehler 2
+
+In the handbook on http://smb4k.berlios.de/handbook/index.html I didn't find a 
+solution for this error message and therefore ask if somebody on this mailing 
+list could give me further information about this issue.
+
+regards
+moerf
+
+
+From alexander.reinholdt at t-online.de  Mon Nov 24 22:25:48 2008
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Mon, 24 Nov 2008 22:25:48 +0100
+Subject: [smb4k-general] error message libsmb4kcore.so.3.0.0
+In-Reply-To: <200811231320.35605.moerf@t-burg.de>
+References: <200811231320.35605.moerf@t-burg.de>
+Message-ID: <200811242225.48602.alexander.reinholdt@t-online.de>
+
+Hello!
+
+I haven't experienced such a problem until now. Could you please tell me which 
+distribution you are using?
+
+Best regards
+Alexander
+
+
+Am Sonntag 23 November 2008 schrieb moerf:
+> Hi,
+>
+> today I tried to compile smb4k 0.10.1 and got the follwoing error message:
+>
+> ~/Dokumente/smb4k/smb4k-0.10.1/build$ make && sudo make install
+> make[2]: *** Keine Regel vorhanden, um das Target
+> ?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+>   ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.  Schluss.
+> make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+> make: *** [all] Fehler 2
+>
+> In the handbook on http://smb4k.berlios.de/handbook/index.html I didn't
+> find a solution for this error message and therefore ask if somebody on
+> this mailing list could give me further information about this issue.
+>
+> regards
+> moerf
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+
+From moerf at t-burg.de  Tue Nov 25 01:51:21 2008
+From: moerf at t-burg.de (moerf)
+Date: Tue, 25 Nov 2008 01:51:21 +0100
+Subject: [smb4k-general] error message libsmb4kcore.so.3.0.0
+In-Reply-To: <200811242225.48602.alexander.reinholdt@t-online.de>
+References: <200811231320.35605.moerf@t-burg.de>
+	<200811242225.48602.alexander.reinholdt@t-online.de>
+Message-ID: <200811250151.21265.moerf@t-burg.de>
+
+Hi Alexander,
+
+thanks for your reply. I'm using kubuntu intrepid.
+regards
+moerf
+
+On Monday 24 November 2008 22:25:48 Alexander Reinholdt wrote:
+> Hello!
+>
+> I haven't experienced such a problem until now. Could you please tell me
+> which distribution you are using?
+>
+> Best regards
+> Alexander
+>
+> Am Sonntag 23 November 2008 schrieb moerf:
+> > Hi,
+> >
+> > today I tried to compile smb4k 0.10.1 and got the follwoing error
+> > message:
+> >
+> > ~/Dokumente/smb4k/smb4k-0.10.1/build$ make && sudo make install
+> > make[2]: *** Keine Regel vorhanden, um das Target
+> > ?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+> >   ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.  Schluss.
+> > make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+> > make: *** [all] Fehler 2
+> >
+> > In the handbook on http://smb4k.berlios.de/handbook/index.html I didn't
+> > find a solution for this error message and therefore ask if somebody on
+> > this mailing list could give me further information about this issue.
+> >
+> > regards
+> > moerf
+> > _______________________________________________
+> > Smb4K-general mailing list
+> > Smb4K-general at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+
+From alexander.reinholdt at t-online.de  Tue Nov 25 07:01:07 2008
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Tue, 25 Nov 2008 07:01:07 +0100
+Subject: [smb4k-general] error message libsmb4kcore.so.3.0.0
+In-Reply-To: <200811250151.21265.moerf@t-burg.de>
+References: <200811231320.35605.moerf@t-burg.de>
+	<200811242225.48602.alexander.reinholdt@t-online.de>
+	<200811250151.21265.moerf@t-burg.de>
+Message-ID: <200811250701.07245.alexander.reinholdt@t-online.de>
+
+OK, I'll have a look into this.
+
+Am Dienstag 25 November 2008 schrieb moerf:
+> Hi Alexander,
+>
+> thanks for your reply. I'm using kubuntu intrepid.
+> regards
+> moerf
+>
+> On Monday 24 November 2008 22:25:48 Alexander Reinholdt wrote:
+> > Hello!
+> >
+> > I haven't experienced such a problem until now. Could you please tell me
+> > which distribution you are using?
+> >
+> > Best regards
+> > Alexander
+> >
+> > Am Sonntag 23 November 2008 schrieb moerf:
+> > > Hi,
+> > >
+> > > today I tried to compile smb4k 0.10.1 and got the follwoing error
+> > > message:
+> > >
+> > > ~/Dokumente/smb4k/smb4k-0.10.1/build$ make && sudo make install
+> > > make[2]: *** Keine Regel vorhanden, um das Target
+> > > ?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+> > >   ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.  Schluss.
+> > > make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+> > > make: *** [all] Fehler 2
+> > >
+> > > In the handbook on http://smb4k.berlios.de/handbook/index.html I didn't
+> > > find a solution for this error message and therefore ask if somebody on
+> > > this mailing list could give me further information about this issue.
+> > >
+> > > regards
+> > > moerf
+> > > _______________________________________________
+> > > Smb4K-general mailing list
+> > > Smb4K-general at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+
+From alexander.reinholdt at t-online.de  Sat Nov 29 10:52:57 2008
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Sat, 29 Nov 2008 10:52:57 +0100
+Subject: [smb4k-general] error message libsmb4kcore.so.3.0.0
+In-Reply-To: <200811250151.21265.moerf@t-burg.de>
+References: <200811231320.35605.moerf@t-burg.de>
+	<200811242225.48602.alexander.reinholdt@t-online.de>
+	<200811250151.21265.moerf@t-burg.de>
+Message-ID: <200811291052.57385.alexander.reinholdt@t-online.de>
+
+Sorry that it took me so long to answer.
+
+I tried to compile Smb4K on Kubuntu 8.10, and at first I had the same problem 
+you reported. However, if you do an in-source build, then everything is fine. 
+
+So, you might want to try the following:
+- Change into Smb4K's source directory.
+- Run cmake like this:
+  $ cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` \   
+    -DCMAKE_BUILD_TYPE=Release .
+- Run 
+  $ make
+- Install the compiled source with either 
+  $ sudo make install
+  or
+  $ sudo checkinstall
+
+Hope this helps.
+
+Best regards
+Alexander
+
+
+Am Dienstag 25 November 2008 schrieb moerf:
+> Hi Alexander,
+>
+> thanks for your reply. I'm using kubuntu intrepid.
+> regards
+> moerf
+>
+> On Monday 24 November 2008 22:25:48 Alexander Reinholdt wrote:
+> > Hello!
+> >
+> > I haven't experienced such a problem until now. Could you please tell me
+> > which distribution you are using?
+> >
+> > Best regards
+> > Alexander
+> >
+> > Am Sonntag 23 November 2008 schrieb moerf:
+> > > Hi,
+> > >
+> > > today I tried to compile smb4k 0.10.1 and got the follwoing error
+> > > message:
+> > >
+> > > ~/Dokumente/smb4k/smb4k-0.10.1/build$ make && sudo make install
+> > > make[2]: *** Keine Regel vorhanden, um das Target
+> > > ?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+> > >   ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.  Schluss.
+> > > make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+> > > make: *** [all] Fehler 2
+> > >
+> > > In the handbook on http://smb4k.berlios.de/handbook/index.html I didn't
+> > > find a solution for this error message and therefore ask if somebody on
+> > > this mailing list could give me further information about this issue.
+> > >
+> > > regards
+> > > moerf
+> > > _______________________________________________
+> > > Smb4K-general mailing list
+> > > Smb4K-general at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+
+From alexander.reinholdt at t-online.de  Sun Nov 30 17:41:36 2008
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Sun, 30 Nov 2008 17:41:36 +0100
+Subject: [smb4k-general] [Smb4K-bugs] Can not see my linux from my
+	windows computer
+In-Reply-To: <75c4aa610811300530l199a0fbam46e7b8865ec0012c@mail.gmail.com>
+References: <75c4aa610811300530l199a0fbam46e7b8865ec0012c@mail.gmail.com>
+Message-ID: <200811301741.37178.alexander.reinholdt@t-online.de>
+
+Hello Yiannis,
+
+to be able to "see" your Linux server, you need a full Samba install that 
+includes the daemons smbd and nmbd. The required package should be called 
+"samba" or similar. Also, you need to configure Samba. I suggest the swat 
+utility that provides an easy-to-use web interface. With Smb4K you cannot 
+configure Samba permanently, it only passes arguments to the client programs 
+on runtime. 
+
+If you have installed and configured Samba properly and you still cannot "see" 
+the server, make sure that your firewall - if installed - permits SMB 
+connections (ports 139 (TCP) and 445 (UDP) must be enabled).
+
+Hope this helps.
+
+Best regards
+Alexander
+
+Am Sonntag 30 November 2008 schrieb GIANNiS botetsios:
+> Hi
+> I m trying a long time now to solve this problem
+> I can access other user's share folders from my smb4k linux
+> but i can not see my linux computer from the other computers with windows
+> distribution.
+>
+> Why?
+> What do i have to do?
+> Please help me
+>
+> I can not even see the name of my linux computer through windows
+>
+> Thanks in advance
+>
+> Yiannis
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+

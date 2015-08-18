@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Can't mount share, permission denied
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C4CE97D0B.2090700%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000068.html">
+   <LINK REL="Next"  HREF="000070.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Can't mount share, permission denied</H1>
+    <B>Arnim L&#228;uger</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C4CE97D0B.2090700%40gmx.net%3E"
+       TITLE="[smb4k-general] Can't mount share, permission denied">arnim.laeuger at gmx.net
+       </A><BR>
+    <I>Sun Nov 21 21:11:55 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000068.html">[smb4k-general] the share could not be mounted
+</A></li>
+        <LI>Next message: <A HREF="000070.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#69">[ date ]</a>
+              <a href="thread.html#69">[ thread ]</a>
+              <a href="subject.html#69">[ subject ]</a>
+              <a href="author.html#69">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've just set up OpenSUSE 11.3 from scratch and found me fighting
+against some mysterious problems with smb4k and/or samba.
+smb4k 0.10.7
+samba 3.5.4
+
+AFAIK this machine is configured the same as another one that doesn't
+exhibit this issue. Without much knowledge of samba in general, I'm kind
+of stuck.
+
+The problem appears like a wrong user/password pair when a share is
+mounted from by double-clicking on the search result list. smb4k over
+and over requests Username and Password and won't mount the share.
+Since I've already enabled sudo for mount/unmount, I took the following
+command from the system log and started it from the command line as root:
+
+/usr/bin/smb4k_mount -s -t cifs -o
+uid=1000,gid=100,port=445,rw,file_mode=0755,dir_mode=0755,perm,setuids,noserverino,nomapchars,domain=TUX-NET,ip=192.168.1.91,user=&lt;share-username&gt;
+-- //ZNASAP/share /home/sth/smb4k/ZNASAP/share
+
+I'm prompted for the password and end up with
+  mount error(13): Permission denied
+  Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)
+
+Account sth that owns /home/sth/smb4k/ZNASAP has uid 1000 and is member
+of gid 100.
+
+Couldn't get it to work until I did
+
+  chmod 777 /home/sth/smb4k/ZNASAP/share
+
+It existed from a previous trial with smb4k and wasn't removed
+automatically since mount failed. Premissions were drwxrwx---.
+
+Now the smb4k_mount as root or smb4k gui mounts the share without problems.
+But why is rwx required for others? This is very likely the reason for
+my problem since smb4k creates the mount points on the fly with the
+user's default umask. I just don't understand why it doesn't work
+without permissions for world (the configuration of the other machine
+doesn't require this).
+
+
+Best regards
+Arnim
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000068.html">[smb4k-general] the share could not be mounted
+</A></li>
+	<LI>Next message: <A HREF="000070.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#69">[ date ]</a>
+              <a href="thread.html#69">[ thread ]</a>
+              <a href="subject.html#69">[ subject ]</a>
+              <a href="author.html#69">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

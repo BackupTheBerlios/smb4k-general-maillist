@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Smb4k can only use CIFS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Smb4k%20can%20only%20use%20CIFS&In-Reply-To=%3C200805060611.58809.alexander.reinholdt%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Smb4k can only use CIFS</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Smb4k%20can%20only%20use%20CIFS&In-Reply-To=%3C200805060611.58809.alexander.reinholdt%40web.de%3E"
+       TITLE="[smb4k-general] Smb4k can only use CIFS">alexander.reinholdt at web.de
+       </A><BR>
+    <I>Tue May  6 06:11:58 CEST 2008</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Cristian,
+
+Ubuntu (and Debian for that matter) has removed SMBFS support. Although there 
+is a mount.smbfs present if you install Samba, it is a copy of mount.cifs. 
+Thus all shares mounted with mount.smbfs have CIFS as their file system.
+
+Smb4K checks on start-up for the existence of mount.smbfs and mount.cifs to 
+determine if SMBFS and CIFS can be used. So, it is OK, that you can choose 
+between both. However, that the SMBFS options are greyed out when you reopen 
+the configuration dialog seems strange to me and I have to have a look at 
+this.
+
+I hope I could help.
+
+Best regards
+Alexander
+
+Am Samstag 03 Mai 2008 schrieben Sie:
+&gt;<i> Hello,
+</I>&gt;<i> I have been using Smb4k for a long time with Kubuntu, versions 7.04
+</I>&gt;<i> first and then 7.10.
+</I>&gt;<i> Now I use 8.04 and have a strange problem. In Settings/Configure
+</I>&gt;<i> smb4k/Samba/mount there is a drop-down box to select CIFS or SMBFS. And
+</I>&gt;<i> at the bottom of the window, there are two sections for the two File
+</I>&gt;<i> Systems, and the appropriate one is grayed out.
+</I>&gt;<i> The problem is that I can only connect using CIFS. I have installed
+</I>&gt;<i> samba on the system. If I select SMBFS, it seems to be accepted, and the
+</I>&gt;<i> CIFS options are grayed out and the SMBFS options become black; but it
+</I>&gt;<i> still mounts shares as CIFS, and if I go back to the config page, I can
+</I>&gt;<i> see that the SMBFS options are grayed out again.
+</I>&gt;<i> I asked on the Kubuntu forums but got no reply. Do you know if it's a
+</I>&gt;<i> problem with Kubuntu, with smb4k, or with my machine? Any idea how I
+</I>&gt;<i> could fix it?
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Cristian Arezzini
+</I>
+
+
+-- 
+&quot;Never argue with idiots. They drag you down to their level and beat you with
+experience...&quot; (unknown)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

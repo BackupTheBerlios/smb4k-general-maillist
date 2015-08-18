@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Problem Building smb4k-0.9.9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Problem%20Building%20smb4k-0.9.9&In-Reply-To=%3C4B5F38DE.4040604%40merkens.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000056.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Problem Building smb4k-0.9.9</H1>
+    <B>Will S Merkens</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Problem%20Building%20smb4k-0.9.9&In-Reply-To=%3C4B5F38DE.4040604%40merkens.ca%3E"
+       TITLE="[smb4k-general] Problem Building smb4k-0.9.9">willm at merkens.ca
+       </A><BR>
+    <I>Tue Jan 26 19:47:58 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000056.html">[smb4k-general] Problem Building smb4k-0.9.9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I am having a issue in the build process.
+
+Build environment:
+
+    Centos 4.8 x86_64    (All patched up to current)
+
+    The software I need to run only work's in the 4.x x86_64 Centos OS,
+Proprietary Gyophisical application.
+
+    So I cannot use anything newer, otherwise I put Mandriva 1010 which
+has smb4k working just fine.
+
+   
+
+    Installed all the dev packages for KDE, Qt, etc.
+
+    First approach to this was to get a rpm of smb4k allready done,
+Centos did not have one so I dipped into Fedora's older OS's 4/5/6/7/8
+in  attempt to make it easy, but I kept getting failed to find symbol
+xxx when running, ie; missing some sort of library.
+
+    decided to build it from scratch
+
+    looked on the site and saw that 0.9.9 was intended for KDE 3.x and
+since Centos 4.8 runs KDE 3.x and I cannot go newer this would be the
+version to build.
+
+After running the configure and fixing a few missing dev packages, ran
+into first issue.
+
+make[3]: Entering directory `/root/smb4k-0.9.9/smb4k/core'
+/usr/bin/kconfig_compiler ./smb4k.kcfg ./smb4ksettings.kcfgc; ret=$?; \
+if test &quot;$ret&quot; != 0; then rm -f smb4ksettings.h ; exit $ret ;  fi
+if /bin/sh ../../libtool --silent --tag=CXX --mode=compile g++
+-DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/include/kde
+-I/usr/lib64/qt-3.3/iclude   -DQT_THREAD_SUPPORT  -D_REENTRANT 
+-Wno-long-long -Wundef -ansi -D_XOPEN_SOURCE=500 -D_BSD_SOURCE
+-Wcast-align -Wconversion -WcW -Wpointer-arith -O2 -Wformat-security
+-Wmissing-format-attribute -Wno-non-virtual-dtor -fno-exceptions
+-fno-check-new -fno-common  -M -MP -MF &quot;.deps/smb4kauthinfo.Tpo&quot; -c -o
+smb4kauthinfo.lo smb4kauthinfo.cpp; \
+then mv -f &quot;.deps/smb4kauthinfo.Tpo&quot; &quot;.deps/smb4kauthinfo.Plo&quot;; else rm
+-f &quot;.deps/smb4kauthinfo.Tpo&quot;; exit 1; fi
+In file included from smb4kauthinfo.cpp:28:
+smb4kauthinfo.h:177: error: visibility arg must be one of &quot;default&quot;,
+&quot;hidden&quot;, &quot;protected&quot; or &quot;internal&quot;
+make[3]: *** [smb4kauthinfo.lo] Error 1
+make[3]: Leaving directory `/root/smb4k-0.9.9/smb4k/core'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/root/smb4k-0.9.9/smb4k'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/root/smb4k-0.9.9'
+make: *** [all] Error 2
+
+
+Fixed this from reading
+<A HREF="http://www.kexi-project.org/wiki/wikiview/index.php@UsingSubversion.html">http://www.kexi-project.org/wiki/wikiview/index.php@UsingSubversion.html</A>
+
+    *  RedHat / CentOS with KDE3.3; error like:
+
+ ./kexi/kdeinit_kexi.la.cpp:3: error: visibility arg must be one of 
+&quot;default&quot;, &quot;hidden&quot;, &quot;protected&quot; or &quot;internal&quot;
+
+    Solution: Login as root and edit /usr/include/kde/kdemacros.h file.
+Locate this line:
+
+ #define KDE_EXPORT attribute ((visibility(&quot;visible&quot;)))
+
+and replace it with:
+
+ #define KDE_EXPORT attribute ((visibility(&quot;default&quot;)))
+
+Then, continue compilation.
+
+so far so good now I reach a new problem
+
+if /bin/sh ../../libtool --silent --tag=CXX --mode=compile g++
+-DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/include/kde
+-I/usr/lib64/qt-3.3/include -I/usr/X11R6/include   -DQT_THREAD_SUPPORT 
+-D_REENTRANT  -Wno-long-long -Wundef -ansi -D_XOPEN_SOURCE=500
+-D_BSD_SOURCE -Wcast-align -Wconversion -Wchar-subscripts -Wall -W
+-Wpointer-arith -O2-Wformat-security -Wmissing-format-attribute
+-Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT
+smb4kcore.lo -MD -MP -MF &quot;.deps/smb4kcore.Tpo&quot; -c -o smb4kcore.lo
+smb4kcore.cpp; \
+then mv -f &quot;.deps/smb4kcore.Tpo&quot; &quot;.deps/smb4kcore.Plo&quot;; else rm -f
+&quot;.deps/smb4kcore.Tpo&quot;; exit 1; fi
+smb4kcore.cpp: In static member function `static void
+Smb4KCore::open(Smb4KShare*, int)':
+smb4kcore.cpp:251: error: `this' is unavailable for static member functions
+make[3]: *** [smb4kcore.lo] Error 1
+make[3]: Leaving directory `/root/smb4k-0.9.9/smb4k/core'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/root/smb4k-0.9.9/smb4k'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/root/smb4k-0.9.9'
+make: *** [all] Error 2
+
+All I could find was this one comment on
+<A HREF="http://www.go4expert.com/forums/showthread.php?t=7971">http://www.go4expert.com/forums/showthread.php?t=7971</A>
+
+Syntactically
+
+    this pointer is not available in the static function because
+compiler does not pass the this pointer into the static functions.
+
+    As an example when you call the member function mf() from the object
+obj of class C as follows
+
+    obj.mf();
+
+    Then compiler internally does the following
+
+    mf(C this);
+
+    But for static function this is not the case and so its not
+available in the function.
+
+Now semantically the concept is static functions can be called before
+the creation of object and also independent of the object and so this
+object is not created and so its not available.
+
+
+So now I am stuck.....
+
+
+Ideas?
+
+
+
+
+
+
+
+ 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000056.html">[smb4k-general] Problem Building smb4k-0.9.9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

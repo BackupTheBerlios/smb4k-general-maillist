@@ -1,0 +1,44 @@
+From piggebu at gmx.net  Sun Feb 18 17:09:14 2007
+From: piggebu at gmx.net (Piggebu)
+Date: Sun, 18 Feb 2007 16:09:14 -0000
+Subject: [smb4k-general] smb4k: Adjustable Bookmark Text
+Message-ID: <1171814839.6299.10.camel@localhost.localdomain>
+
+Hi all
+
+After trying for some time to compile smb4k on my fedora 3 machine i
+gave it up and took the .rpm. It works now perfecly.
+
+First I have to congratulate the developpers for this splendid
+programme! It's exactly what I was looking for with not too many
+features but exactly those which are needed, everything with the right
+options, links and shortcuts! Great!!
+
+The reason why I tried it to install from source is the following:
+The bookmarks are one of the most genious Ideas! However - as I am a fan
+of personalisation - I searched an option to give a description to the
+bookmarks. Did I miss something or is there nothing (yet) available? I
+would have sent a suggestion of code, but since I cannot compile from
+source this makes no sense - sorry.
+
+In the attachments you find some images explaining my idea...perhaps one
+could bring something in of this in the next version?
+
+Kind regards
+
+ 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Change_Suggestion.jpg
+Type: image/jpeg
+Size: 33623 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20070218/9c7ec146/attachment.jpg>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Suggestion_Result.jpg
+Type: image/jpeg
+Size: 25864 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20070218/9c7ec146/attachment-0001.jpg>
+

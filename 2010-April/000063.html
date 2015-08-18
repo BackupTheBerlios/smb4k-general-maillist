@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Unable to unmount shares in 0.10.6
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Unable%20to%20unmount%20shares%20in%200.10.6&In-Reply-To=%3C4BBC74ED.4050300%40stella-maris.org.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000062.html">
+   <LINK REL="Next"  HREF="000064.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Unable to unmount shares in 0.10.6</H1>
+    <B>Stuart T Rogers</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Unable%20to%20unmount%20shares%20in%200.10.6&In-Reply-To=%3C4BBC74ED.4050300%40stella-maris.org.uk%3E"
+       TITLE="[smb4k-general] Unable to unmount shares in 0.10.6">stuart at stella-maris.org.uk
+       </A><BR>
+    <I>Wed Apr  7 14:05:01 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000062.html">[smb4k-general] Unable to unmount shares in 0.10.6
+</A></li>
+        <LI>Next message: <A HREF="000064.html">[smb4k-general] Unable to unmount shares in 0.10.6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Have just install 0.10.7 and it works fine, however I did have a problem 
+using checkinstall as below
+
+CMake Error at doc/en/smb4k/cmake_install.cmake:36 (FILE): 
+
+   file INSTALL cannot find 
+
+ 
+&quot;/home/stuart/smb4k-0.10.7/doc/en/smb4k/dialog_synchronization_input.png&quot;. 
+
+Call Stack (most recent call first): 
+
+   doc/en/cmake_install.cmake:37 (INCLUDE) 
+
+   doc/cmake_install.cmake:37 (INCLUDE) 
+
+   cmake_install.cmake:41 (INCLUDE) 
+
+
+
+make: *** [install] Error 1
+
+****  Installation failed. Aborting package creation.
+
+Cleaning up...OK
+
+Bye.
+
+again dont know if this is me or a bug.
+
+Stuart
+
+On 06/04/10 08:22, Stuart T Rogers wrote:
+&gt;<i> Alexander
+</I>&gt;<i>
+</I>&gt;<i> I am relieved about that since I'm new to all this compiling stuff. I'll
+</I>&gt;<i> watch out for a new verion and have another go then.
+</I>&gt;<i>
+</I>&gt;<i> Stuart
+</I>&gt;<i>
+</I>&gt;<i> On 06/04/10 08:17, Alexander Reinholdt wrote:
+</I>&gt;&gt;<i> Am Montag 05 April 2010 09:53:14 schrieb Stuart T Rogers:
+</I>&gt;&gt;&gt;<i> I have just installed the latest smb4k 0.10.6 having I think
+</I>&gt;&gt;&gt;<i> successfully compiled it, at least it runs and mounts shares OK. However
+</I>&gt;&gt;&gt;<i> I have a problem unmounting the shares and get
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> /usr/bin/smb4k_umount: invalid option -- 'n'
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> or this from force
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> smb4k_umount: invalid option -- 's'
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> as an error in a popup. What have I done wrong here? Is there something
+</I>&gt;&gt;&gt;<i> I have not installed?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Stuart
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> You haven't done anything wrong. Actually, you found a bug. I fixed
+</I>&gt;&gt;<i> some issues
+</I>&gt;&gt;<i> in smb4k_umount in SVN HEAD and just copied it to the 0.10 branch.
+</I>&gt;&gt;<i> However,
+</I>&gt;&gt;<i> the version from SVN HEAD is incompatible with Smb4K 0.10.x and I did not
+</I>&gt;&gt;<i> remember that. :(
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I will release a new version shortly where this issue will be fixed.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Alexander
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Smb4K-general mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+-- 
+Website: <A HREF="http://www.stella-maris.org.uk">http://www.stella-maris.org.uk</A>
+or:      <A HREF="http://www.broadstairs.org">http://www.broadstairs.org</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000062.html">[smb4k-general] Unable to unmount shares in 0.10.6
+</A></li>
+	<LI>Next message: <A HREF="000064.html">[smb4k-general] Unable to unmount shares in 0.10.6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

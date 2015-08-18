@@ -1,0 +1,388 @@
+From cebaehren at gmail.com  Thu Nov 18 22:57:20 2010
+From: cebaehren at gmail.com (=?ISO-8859-1?Q?Carlos_Enrique_B=E4hren?=)
+Date: Thu, 18 Nov 2010 17:57:20 -0400
+Subject: [smb4k-general] the share could not be mounted
+Message-ID: <AANLkTimOnXUUOpk-vG85iuj85bWFv9mKek-y7UPnkxG6@mail.gmail.com>
+
+hello together
+I use OpenSUSE 11.3 x64 with all the possible updates
+I reinstalled at yast the updated files for all the samba and smb4k modules
+Read for an hour and I dont know what to do...
+here is my blog site about my research
+
+   - Mount remote windows shares under
+Linux<http://tecnicambalandia.blogspot.com/2010/11/mount-remote-windows-shares-under-linux.html>
+   - CIFS -The share could not be
+mounted<http://tecnicambalandia.blogspot.com/2010/11/cifs-share-could-not-be-mounted.html>
+
+
+What is going on?
+Please give me an URL with the possible workaround
+Thanks a lot
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20101118/8026a65c/attachment.html>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: smb4k.png
+Type: image/png
+Size: 136420 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20101118/8026a65c/attachment.png>
+
+From alexander.reinholdt at t-online.de  Fri Nov 19 12:00:37 2010
+From: alexander.reinholdt at t-online.de (alexander.reinholdt at t-online.de)
+Date: Fri, 19 Nov 2010 12:00:37 +0100
+Subject: [smb4k-general] =?utf-8?q?the_share_could_not_be_mounted?=
+In-Reply-To: <AANLkTimOnXUUOpk-vG85iuj85bWFv9mKek-y7UPnkxG6@mail.gmail.com>
+References: <AANLkTimOnXUUOpk-vG85iuj85bWFv9mKek-y7UPnkxG6@mail.gmail.com>
+Message-ID: <1PJOhq-2A7SxU0@fwd06.aul.t-online.de>
+
+Hello!
+
+The problem arises because the new mount.cifs binary is not installed setuid root, i.e. only root is allowed to mount remote shares. However, you can go to Smb4K's configuration dialog and enable super user privileges using sudo for mounting and unmounting (Super User -> Use super user privileges for mounting and unmounting shares). After that, mounting should work again.
+
+Best regards
+Alexander
+
+-----Original-Nachricht-----
+Subject: [smb4k-general] the share could not be mounted
+Date: Thu, 18 Nov 2010 22:57:20 +0100
+From: Carlos Enrique B?hren <cebaehren at gmail.com>
+To: smb4k-general at lists.berlios.de
+
+hello together
+I use OpenSUSE 11.3 x64 with all the possible updates
+I reinstalled at yast the updated files for all the samba and smb4k
+modules
+Read for an hour and I dont know what to do...
+here is my blog site about my research
+
+*Mount remote windows shares under Linux [1]
+	*CIFS -The share could not be mounted [2]
+
+What is going on?
+Please give me an URL with the possible workaround
+Thanks a lot
+
+Links:
+------
+[1]
+http://tecnicambalandia.blogspot.com/2010/11/mount-remote-windows-shares-under-linux.html
+[2]
+http://tecnicambalandia.blogspot.com/2010/11/cifs-share-could-not-be-mounted.html
+
+
+
+
+
+From arnim.laeuger at gmx.net  Sun Nov 21 21:11:55 2010
+From: arnim.laeuger at gmx.net (=?ISO-8859-15?Q?Arnim_L=E4uger?=)
+Date: Sun, 21 Nov 2010 21:11:55 +0100
+Subject: [smb4k-general] Can't mount share, permission denied
+Message-ID: <4CE97D0B.2090700@gmx.net>
+
+Hi,
+
+I've just set up OpenSUSE 11.3 from scratch and found me fighting
+against some mysterious problems with smb4k and/or samba.
+smb4k 0.10.7
+samba 3.5.4
+
+AFAIK this machine is configured the same as another one that doesn't
+exhibit this issue. Without much knowledge of samba in general, I'm kind
+of stuck.
+
+The problem appears like a wrong user/password pair when a share is
+mounted from by double-clicking on the search result list. smb4k over
+and over requests Username and Password and won't mount the share.
+Since I've already enabled sudo for mount/unmount, I took the following
+command from the system log and started it from the command line as root:
+
+/usr/bin/smb4k_mount -s -t cifs -o
+uid=1000,gid=100,port=445,rw,file_mode=0755,dir_mode=0755,perm,setuids,noserverino,nomapchars,domain=TUX-NET,ip=192.168.1.91,user=<share-username>
+-- //ZNASAP/share /home/sth/smb4k/ZNASAP/share
+
+I'm prompted for the password and end up with
+  mount error(13): Permission denied
+  Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)
+
+Account sth that owns /home/sth/smb4k/ZNASAP has uid 1000 and is member
+of gid 100.
+
+Couldn't get it to work until I did
+
+  chmod 777 /home/sth/smb4k/ZNASAP/share
+
+It existed from a previous trial with smb4k and wasn't removed
+automatically since mount failed. Premissions were drwxrwx---.
+
+Now the smb4k_mount as root or smb4k gui mounts the share without problems.
+But why is rwx required for others? This is very likely the reason for
+my problem since smb4k creates the mount points on the fly with the
+user's default umask. I just don't understand why it doesn't work
+without permissions for world (the configuration of the other machine
+doesn't require this).
+
+
+Best regards
+Arnim
+
+
+From cebaehren at gmail.com  Mon Nov 22 16:39:54 2010
+From: cebaehren at gmail.com (=?ISO-8859-1?Q?Carlos_Enrique_B=E4hren?=)
+Date: Mon, 22 Nov 2010 11:39:54 -0400
+Subject: [smb4k-general] Can't mount share, permission denied
+In-Reply-To: <4CE97D0B.2090700@gmx.net>
+References: <4CE97D0B.2090700@gmx.net>
+Message-ID: <AANLkTi=Q_EpPXO+wEv2s2_y9BrJcA1Hvbpsf2L1qG8kM@mail.gmail.com>
+
+Danke sehr
+Ich werde spaeter die Vorschlaege in der   Linux box selbst versuchen
+Gruss
+carlos e.
+
+On Sun, Nov 21, 2010 at 4:11 PM, Arnim L?uger <arnim.laeuger at gmx.net> wrote:
+
+> Hi,
+>
+> I've just set up OpenSUSE 11.3 from scratch and found me fighting
+> against some mysterious problems with smb4k and/or samba.
+> smb4k 0.10.7
+> samba 3.5.4
+>
+> AFAIK this machine is configured the same as another one that doesn't
+> exhibit this issue. Without much knowledge of samba in general, I'm kind
+> of stuck.
+>
+> The problem appears like a wrong user/password pair when a share is
+> mounted from by double-clicking on the search result list. smb4k over
+> and over requests Username and Password and won't mount the share.
+> Since I've already enabled sudo for mount/unmount, I took the following
+> command from the system log and started it from the command line as root:
+>
+> /usr/bin/smb4k_mount -s -t cifs -o
+>
+> uid=1000,gid=100,port=445,rw,file_mode=0755,dir_mode=0755,perm,setuids,noserverino,nomapchars,domain=TUX-NET,ip=192.168.1.91,user=<share-username>
+> -- //ZNASAP/share /home/sth/smb4k/ZNASAP/share
+>
+> I'm prompted for the password and end up with
+>  mount error(13): Permission denied
+>  Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)
+>
+> Account sth that owns /home/sth/smb4k/ZNASAP has uid 1000 and is member
+> of gid 100.
+>
+> Couldn't get it to work until I did
+>
+>  chmod 777 /home/sth/smb4k/ZNASAP/share
+>
+> It existed from a previous trial with smb4k and wasn't removed
+> automatically since mount failed. Premissions were drwxrwx---.
+>
+> Now the smb4k_mount as root or smb4k gui mounts the share without problems.
+> But why is rwx required for others? This is very likely the reason for
+> my problem since smb4k creates the mount points on the fly with the
+> user's default umask. I just don't understand why it doesn't work
+> without permissions for world (the configuration of the other machine
+> doesn't require this).
+>
+>
+> Best regards
+> Arnim
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20101122/5ac7d99d/attachment.html>
+
+From alexander.reinholdt at t-online.de  Mon Nov 22 20:30:15 2010
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Mon, 22 Nov 2010 20:30:15 +0100
+Subject: [smb4k-general] Can't mount share, permission denied
+In-Reply-To: <4CE97D0B.2090700@gmx.net>
+References: <4CE97D0B.2090700@gmx.net>
+Message-ID: <201011222030.15826.alexander.reinholdt@t-online.de>
+
+Am Sonntag, 21. November 2010 schrieb Arnim L?uger:
+> The problem appears like a wrong user/password pair when a share is
+> mounted from by double-clicking on the search result list. smb4k over
+> and over requests Username and Password and won't mount the share.
+> Since I've already enabled sudo for mount/unmount, I took the following
+> command from the system log and started it from the command line as root:
+> 
+> /usr/bin/smb4k_mount -s -t cifs -o
+> uid=1000,gid=100,port=445,rw,file_mode=0755,dir_mode=0755,perm,setuids,nose
+> rverino,nomapchars,domain=TUX-NET,ip=192.168.1.91,user=<share-username> --
+> //ZNASAP/share /home/sth/smb4k/ZNASAP/share
+> 
+> I'm prompted for the password and end up with
+>   mount error(13): Permission denied
+>   Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)
+>
+> Account sth that owns /home/sth/smb4k/ZNASAP has uid 1000 and is member
+> of gid 100.
+> 
+> Couldn't get it to work until I did
+> 
+>   chmod 777 /home/sth/smb4k/ZNASAP/share
+> 
+> It existed from a previous trial with smb4k and wasn't removed
+> automatically since mount failed. Premissions were drwxrwx---.
+
+This an odd behavior. As far as I can remember, I never experienced something 
+like this.
+
+I checked the permissions on my system and all directories that are created by 
+Smb4K have drwxr-xr-x. Did you manually change the permissions? Or did you run 
+Smb4K as root?
+
+> Now the smb4k_mount as root or smb4k gui mounts the share without problems.
+> But why is rwx required for others? This is very likely the reason for
+> my problem since smb4k creates the mount points on the fly with the
+> user's default umask. I just don't understand why it doesn't work
+> without permissions for world (the configuration of the other machine
+> doesn't require this).
+
+Since you write that Smb4K mounts the share without problems, is your problem 
+fixed or does it persist?
+
+Alexander
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+From arnim.laeuger at gmx.net  Mon Nov 22 22:01:41 2010
+From: arnim.laeuger at gmx.net (=?ISO-8859-1?Q?Arnim_L=E4uger?=)
+Date: Mon, 22 Nov 2010 22:01:41 +0100
+Subject: [smb4k-general] Can't mount share, permission denied
+In-Reply-To: <201011222030.15826.alexander.reinholdt@t-online.de>
+References: <4CE97D0B.2090700@gmx.net>
+	<201011222030.15826.alexander.reinholdt@t-online.de>
+Message-ID: <4CEADA35.2080508@gmx.net>
+
+>> Couldn't get it to work until I did
+>>
+>>   chmod 777 /home/sth/smb4k/ZNASAP/share
+>>
+>> It existed from a previous trial with smb4k and wasn't removed
+>> automatically since mount failed. Premissions were drwxrwx---.
+>
+> This an odd behavior. As far as I can remember, I never experienced
+> something like this.
+>
+> I checked the permissions on my system and all directories that are
+> created by Smb4K have drwxr-xr-x. Did you manually change the
+> permissions? Or did you run Smb4K as root?
+
+I guess that the permissions of newly created directories are derived
+from the umask setting, which is 0007 for the sth account. I changed
+permissions manually to drwxrwxrwx for analysis purpose once the
+directory was created by Smb4K.
+And no, I didn't run Smb4K as root.
+
+>> Now the smb4k_mount as root or smb4k gui mounts the share without
+problems.
+>> But why is rwx required for others? This is very likely the reason for
+>> my problem since smb4k creates the mount points on the fly with the
+>> user's default umask. I just don't understand why it doesn't work
+>> without permissions for world (the configuration of the other machine
+>> doesn't require this).
+>
+> Since you write that Smb4K mounts the share without problems, is your
+problem
+> fixed or does it persist?
+
+Smb4K mounts the share if I set the directory permissions manually to
+777. But as soon as the share is unmounted, Smb4K will remove the
+directory and the next time the newly created directory has insufficient
+permissions. So my problem persists: I can't mount shares without manual
+interaction from the command line.
+
+So to solve the root cause I need to understand why mounting only works
+if the mount point has drwxrwxrwx permissions. I haven't found any clue
+on the net yet. And except from the error message, there's no trace to
+start debugging with.
+
+Arnim
+
+
+
+From alexander.reinholdt at t-online.de  Thu Nov 25 08:17:48 2010
+From: alexander.reinholdt at t-online.de (alexander.reinholdt at t-online.de)
+Date: Thu, 25 Nov 2010 08:17:48 +0100
+Subject: [smb4k-general]
+ =?utf-8?q?Can=27t_mount_share=2C_permission_denie?= =?utf-8?q?d?=
+In-Reply-To: <4CEADA35.2080508@gmx.net>
+References: <4CEADA35.2080508@gmx.net>
+Message-ID: <1PLW5U-0zspP60@fwd00.aul.t-online.de>
+
+I'll investigate this problem and get back to you.
+
+Best regards
+Alexander
+
+-----Original-Nachricht-----
+Subject: Re: [smb4k-general] Can't mount share, permission denied
+Date: Mon, 22 Nov 2010 22:01:41 +0100
+From: Arnim L?uger <arnim.laeuger at gmx.net>
+To: smb4k-general at lists.berlios.de
+
+>> Couldn't get it to work until I did
+>>
+>>   chmod 777 /home/sth/smb4k/ZNASAP/share
+>>
+>> It existed from a previous trial with smb4k and wasn't removed
+>> automatically since mount failed. Premissions were drwxrwx---.
+>
+> This an odd behavior. As far as I can remember, I never experienced
+> something like this.
+>
+> I checked the permissions on my system and all directories that are
+> created by Smb4K have drwxr-xr-x. Did you manually change the
+> permissions? Or did you run Smb4K as root?
+
+I guess that the permissions of newly created directories are derived
+from the umask setting, which is 0007 for the sth account. I changed
+permissions manually to drwxrwxrwx for analysis purpose once the
+directory was created by Smb4K.
+And no, I didn't run Smb4K as root.
+
+>> Now the smb4k_mount as root or smb4k gui mounts the share without
+problems.
+>> But why is rwx required for others? This is very likely the reason for
+>> my problem since smb4k creates the mount points on the fly with the
+>> user's default umask. I just don't understand why it doesn't work
+>> without permissions for world (the configuration of the other machine
+>> doesn't require this).
+>
+> Since you write that Smb4K mounts the share without problems, is your
+problem
+> fixed or does it persist?
+
+Smb4K mounts the share if I set the directory permissions manually to
+777. But as soon as the share is unmounted, Smb4K will remove the
+directory and the next time the newly created directory has insufficient
+permissions. So my problem persists: I can't mount shares without manual
+interaction from the command line.
+
+So to solve the root cause I need to understand why mounting only works
+if the mount point has drwxrwxrwx permissions. I haven't found any clue
+on the net yet. And except from the error message, there's no trace to
+start debugging with.
+
+Arnim
+
+_______________________________________________
+Smb4K-general mailing list
+Smb4K-general at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+
+
+

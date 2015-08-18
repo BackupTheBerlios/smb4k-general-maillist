@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Can't mount share, permission denied
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C201104091129.38833.alexander.reinholdt%40t-online.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Can't mount share, permission denied</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C201104091129.38833.alexander.reinholdt%40t-online.de%3E"
+       TITLE="[smb4k-general] Can't mount share, permission denied">alexander.reinholdt at t-online.de
+       </A><BR>
+    <I>Sat Apr  9 11:29:38 CEST 2011</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Mittwoch 01 Dezember 2010, 21:53:41 schrieb Arnim L&#228;uger:
+&gt;<i> &gt; So to solve the root cause I need to understand why mounting only works
+</I>&gt;<i> &gt; if the mount point has drwxrwxrwx permissions.
+</I>&gt;<i> 
+</I>&gt;<i> I've narrowed this a bit down. Switched from umask 007 to 022, so the
+</I>&gt;<i> directories for the mount points are created with permissions
+</I>&gt;<i> drwxr-xr-x. This seems to be enough for smb4k_mount to succeed.
+</I>&gt;<i> Interestingly, this umask setting results in the same directory mask
+</I>&gt;<i> bits for the mount point that's set in the mounting options of Smb4k.
+</I>&gt;<i> Although 0755 is requested as the directory mask in the mount options,
+</I>&gt;<i> the mount point dir is not created using this mask. Instead, it's
+</I>&gt;<i> influenced by the umask setting.
+</I>&gt;<i> 
+</I>&gt;<i> Cheers
+</I>&gt;<i> Arnim
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Smb4K-general mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>
+Sorry that it took so long.
+
+I tried to reproduce this problem with the development version of Smb4K that 
+uses the KAuth framework instead of smb4k_mount/smb4k_umount. The good news is 
+that it does not seem to be affected. So, maybe you want to consider to 
+download the latest alpha release and give it a try.
+
+I haven't had the time to pinpoint the problem with Smb4K 0.10.x. But since it 
+will soon be superseded by Smb4K 1.0.0 I'm not sure if it is worth the 
+effort...
+
+Best regards
+Alexander
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

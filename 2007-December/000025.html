@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Smb4k 0.9.0 compile error under FreeBSD	6.3-PRERELEASE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Smb4k%200.9.0%20compile%20error%20under%20FreeBSD%0A%096.3-PRERELEASE&In-Reply-To=%3C200712261858.11366.achilov-rn%40askd.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000026.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Smb4k 0.9.0 compile error under FreeBSD	6.3-PRERELEASE</H1>
+    <B>Rashid N. Achilov</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Smb4k%200.9.0%20compile%20error%20under%20FreeBSD%0A%096.3-PRERELEASE&In-Reply-To=%3C200712261858.11366.achilov-rn%40askd.ru%3E"
+       TITLE="[smb4k-general] Smb4k 0.9.0 compile error under FreeBSD	6.3-PRERELEASE">achilov-rn at askd.ru
+       </A><BR>
+    <I>Wed Dec 26 13:58:10 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000026.html">[smb4k-general] Smb4k 0.9.0 compile error under FreeBSD 6.3-PRERELEASE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I had have just tried to compile smb4k-0.9.0 under FreeBSD 6.3-PRE. Compile 
+with error:
+
+/usr/X11R6/qt33/bin/moc ./smb4kpasswordhandler.h -o smb4kpasswordhandler.moc
+/bin/sh /usr/local/bin/libtool --silent --tag=CXX   --mode=compile 
+c++ -DHAVE_CONFIG_H -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+smb4kpasswordhandler.lo -MD -MP -MF .deps/smb4kpasswordhandler.Tpo -c -o 
+smb4kpasswordhandler.lo smb4kpasswordhandler.cpp
+smb4kpasswordhandler.cpp: In member function `void 
+Smb4KPasswordHandler::writeAuth(Smb4KAuthInfo*)':
+smb4kpasswordhandler.cpp:550: error: `auth' was not declared in this scope
+smb4kpasswordhandler.cpp:550: warning: unused variable 'auth'
+gmake[3]: *** [smb4kpasswordhandler.lo] Error 1
+gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0/smb4k/core'
+gmake[2]: *** [all-recursive] Error 1
+gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0/smb4k'
+gmake[1]: *** [all-recursive] Error 1
+gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0'
+gmake: *** [all] Error 2
+*** Error code 2
+
+Stop in /usr/ports/net/smb4k.
+
+-- 
+   With Best Regards.
+   Rashid N. Achilov (RNA1-RIPE), Web: <A HREF="http://www.askd.ru/~shelton">http://www.askd.ru/~shelton</A>
+   OOO &quot;ACK&quot; telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+   PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000026.html">[smb4k-general] Smb4k 0.9.0 compile error under FreeBSD 6.3-PRERELEASE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

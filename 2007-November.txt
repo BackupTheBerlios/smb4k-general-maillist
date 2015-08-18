@@ -1,0 +1,120 @@
+From achilov-rn at askd.ru  Wed Nov 28 08:25:07 2007
+From: achilov-rn at askd.ru (Rashid N. Achilov)
+Date: Wed, 28 Nov 2007 13:25:07 +0600
+Subject: [smb4k-general] smb4k 0.9.0 beta under FreeBSD
+In-Reply-To: <d041a9000709170852k2a6a20f0j4e8669d8a3573509@mail.gmail.com>
+References: <15116fd10709170231i3ca55c8et470b2b0c67ba70fb@mail.gmail.com>
+	<d041a9000709170852k2a6a20f0j4e8669d8a3573509@mail.gmail.com>
+Message-ID: <200711281325.07813.achilov-rn@askd.ru>
+
+I have just tried to compile SMB4K 0.9.0 beta under FreeBSD. Compiling without 
+any troubles, but when program linking with libtool, it trows an error:
+
+cannot find the library `
+
+This error will arised, when admin/ltmain.sh, used for generating libtool is 
+very old (0.9.0 beta contains version 1.5a from 26/06/2003). Replacing 
+admin/ltmain.sh from current libtool distribution fixes this occassion
+-- 
+   With Best Regards.
+   Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+   OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+   PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+
+
+From alexander.reinholdt at web.de  Wed Nov 28 10:20:06 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Wed, 28 Nov 2007 10:20:06 +0100
+Subject: [smb4k-general] smb4k 0.9.0 beta under FreeBSD
+Message-ID: <1270609646@web.de>
+
+Thanks for the information. I just fixed this in HEAD. 
+
+Unfortunately, the just released Smb4K 0.8.7 does not contain this update. 
+However, several fixes have been applied to the mounter so that it is again
+usable under FreeBSD.
+
+Alexander
+
+
+> -----Urspr?ngliche Nachricht-----
+> Von: "Achilov, Rashid" <achilov-rn at askd.ru>, "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+> Gesendet: 28.11.07 08:30:36
+> An: smb4k-general at lists.berlios.de
+> Betreff: [smb4k-general] smb4k 0.9.0 beta under FreeBSD
+
+
+> 
+> I have just tried to compile SMB4K 0.9.0 beta under FreeBSD. Compiling without 
+> any troubles, but when program linking with libtool, it trows an error:
+> 
+> cannot find the library `
+> 
+> This error will arised, when admin/ltmain.sh, used for generating libtool is 
+> very old (0.9.0 beta contains version 1.5a from 26/06/2003). Replacing 
+> admin/ltmain.sh from current libtool distribution fixes this occassion
+> -- 
+>    With Best Regards.
+>    Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+>    OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+>    PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+
+
+_____________________________________________________________________
+Der WEB.DE SmartSurfer hilft bis zu 70% Ihrer Onlinekosten zu sparen!
+http://smartsurfer.web.de/?mc=100071&distributionid=000000000066
+
+
+
+From alexander.reinholdt at web.de  Wed Nov 28 13:55:57 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Wed, 28 Nov 2007 13:55:57 +0100
+Subject: [smb4k-general] smb4k 0.9.0 beta under FreeBSD
+Message-ID: <1270944110@web.de>
+
+Thanks!
+
+Please report any problems with either the stable or pre-release version,
+so that I can fix them.
+
+By the way, several FreeBSD related fixes have been applied to CVS HEAD
+after 0.9.0beta was released. The release candidate that's due next weekend
+will include them.
+
+> -----Urspr?ngliche Nachricht-----
+> Von: "Achilov, Rashid" <achilov-rn at askd.ru>
+> Gesendet: 28.11.07 13:19:21
+> An: Alexander Reinholdt <alexander.reinholdt at web.de>
+> Betreff: Re: [smb4k-general] smb4k 0.9.0 beta under FreeBSD
+
+
+> 
+> On Wednesday 28 November 2007, you wrote:
+> > Thanks for the information. I just fixed this in HEAD. 
+> > 
+> > Unfortunately, the just released Smb4K 0.8.7 does not contain this update. 
+> > However, several fixes have been applied to the mounter so that it is again
+> > usable under FreeBSD.
+> 
+> Building 0.8.7 without any errors. I have just submitted port changing request 
+> to update to latest version. Also I'll create smb4k-devel port for 0.9.0 
+> version
+> -- 
+>    With Best Regards.
+>    Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+>    OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+>    PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+> 
+
+
+_______________________________________________________________________
+Jetzt neu! Sch?tzen Sie Ihren PC mit McAfee und WEB.DE. 3 Monate
+kostenlos testen. http://www.pc-sicherheit.web.de/startseite/?mc=022220
+
+
+

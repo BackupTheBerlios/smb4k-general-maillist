@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] error on mounting
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20error%20on%20mounting&In-Reply-To=%3C947723522%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000006.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] error on mounting</H1>
+    <B>alexander.reinholdt at web.de</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20error%20on%20mounting&In-Reply-To=%3C947723522%40web.de%3E"
+       TITLE="[smb4k-general] error on mounting">alexander.reinholdt at web.de
+       </A><BR>
+    <I>Fri Apr 20 09:42:09 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000006.html">[smb4k-general] error on mounting
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> I can't seem to be able to handle mount.cifs correctly. I get:
+</I>&gt;<i> 
+</I>&gt;<i> mercury:/home/kongeo # mount.cifs -t 
+</I>&gt;<i> cifs //10.10.23.82/incoming ./smb4k/incoming -o 
+</I>&gt;<i> username=guest,password=onoff,ip=10.10.23.82,rw
+</I>&gt;<i>
+</I>&gt;<i> Mounting the DFS root for domain not implemented yetmount error: can not 
+</I>&gt;<i> change directory into mount target cifs
+</I>
+mount.cifs does not know the parameter '-t cifs' and tries to interpret it as share
+name. This obviously fails and you get the error message you are seeing. Use 
+this command:
+
+mount.cifs //10.10.23.82/incoming ./smb4k/incoming -o  username=guest,password=onoff,ip=10.10.23.82,rw
+
+ 
+&gt;<i> Also, I get the same error for several servers (all winXP):
+</I>&gt;<i> 
+</I>&gt;<i> mount error 1 = Operation not permitted
+</I>&gt;<i> Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+</I>&gt;<i>
+</I>&gt;<i> Further, I can't seem to see where in XP (Pro, the machine I'm actiually 
+</I>&gt;<i> interested in, but we also have others) I can set security to user instead of 
+</I>&gt;<i> share. The security tab of the shares shows the permissions per user anyway 
+</I>&gt;<i> (Maybe because it's XP Pro, XP Home it's I think not possible to set 
+</I>&gt;<i> permissions per user)
+</I>
+OK, so the problem is not the 'security = share' setting, because you have trouble connecting
+to WinXP servers and not to Samba servers. 
+
+In the meantime I found another potential cause of the  problem. Has the mount.cifs binary the
+SUID root bit set? If not set it and retry or use super/sudo for mounting (configuration dialog -&gt; 
+Super User -&gt; Programs). Is the mounting working now?
+
+Bye
+Alexander
+
+_______________________________________________________________
+SMS schreiben mit WEB.DE FreeMail - einfach, schnell und
+kostenguenstig. Jetzt gleich testen! <A HREF="http://f.web.de/?mc=021192">http://f.web.de/?mc=021192</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000006.html">[smb4k-general] error on mounting
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

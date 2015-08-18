@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Can't mount share, permission denied
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C201011222030.15826.alexander.reinholdt%40t-online.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000070.html">
+   <LINK REL="Next"  HREF="000072.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Can't mount share, permission denied</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C201011222030.15826.alexander.reinholdt%40t-online.de%3E"
+       TITLE="[smb4k-general] Can't mount share, permission denied">alexander.reinholdt at t-online.de
+       </A><BR>
+    <I>Mon Nov 22 20:30:15 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000070.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+        <LI>Next message: <A HREF="000072.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Sonntag, 21. November 2010 schrieb Arnim L&#228;uger:
+&gt;<i> The problem appears like a wrong user/password pair when a share is
+</I>&gt;<i> mounted from by double-clicking on the search result list. smb4k over
+</I>&gt;<i> and over requests Username and Password and won't mount the share.
+</I>&gt;<i> Since I've already enabled sudo for mount/unmount, I took the following
+</I>&gt;<i> command from the system log and started it from the command line as root:
+</I>&gt;<i> 
+</I>&gt;<i> /usr/bin/smb4k_mount -s -t cifs -o
+</I>&gt;<i> uid=1000,gid=100,port=445,rw,file_mode=0755,dir_mode=0755,perm,setuids,nose
+</I>&gt;<i> rverino,nomapchars,domain=TUX-NET,ip=192.168.1.91,user=&lt;share-username&gt; --
+</I>&gt;<i> //ZNASAP/share /home/sth/smb4k/ZNASAP/share
+</I>&gt;<i> 
+</I>&gt;<i> I'm prompted for the password and end up with
+</I>&gt;<i>   mount error(13): Permission denied
+</I>&gt;<i>   Refer to the mount.cifs(8) manual page (e.g. man mount.cifs)
+</I>&gt;<i>
+</I>&gt;<i> Account sth that owns /home/sth/smb4k/ZNASAP has uid 1000 and is member
+</I>&gt;<i> of gid 100.
+</I>&gt;<i> 
+</I>&gt;<i> Couldn't get it to work until I did
+</I>&gt;<i> 
+</I>&gt;<i>   chmod 777 /home/sth/smb4k/ZNASAP/share
+</I>&gt;<i> 
+</I>&gt;<i> It existed from a previous trial with smb4k and wasn't removed
+</I>&gt;<i> automatically since mount failed. Premissions were drwxrwx---.
+</I>
+This an odd behavior. As far as I can remember, I never experienced something 
+like this.
+
+I checked the permissions on my system and all directories that are created by 
+Smb4K have drwxr-xr-x. Did you manually change the permissions? Or did you run 
+Smb4K as root?
+
+&gt;<i> Now the smb4k_mount as root or smb4k gui mounts the share without problems.
+</I>&gt;<i> But why is rwx required for others? This is very likely the reason for
+</I>&gt;<i> my problem since smb4k creates the mount points on the fly with the
+</I>&gt;<i> user's default umask. I just don't understand why it doesn't work
+</I>&gt;<i> without permissions for world (the configuration of the other machine
+</I>&gt;<i> doesn't require this).
+</I>
+Since you write that Smb4K mounts the share without problems, is your problem 
+fixed or does it persist?
+
+Alexander
+-- 
+&quot;Never argue with idiots. They drag you down to their level and beat you with 
+experience...&quot; (unknown)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000070.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+	<LI>Next message: <A HREF="000072.html">[smb4k-general] Can't mount share, permission denied
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

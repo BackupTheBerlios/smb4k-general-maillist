@@ -1,0 +1,333 @@
+From kgeorgokitsos at nomioan.gr  Thu Apr 19 10:54:14 2007
+From: kgeorgokitsos at nomioan.gr (Kostas Georgokitsos)
+Date: Thu, 19 Apr 2007 11:54:14 +0300
+Subject: [smb4k-general] error on mounting
+Message-ID: <200704191154.14626.kgeorgokitsos@nomioan.gr>
+
+Dear all,
+
+I was running smb4k quite successfully until a few days ago on a SUSE 10.1 
+with binaries from guru. Today I upgraded it to 0.8.1, and now I get the 
+following error  (which I never saw before) when triyng to mount from the 
+smb4k network browser:
+
+WARNING: 'file_mode' not expressed in octal.
+WARNING: 'dir_mode' not expressed in octal.
+mount error 1 = Operation not permitted
+Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+
+Ioslaves from konqueror with smb:// still work ok.
+
+Regs, Kostas
+
+
+From alexander.reinholdt at web.de  Thu Apr 19 11:48:25 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Thu, 19 Apr 2007 11:48:25 +0200
+Subject: [smb4k-general] error on mounting
+Message-ID: <946130011@web.de>
+
+With the CIFS file system you need to provide the "File mask" and the "Directory mask"
+options in octal, i.e. for example as 0755 and not as 755. Please check your settings in 
+the configuration dialog (Samba -> mount) and correct them if necessary. You shouldn't 
+get an error message afterwards.
+
+Bye
+Alexander
+
+> -----Urspr?ngliche Nachricht-----
+> Von: kgeorgokitsos at nomioan.gr, "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+> Gesendet: 19.04.07 11:22:01
+> An: smb4k-general at lists.berlios.de
+> Betreff: [smb4k-general] error on mounting
+
+
+> 
+> Dear all,
+> 
+> I was running smb4k quite successfully until a few days ago on a SUSE 10.1 
+> with binaries from guru. Today I upgraded it to 0.8.1, and now I get the 
+> following error  (which I never saw before) when triyng to mount from the 
+> smb4k network browser:
+> 
+> WARNING: 'file_mode' not expressed in octal.
+> WARNING: 'dir_mode' not expressed in octal.
+> mount error 1 = Operation not permitted
+> Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+> 
+> Ioslaves from konqueror with smb:// still work ok.
+> 
+> Regs, Kostas
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+
+
+_______________________________________________________________
+SMS schreiben mit WEB.DE FreeMail - einfach, schnell und
+kostenguenstig. Jetzt gleich testen! http://f.web.de/?mc=021192
+
+
+
+From kgeorgokitsos at nomioan.gr  Thu Apr 19 12:40:19 2007
+From: kgeorgokitsos at nomioan.gr (Kostas Georgokitsos)
+Date: Thu, 19 Apr 2007 13:40:19 +0300
+Subject: [smb4k-general] error on mounting
+In-Reply-To: <946130011@web.de>
+References: <946130011@web.de>
+Message-ID: <200704191340.19481.kgeorgokitsos@nomioan.gr>
+
+The error behaviour changed. Now I get the following error:
+
+mount error 1 = Operation not permitted
+Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+
+The only thing I can think of that has changed is that I re-entered the 
+permissions (thought it might be some gui character encoding problem) into 
+the configuration as Alexander Reinholdt suggested and then restarted smb4k.
+
+
+From kgeorgokitsos at nomioan.gr  Thu Apr 19 12:00:45 2007
+From: kgeorgokitsos at nomioan.gr (Kostas Georgokitsos)
+Date: Thu, 19 Apr 2007 13:00:45 +0300
+Subject: [smb4k-general] error on mounting
+In-Reply-To: <946130011@web.de>
+References: <946130011@web.de>
+Message-ID: <200704191300.45456.kgeorgokitsos@nomioan.gr>
+
+Configuration seemed ok. Both masks are 0755. and it still fails.
+Kostas
+
+On Thursday 19 April 2007 12:48, Alexander Reinholdt wrote:
+> With the CIFS file system you need to provide the "File mask" and the
+> "Directory mask" options in octal, i.e. for example as 0755 and not as 755.
+> Please check your settings in the configuration dialog (Samba -> mount) and
+> correct them if necessary. You shouldn't get an error message afterwards.
+>
+> Bye
+> Alexander
+>
+> > -----Urspr?ngliche Nachricht-----
+> > Von: kgeorgokitsos at nomioan.gr, "General discussion, help, support, etc."
+> > <smb4k-general at lists.berlios.de> Gesendet: 19.04.07 11:22:01
+> > An: smb4k-general at lists.berlios.de
+> > Betreff: [smb4k-general] error on mounting
+> >
+> >
+> >
+> > Dear all,
+> >
+> > I was running smb4k quite successfully until a few days ago on a SUSE
+> > 10.1 with binaries from guru. Today I upgraded it to 0.8.1, and now I get
+> > the following error  (which I never saw before) when triyng to mount from
+> > the smb4k network browser:
+> >
+> > WARNING: 'file_mode' not expressed in octal.
+> > WARNING: 'dir_mode' not expressed in octal.
+> > mount error 1 = Operation not permitted
+> > Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+> >
+> > Ioslaves from konqueror with smb:// still work ok.
+> >
+> > Regs, Kostas
+> > _______________________________________________
+> > Smb4K-general mailing list
+> > Smb4K-general at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+> _______________________________________________________________
+> SMS schreiben mit WEB.DE FreeMail - einfach, schnell und
+> kostenguenstig. Jetzt gleich testen! http://f.web.de/?mc=021192
+
+
+From alexander.reinholdt at web.de  Thu Apr 19 15:05:55 2007
+From: alexander.reinholdt at web.de (alexander.reinholdt at web.de)
+Date: Thu, 19 Apr 2007 15:05:55 +0200
+Subject: [smb4k-general] error on mounting
+Message-ID: <946430657@web.de>
+
+I only noticed after I sent the reply that the main problem is not  the warnings
+due to the wrongly formatted file and directory masks but that you are not able 
+to log in. Sorry.
+
+ Does this happen with all servers or only with a few/a single one? I googled a 
+bit and found a hint that authentication may fail if the _server_ has the setting
+security = share instead of security = user.  Could you please check  this? What
+happens, if you run mount.cifs manually (before changing any settings on the
+server)?
+
+Bye
+Alexander
+
+> -----Urspr?ngliche Nachricht-----
+> Von: kgeorgokitsos at nomioan.gr, "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+> Gesendet: 19.04.07 14:03:12
+> An: Alexander Reinholdt <alexander.reinholdt at web.de>
+> CC: "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+> Betreff: Re: [smb4k-general] error on mounting
+
+
+> 
+> Configuration seemed ok. Both masks are 0755. and it still fails.
+> Kostas
+> 
+> On Thursday 19 April 2007 12:48, Alexander Reinholdt wrote:
+> > With the CIFS file system you need to provide the "File mask" and the
+> > "Directory mask" options in octal, i.e. for example as 0755 and not as 755.
+> > Please check your settings in the configuration dialog (Samba -> mount) and
+> > correct them if necessary. You shouldn't get an error message afterwards.
+> >
+> > Bye
+> > Alexander
+> >
+> > > -----Urspr?ngliche Nachricht-----
+> > > Von: kgeorgokitsos at nomioan.gr, "General discussion, help, support, etc."
+> > > <smb4k-general at lists.berlios.de> Gesendet: 19.04.07 11:22:01
+> > > An: smb4k-general at lists.berlios.de
+> > > Betreff: [smb4k-general] error on mounting
+> > >
+> > >
+> > >
+> > > Dear all,
+> > >
+> > > I was running smb4k quite successfully until a few days ago on a SUSE
+> > > 10.1 with binaries from guru. Today I upgraded it to 0.8.1, and now I get
+> > > the following error  (which I never saw before) when triyng to mount from
+> > > the smb4k network browser:
+> > >
+> > > WARNING: 'file_mode' not expressed in octal.
+> > > WARNING: 'dir_mode' not expressed in octal.
+> > > mount error 1 = Operation not permitted
+> > > Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+> > >
+> > > Ioslaves from konqueror with smb:// still work ok.
+> > >
+> > > Regs, Kostas
+> > > _______________________________________________
+> > > Smb4K-general mailing list
+> > > Smb4K-general at lists.berlios.de
+> > > https://lists.berlios.de/mailman/listinfo/smb4k-general
+> >
+> > _______________________________________________________________
+> > SMS schreiben mit WEB.DE FreeMail - einfach, schnell und
+> > kostenguenstig. Jetzt gleich testen! http://f.web.de/?mc=021192
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+
+
+_______________________________________________________________
+SMS schreiben mit WEB.DE FreeMail - einfach, schnell und
+kostenguenstig. Jetzt gleich testen! http://f.web.de/?mc=021192
+
+
+
+From kgeorgokitsos at nomioan.gr  Fri Apr 20 08:01:08 2007
+From: kgeorgokitsos at nomioan.gr (Kostas Georgokitsos)
+Date: Fri, 20 Apr 2007 09:01:08 +0300
+Subject: [smb4k-general] error on mounting
+In-Reply-To: <946430657@web.de>
+References: <946430657@web.de>
+Message-ID: <200704200901.09072.kgeorgokitsos@nomioan.gr>
+
+I can't seem to be able to handle mount.cifs correctly. I get:
+
+mercury:/home/kongeo # mount.cifs -t 
+cifs //10.10.23.82/incoming ./smb4k/incoming -o 
+username=guest,password=onoff,ip=10.10.23.82,rw
+
+Mounting the DFS root for domain not implemented yetmount error: can not 
+change directory into mount target cifs
+
+
+
+
+
+Also, I get the same error for several servers (all winXP):
+
+mount error 1 = Operation not permitted
+Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+
+
+
+
+Further, I can't seem to see where in XP (Pro, the machine I'm actiually 
+interested in, but we also have others) I can set security to user instead of 
+share. The security tab of the shares shows the permissions per user anyway 
+(Maybe because it's XP Pro, XP Home it's I think not possible to set 
+permissions per user)
+
+
+
+However, I just found out, that when I set the file system to smbfs mounting 
+is possible! Some default settings  of mount.cifs seem to be wrong.
+
+Kostas
+
+
+From kgeorgokitsos at nomioan.gr  Fri Apr 20 08:11:02 2007
+From: kgeorgokitsos at nomioan.gr (Kostas Georgokitsos)
+Date: Fri, 20 Apr 2007 09:11:02 +0300
+Subject: [smb4k-general] error on mounting
+In-Reply-To: <946430657@web.de>
+References: <946430657@web.de>
+Message-ID: <200704200911.02584.kgeorgokitsos@nomioan.gr>
+
+...and after using smbfs I went straight to codepage hell...
+
+I really would prefer the old "click and works" smb4k behaviour... :-(
+
+
+From alexander.reinholdt at web.de  Fri Apr 20 09:42:09 2007
+From: alexander.reinholdt at web.de (alexander.reinholdt at web.de)
+Date: Fri, 20 Apr 2007 09:42:09 +0200
+Subject: [smb4k-general] error on mounting
+Message-ID: <947723522@web.de>
+
+> I can't seem to be able to handle mount.cifs correctly. I get:
+> 
+> mercury:/home/kongeo # mount.cifs -t 
+> cifs //10.10.23.82/incoming ./smb4k/incoming -o 
+> username=guest,password=onoff,ip=10.10.23.82,rw
+>
+> Mounting the DFS root for domain not implemented yetmount error: can not 
+> change directory into mount target cifs
+
+mount.cifs does not know the parameter '-t cifs' and tries to interpret it as share
+name. This obviously fails and you get the error message you are seeing. Use 
+this command:
+
+mount.cifs //10.10.23.82/incoming ./smb4k/incoming -o  username=guest,password=onoff,ip=10.10.23.82,rw
+
+ 
+> Also, I get the same error for several servers (all winXP):
+> 
+> mount error 1 = Operation not permitted
+> Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+>
+> Further, I can't seem to see where in XP (Pro, the machine I'm actiually 
+> interested in, but we also have others) I can set security to user instead of 
+> share. The security tab of the shares shows the permissions per user anyway 
+> (Maybe because it's XP Pro, XP Home it's I think not possible to set 
+> permissions per user)
+
+OK, so the problem is not the 'security = share' setting, because you have trouble connecting
+to WinXP servers and not to Samba servers. 
+
+In the meantime I found another potential cause of the  problem. Has the mount.cifs binary the
+SUID root bit set? If not set it and retry or use super/sudo for mounting (configuration dialog -> 
+Super User -> Programs). Is the mounting working now?
+
+Bye
+Alexander
+
+_______________________________________________________________
+SMS schreiben mit WEB.DE FreeMail - einfach, schnell und
+kostenguenstig. Jetzt gleich testen! http://f.web.de/?mc=021192
+
+
+

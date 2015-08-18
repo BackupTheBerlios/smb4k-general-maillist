@@ -1,0 +1,150 @@
+From vk4tux at bigpond.com  Mon Apr 14 11:52:29 2008
+From: vk4tux at bigpond.com (Adrian)
+Date: Mon, 14 Apr 2008 19:52:29 +1000
+Subject: [smb4k-general] Windows network computor disk/folder mounting not
+	working.
+Message-ID: <200804141952.30553.vk4tux@bigpond.com>
+
+I find that in smb4k ,now the GUI dropdown; ?mount? menu command has no effect 
+on mounting the drive or directory. Hence I cannot access the files within. 
+It was working for a while, while I was trying to setup a remote network  
+printer.
+
+I run cent-OS 5 OS on my main machine, with two other networked XP PC?, on a 
+microsoft ?MSHOME" workgroup. I run the samba localhost?? sever from Linux 
+(cent-OS 5). I cant understand why the GUI mount command has no effect? Any 
+help please???
+
+Sorry if its a bit simple, but it? beyond me at the moment.
+
+Adrian
+
+
+From alexander.reinholdt at web.de  Tue Apr 15 07:43:51 2008
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Tue, 15 Apr 2008 07:43:51 +0200
+Subject: [smb4k-general] Windows network computor disk/folder mounting
+	not working.
+In-Reply-To: <200804141952.30553.vk4tux@bigpond.com>
+References: <200804141952.30553.vk4tux@bigpond.com>
+Message-ID: <200804150743.51936.alexander.reinholdt@web.de>
+
+Hello Adrian,
+
+I guess that you are not allowed to execute mount.cifs/smbmount as normal user 
+on your system. So, mounting a share fails. Try ticking the "Use super user 
+privileges to mount and unmount shares" in the "Super User" page of the 
+configuration dialog. The program sudo or super has to be installed for this 
+option to work and you need to know the root password.
+
+If this does not help, please drop a note.
+
+Bye
+Alexander
+
+Am Montag 14 April 2008 schrieb Adrian:
+> I find that in smb4k ,now the GUI dropdown; ?mount? menu command has no
+> effect on mounting the drive or directory. Hence I cannot access the files
+> within. It was working for a while, while I was trying to setup a remote
+> network printer.
+>
+> I run cent-OS 5 OS on my main machine, with two other networked XP PC?, on
+> a microsoft ?MSHOME" workgroup. I run the samba localhost?? sever from
+> Linux (cent-OS 5). I cant understand why the GUI mount command has no
+> effect? Any help please???
+>
+> Sorry if its a bit simple, but it? beyond me at the moment.
+>
+> Adrian
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+
+
+From vk4tux at bigpond.com  Tue Apr 15 21:25:16 2008
+From: vk4tux at bigpond.com (Adrian)
+Date: Wed, 16 Apr 2008 05:25:16 +1000
+Subject: [smb4k-general] =?utf-8?q?Windows_network_computor_disk/folder_?=
+ =?utf-8?b?wqDCoMKgwqDCoMKgwqDCoG1vdW50aW5nwqDCoMKgwqDCoMKgwqDCoG5vdCB3?=
+ =?utf-8?q?orking=2E?=
+Message-ID: <200804160525.17037.vk4tux@bigpond.com>
+
+Alexander,
+                     I have sudo and the two options enabled in superuser tab. 
+I have all super/sudo relevant programs installed via Yum Extender. I cannot 
+preview (no files show) the network drive C or mount C (right click > left 
+click  mount(Cntrl + M) in dropdown menu. There just is no response, just a 
+quick ?mounting"message, in lower status bar, and a screen shake, but no 
+access or mount indication. I'm using smb4k samba mount ??IFS? file system 
+option.
+
+regards
+
+Adrian
+
+
+
+>Try ticking the "Use super user 
+privileges to mount and unmount shares" in the "Super User" page of the 
+configuration dialog. The program sudo or super has to be installed for this 
+option to work and you need to know the root password.
+Bye
+Alexander
+
+
+From alexander.reinholdt at web.de  Wed Apr 16 07:41:02 2008
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Wed, 16 Apr 2008 07:41:02 +0200
+Subject: [smb4k-general]
+ =?utf-8?q?Windows_network_computor_disk/folder_?=
+ =?utf-8?b?wqDCoMKgwqDCoMKgwqDCoG1vdW50aW5nwqDCoMKgwqDCoMKgwqDCoG5vdCB3?=
+ =?utf-8?q?orking=2E?=
+In-Reply-To: <200804160525.17037.vk4tux@bigpond.com>
+References: <200804160525.17037.vk4tux@bigpond.com>
+Message-ID: <200804160741.02866.alexander.reinholdt@web.de>
+
+In order to help you, I think I need some more information. First, which 
+version of Smb4K and Samba are you using? What operating system is running on 
+the server you want to connect to?
+
+
+Am Dienstag 15 April 2008 schrieb Adrian:
+> Alexander,
+>                      I have sudo and the two options enabled in superuser
+> tab. I have all super/sudo relevant programs installed via Yum Extender. I
+> cannot preview (no files show) the network drive C or mount C (right click
+> > left click  mount(Cntrl + M) in dropdown menu. There just is no response,
+> just a quick ?mounting"message, in lower status bar, and a screen shake,
+> but no access or mount indication. I'm using smb4k samba mount ??IFS? file
+> system option.
+>
+> regards
+>
+> Adrian
+>
+> >Try ticking the "Use super user
+>
+> privileges to mount and unmount shares" in the "Super User" page of the
+> configuration dialog. The program sudo or super has to be installed for
+> this option to work and you need to know the root password.
+> Bye
+> Alexander
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+
+

@@ -1,0 +1,267 @@
+From moerf at t-burg.de  Wed Dec 10 02:06:46 2008
+From: moerf at t-burg.de (moerf)
+Date: Wed, 10 Dec 2008 02:06:46 +0100
+Subject: [smb4k-general] error message libsmb4kcore.so.3.0.0
+In-Reply-To: <200811291052.57385.alexander.reinholdt@t-online.de>
+References: <200811231320.35605.moerf@t-burg.de>
+	<200811250151.21265.moerf@t-burg.de>
+	<200811291052.57385.alexander.reinholdt@t-online.de>
+Message-ID: <200812100206.46586.moerf@t-burg.de>
+
+If I do this, I get these two error messages:
+
+[ 28%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kscanner.o
+In file included from /home/moerf/smb4k-0.10.1/core/smb4kscanner.cpp:1740:
+/home/moerf/smb4k-0.10.1/core/smb4kscanner.moc: In member function ?virtual 
+int Smb4KScanner::qt_metacall(QMetaObject::Call, int, void**)?:
+/home/moerf/smb4k-0.10.1/core/smb4kscanner.moc:90: Warnung: ?void 
+Smb4KScanner::ipAddress(Smb4KHost*)? ist veraltet (deklariert bei 
+/home/moerf/smb4k-0.10.1/core/smb4kscanner.h:205)
+[ 29%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kscanner_p.o
+[ 31%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4ksearch.o
+[ 32%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kshare.o
+[ 33%] Building CXX object 
+core/CMakeFiles/smb4kcore.dir/smb4ksudowriterinterface.o
+[ 35%] Building CXX object 
+core/CMakeFiles/smb4kcore.dir/smb4ksynchronizationinfo.o
+[ 36%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4ksynchronizer.o
+[ 37%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kworkgroup.o
+[ 38%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4ksettings.o
+make[2]: *** Keine Regel vorhanden, um das Target 
+?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+  ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.  Schluss.
+make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+make: *** [all] Fehler 2
+
+If there is no solution for this, I continue using cifs. It just would have 
+been nice to mount my samba share on startup with smb4k.
+
+Thank you for taking the time to have a look on this issue.
+
+regards
+moerf
+
+Am Samstag 29 November 2008 10:52:57 schrieb Alexander Reinholdt:
+> Sorry that it took me so long to answer.
+>
+> I tried to compile Smb4K on Kubuntu 8.10, and at first I had the same
+> problem you reported. However, if you do an in-source build, then
+> everything is fine.
+>
+> So, you might want to try the following:
+> - Change into Smb4K's source directory.
+> - Run cmake like this:
+>   $ cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` \
+>     -DCMAKE_BUILD_TYPE=Release .
+> - Run
+>   $ make
+> - Install the compiled source with either
+>   $ sudo make install
+>   or
+>   $ sudo checkinstall
+>
+> Hope this helps.
+>
+> Best regards
+> Alexander
+>
+> Am Dienstag 25 November 2008 schrieb moerf:
+> > Hi Alexander,
+> >
+> > thanks for your reply. I'm using kubuntu intrepid.
+> > regards
+> > moerf
+> >
+> > On Monday 24 November 2008 22:25:48 Alexander Reinholdt wrote:
+> > > Hello!
+> > >
+> > > I haven't experienced such a problem until now. Could you please tell
+> > > me which distribution you are using?
+> > >
+> > > Best regards
+> > > Alexander
+> > >
+> > > Am Sonntag 23 November 2008 schrieb moerf:
+> > > > Hi,
+> > > >
+> > > > today I tried to compile smb4k 0.10.1 and got the follwoing error
+> > > > message:
+> > > >
+> > > > ~/Dokumente/smb4k/smb4k-0.10.1/build$ make && sudo make install
+> > > > make[2]: *** Keine Regel vorhanden, um das Target
+> > > > ?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+> > > >   ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.  Schluss.
+> > > > make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+> > > > make: *** [all] Fehler 2
+> > > >
+> > > > In the handbook on http://smb4k.berlios.de/handbook/index.html I
+> > > > didn't find a solution for this error message and therefore ask if
+> > > > somebody on this mailing list could give me further information about
+> > > > this issue.
+> > > >
+> > > > regards
+> > > > moerf
+> > > > _______________________________________________
+> > > > Smb4K-general mailing list
+> > > > Smb4K-general at lists.berlios.de
+> > > > https://lists.berlios.de/mailman/listinfo/smb4k-general
+> >
+> > _______________________________________________
+> > Smb4K-general mailing list
+> > Smb4K-general at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+
+From alexander.reinholdt at t-online.de  Wed Dec 10 15:44:43 2008
+From: alexander.reinholdt at t-online.de (alexander.reinholdt at t-online.de)
+Date: Wed, 10 Dec 2008 15:44:43 +0100
+Subject: [smb4k-general]
+ =?iso-8859-15?q?error_message_libsmb4kcore=2Eso?=
+ =?iso-8859-15?q?=2E3=2E0=2E0?=
+In-Reply-To: <200812100206.46586.moerf@t-burg.de>
+References: <200811231320.35605.moerf@t-burg.de>
+	<200811250151.21265.moerf@t-burg.de>
+	<200811291052.57385.alexander.reinholdt@t-online.de>
+	<200812100206.46586.moerf@t-burg.de>
+Message-ID: <1LAQIt-0Pg9Am0@fwd11.aul.t-online.de>
+
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20081210/c071d4ea/attachment.html>
+
+From moerf at t-burg.de  Fri Dec 19 00:03:11 2008
+From: moerf at t-burg.de (moerf)
+Date: Fri, 19 Dec 2008 00:03:11 +0100
+Subject: [smb4k-general] error message libsmb4kcore.so.3.0.0
+In-Reply-To: <1LAQIt-0Pg9Am0@fwd11.aul.t-online.de>
+References: <200811231320.35605.moerf@t-burg.de>
+	<200812100206.46586.moerf@t-burg.de>
+	<1LAQIt-0Pg9Am0@fwd11.aul.t-online.de>
+Message-ID: <200812190003.11500.moerf@t-burg.de>
+
+thanks, this works at my end.
+
+regards
+moerf
+
+Am Mittwoch 10 Dezember 2008 15:44:43 schrieb alexander.reinholdt at t-online.de:
+> It seems that the issue is related to Kubuntu's KDE 4.1.2 packages. After
+> upgrading to KDE 4.1.3 I can compile the source without problems ...
+>
+>  -----Original Message-----
+>  Date: Wed, 10 Dec 2008 02:06:46 +0100
+>  Subject: Re: [smb4k-general] error message libsmb4kcore.so.3.0.0
+>  From: moerf <moerf at t-burg.de>
+>  To: smb4k-general at lists.berlios.de
+>
+>  If I do this, I get these two error messages:
+>
+>  [ 28%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kscanner.o
+>  In file included from /home/moerf/smb4k-0.10.1/core/smb4kscanner.cpp:1740:
+>  /home/moerf/smb4k-0.10.1/core/smb4kscanner.moc: In member function
+> ?virtual int Smb4KScanner::qt_metacall(QMetaObject::Call, int, void**)?:
+>  /home/moerf/smb4k-0.10.1/core/smb4kscanner.moc:90: Warnung: ?void
+>  Smb4KScanner::ipAddress(Smb4KHost*)? ist veraltet (deklariert bei
+>  /home/moerf/smb4k-0.10.1/core/smb4kscanner.h:205)
+>  [ 29%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kscanner_p.o
+>  [ 31%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4ksearch.o
+>  [ 32%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kshare.o
+>  [ 33%] Building CXX object
+>  core/CMakeFiles/smb4kcore.dir/smb4ksudowriterinterface.o
+>  [ 35%] Building CXX object
+>  core/CMakeFiles/smb4kcore.dir/smb4ksynchronizationinfo.o
+>  [ 36%] Building CXX object
+> core/CMakeFiles/smb4kcore.dir/smb4ksynchronizer.o [ 37%] Building CXX
+> object core/CMakeFiles/smb4kcore.dir/smb4kworkgroup.o [ 38%] Building CXX
+> object core/CMakeFiles/smb4kcore.dir/smb4ksettings.o make[2]: *** Keine
+> Regel vorhanden, um das Target
+>  ?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so?,
+>  ?ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen. ?Schluss.
+>  make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+>  make: *** [all] Fehler 2
+>
+>  If there is no solution for this, I continue using cifs. It just would
+> have been nice to mount my samba share on startup with smb4k.
+>
+>  Thank you for taking the time to have a look on this issue.
+>
+>  regards
+>  moerf
+>
+>  Am Samstag 29 November 2008 10:52:57 schrieb Alexander Reinholdt:
+>  > Sorry that it took me so long to answer.
+>  >
+>  > I tried to compile Smb4K on Kubuntu 8.10, and at first I had the same
+>  > problem you reported. However, if you do an in-source build, then
+>  > everything is fine.
+>  >
+>  > So, you might want to try the following:
+>  > - Change into Smb4K's source directory.
+>  > - Run cmake like this:
+>  > ? $ cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` \
+>  > ? ? -DCMAKE_BUILD_TYPE=Release .
+>  > - Run
+>  > ? $ make
+>  > - Install the compiled source with either
+>  > ? $ sudo make install
+>  > ? or
+>  > ? $ sudo checkinstall
+>  >
+>  > Hope this helps.
+>  >
+>  > Best regards
+>  > Alexander
+>  >
+>  > Am Dienstag 25 November 2008 schrieb moerf:
+>  > > Hi Alexander,
+>  > >
+>  > > thanks for your reply. I'm using kubuntu intrepid.
+>  > > regards
+>  > > moerf
+>  > >
+>  > > On Monday 24 November 2008 22:25:48 Alexander Reinholdt wrote:
+>  > > > Hello!
+>  > > >
+>  > > > I haven't experienced such a problem until now. Could you please
+>  > > > tell me which distribution you are using?
+>  > > >
+>  > > > Best regards
+>  > > > Alexander
+>  > > >
+>  > > > Am Sonntag 23 November 2008 schrieb moerf:
+>  > > > > Hi,
+>  > > > >
+>  > > > > today I tried to compile smb4k 0.10.1 and got the follwoing error
+>  > > > > message:
+>  > > > >
+>  > > > > ~/Dokumente/smb4k/smb4k-0.10.1/build$ make && sudo make install
+>  > > > > make[2]: *** Keine Regel vorhanden, um das Target
+>  > > > > ?/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so
+>  > > > >?, ben?tigt von ?lib/libsmb4kcore.so.3.0.0?, zu erstellen.
+>  > > > > ?Schluss. make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler
+>  > > > > 2 make: *** [all] Fehler 2
+>  > > > >
+>  > > > > In the handbook on http://smb4k.berlios.de/handbook/index.html I
+>  > > > > didn't find a solution for this error message and therefore ask if
+>  > > > > somebody on this mailing list could give me further information
+>  > > > > about this issue.
+>  > > > >
+>  > > > > regards
+>  > > > > moerf
+>  > > > > _______________________________________________
+>  > > > > Smb4K-general mailing list
+>  > > > > Smb4K-general at lists.berlios.de
+>  > > > > https://lists.berlios.de/mailman/listinfo/smb4k-general
+>  > >
+>  > > _______________________________________________
+>  > > Smb4K-general mailing list
+>  > > Smb4K-general at lists.berlios.de
+>  > > https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+>  _______________________________________________
+>  Smb4K-general mailing list
+>  Smb4K-general at lists.berlios.de
+>  https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+

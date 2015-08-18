@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] SMB4K not showing share in neighbourhood
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%0A%20%3D%3Fiso-8859-15%3Fq%3FSMB4K_not_showing_share_in_neighb%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fourhood%3F%3D&In-Reply-To=%3C1NA4xh-1Qvfdo0%40fwd11.aul.t-online.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000051.html">
+   <LINK REL="Next"  HREF="000053.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] SMB4K not showing share in neighbourhood</H1>
+    <B>alexander.reinholdt at t-online.de</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%0A%20%3D%3Fiso-8859-15%3Fq%3FSMB4K_not_showing_share_in_neighb%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3Fourhood%3F%3D&In-Reply-To=%3C1NA4xh-1Qvfdo0%40fwd11.aul.t-online.de%3E"
+       TITLE="[smb4k-general] SMB4K not showing share in neighbourhood">alexander.reinholdt at t-online.de
+       </A><BR>
+    <I>Mon Nov 16 18:01:57 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000051.html">[smb4k-general] SMB4K not showing share in neighbourhood
+</A></li>
+        <LI>Next message: <A HREF="000053.html">[smb4k-general] Crash in 0.10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>OK, it seems that something is wrong with the code that exams the shell output and extracts the share names. I'll have a look at this next week. 
+
+Alexander
+
+-----Original-Nachricht-----
+Subject: Re: [smb4k-general] SMB4K not showing share in neighbourhood
+Date: Sun, 15 Nov 2009 18:03:19 +0100
+From: Stuart T Rogers &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">stuart at stella-maris.org.uk</A>&gt;
+To: &quot;General discussion, help, support, etc.&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">smb4k-general at lists.berlios.de</A>&gt;
+
+The output is
+
+Share name   Type     Description
+----------   ----     -----------
+E$           Disk     Default share
+IPC$         IPC      Remote IPC
+D$           Disk     Default share
+Work         Disk
+F$           Disk     Default share
+ADMIN$       Disk     Remote Admin
+C$           Disk     Default share
+WeatherData  Disk
+Programs     Disk
+
+It's Programs which is not showing up unless I search. I get the same 
+output with port 445 as well.
+
+There is no special setup for Master Browser if the Linux box is not up 
+then it would be this remote PC as it is the only one on 24x7
+
+Stuart
+
+Alexander Reinholdt wrote:
+&gt;<i> Am Sonntag, 15. November 2009 schrieb Stuart T Rogers:
+</I>&gt;&gt;<i> I can see my network OK and can see the Windows 2000 PC OK but it only
+</I>&gt;&gt;<i> seems to show two of its three ordinary shares. If I search for this PC
+</I>&gt;&gt;<i> the search panel results show all the shares hidden and the 3 I expect.
+</I>&gt;&gt;<i> I have tried removing the shares on the W2K PC and setting them up again
+</I>&gt;&gt;<i> but still it will show only 2 of the 3 shares, usually the last two
+</I>&gt;&gt;<i> alphabetically, so if I have Programs Weatherdata and Work only the last
+</I>&gt;&gt;<i> two show up. I am using 0.10.4 on Mandriva 2010.0. Any ideas?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Stuart
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Smb4K-general mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i> Hello Stuart,
+</I>&gt;<i> 
+</I>&gt;<i> this is a very strange problem. I haven't experienced it and cannot reproduce 
+</I>&gt;<i> it here. Could you please provide the shell output produced by the following 
+</I>&gt;<i> command:
+</I>&gt;<i> 
+</I>&gt;<i> $ net share list -l -p 139 -w &lt;SERVER'S_DOMAIN&gt; -S &lt;SERVER&gt; -I &lt;SERVER'S_IP&gt; -
+</I>&gt;<i> U &lt;USER&gt;%&lt;PASS&gt;
+</I>&gt;<i> 
+</I>&gt;<i> If that command does not work, try replacing the port number 139 by 445. Is 
+</I>&gt;<i> anything missing in the list of shared resources?
+</I>&gt;<i> 
+</I>&gt;<i> Have you set up the W2k PC as domain master browser or is there anything else 
+</I>&gt;<i> that is special?
+</I>&gt;<i> 
+</I>&gt;<i> Cheers
+</I>&gt;<i> Alexander
+</I>_______________________________________________
+Smb4K-general mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000051.html">[smb4k-general] SMB4K not showing share in neighbourhood
+</A></li>
+	<LI>Next message: <A HREF="000053.html">[smb4k-general] Crash in 0.10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

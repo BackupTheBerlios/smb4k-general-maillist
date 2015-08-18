@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD 6.2-RELEASE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%0A%20%3D%3Fiso-8859-15%3Fq%3FSMB4K_0%3D2E8%3D2E4_failed_to_compile%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F_on_FreeBSD_6%3D2E2-RELEASE%3F%3D&In-Reply-To=%3C1079551707%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD 6.2-RELEASE</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%0A%20%3D%3Fiso-8859-15%3Fq%3FSMB4K_0%3D2E8%3D2E4_failed_to_compile%3F%3D%0A%20%3D%3Fiso-8859-15%3Fq%3F_on_FreeBSD_6%3D2E2-RELEASE%3F%3D&In-Reply-To=%3C1079551707%40web.de%3E"
+       TITLE="[smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD 6.2-RELEASE">alexander.reinholdt at web.de
+       </A><BR>
+    <I>Mon Jul 23 16:37:47 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD	6.2-RELEASE
+</A></li>
+        <LI>Next message: <A HREF="000011.html">[smb4k-general] smb4k not working, smbclient working fine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ooops... Thank you for reporting this. I will try to fix this today, but it may also take
+a bit longer. Sorry for the inconvenience.
+
+Regards
+Alexander
+
+
+&gt;<i> -----Urspr&#252;ngliche Nachricht-----
+</I>&gt;<i> Von: &quot;Achilov, Rashid&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">achilov-rn at askd.ru</A>&gt;, &quot;General discussion, help, support, etc.&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">smb4k-general at lists.berlios.de</A>&gt;
+</I>&gt;<i> Gesendet: 23.07.07 15:16:07
+</I>&gt;<i> An: <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">smb4k-general at lists.berlios.de</A>
+</I>&gt;<i> Betreff: [smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD 6.2-RELEASE
+</I>
+
+&gt;<i> Subj.
+</I>&gt;<i> 
+</I>&gt;<i> if /bin/sh /usr/local/bin/libtool --silent --tag=CXX --mode=compile 
+</I>&gt;<i> c++ -DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+</I>&gt;<i> smb4kmounter.lo -MD -MP -MF &quot;.deps/smb4kmounter.Tpo&quot; -c -o smb4kmounter.lo 
+</I>&gt;<i> smb4kmounter.cpp; \
+</I>&gt;<i>         then mv -f &quot;.deps/smb4kmounter.Tpo&quot; &quot;.deps/smb4kmounter.Plo&quot;; else 
+</I>&gt;<i> rm -f &quot;.deps/smb4kmounter.Tpo&quot;; exit 1; fi
+</I>&gt;<i> smb4kmounter.cpp: In member function `void Smb4KMounter::processMount()':
+</I>&gt;<i> smb4kmounter.cpp:1197: error: no matching function for call to 
+</I>&gt;<i> `Smb4KPasswordHandler::readAuth(const QString&amp;, const QString&amp;, const 
+</I>&gt;<i> QString&amp;)'
+</I>&gt;<i> smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo* 
+</I>&gt;<i> Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+</I>&gt;<i> smb4kmounter.cpp:1264: error: no matching function for call to 
+</I>&gt;<i> `Smb4KPasswordHandler::readAuth(const QString&amp;, const QString&amp;, const 
+</I>&gt;<i> QString&amp;)'
+</I>&gt;<i> smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo* 
+</I>&gt;<i> Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+</I>&gt;<i> gmake[3]: *** [smb4kmounter.lo] Error 1
+</I>&gt;<i> gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k/core'
+</I>&gt;<i> gmake[2]: *** [all-recursive] Error 1
+</I>&gt;<i> gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k'
+</I>&gt;<i> gmake[1]: *** [all-recursive] Error 1
+</I>&gt;<i> gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4'
+</I>&gt;<i> gmake: *** [all] Error 2
+</I>&gt;<i> *** Error code 2
+</I>&gt;<i> 
+</I>&gt;<i> Stop in /usr/ports/net/smb4k.
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i>    With Best Regards.
+</I>&gt;<i>    Rashid N. Achilov (RNA1-RIPE), Web: <A HREF="http://www.askd.ru/~shelton">http://www.askd.ru/~shelton</A>
+</I>&gt;<i>    OOO &quot;ACK&quot; telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+</I>&gt;<i>    PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Smb4K-general mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;<i> 
+</I>
+
+______________________________________________________________________
+XXL-Speicher, PC-Virenschutz, Spartarife &amp; mehr: Nur im WEB.DE Club!		
+Jetzt testen! <A HREF="http://produkte.web.de/club/?mc=021130">http://produkte.web.de/club/?mc=021130</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD	6.2-RELEASE
+</A></li>
+	<LI>Next message: <A HREF="000011.html">[smb4k-general] smb4k not working, smbclient working fine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

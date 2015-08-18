@@ -1,0 +1,259 @@
+From stuart at stella-maris.org.uk  Sun Nov 15 15:38:44 2009
+From: stuart at stella-maris.org.uk (Stuart T Rogers)
+Date: Sun, 15 Nov 2009 14:38:44 +0000
+Subject: [smb4k-general] SMB4K not showing share in neighbourhood
+Message-ID: <4B001274.1030204@stella-maris.org.uk>
+
+I can see my network OK and can see the Windows 2000 PC OK but it only 
+seems to show two of its three ordinary shares. If I search for this PC 
+the search panel results show all the shares hidden and the 3 I expect. 
+I have tried removing the shares on the W2K PC and setting them up again 
+but still it will show only 2 of the 3 shares, usually the last two 
+alphabetically, so if I have Programs Weatherdata and Work only the last 
+two show up. I am using 0.10.4 on Mandriva 2010.0. Any ideas?
+
+Stuart
+
+
+From alexander.reinholdt at t-online.de  Sun Nov 15 17:31:29 2009
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Sun, 15 Nov 2009 17:31:29 +0100
+Subject: [smb4k-general] SMB4K not showing share in neighbourhood
+In-Reply-To: <4B001274.1030204@stella-maris.org.uk>
+References: <4B001274.1030204@stella-maris.org.uk>
+Message-ID: <200911151731.29404.alexander.reinholdt@t-online.de>
+
+Am Sonntag, 15. November 2009 schrieb Stuart T Rogers:
+> I can see my network OK and can see the Windows 2000 PC OK but it only
+> seems to show two of its three ordinary shares. If I search for this PC
+> the search panel results show all the shares hidden and the 3 I expect.
+> I have tried removing the shares on the W2K PC and setting them up again
+> but still it will show only 2 of the 3 shares, usually the last two
+> alphabetically, so if I have Programs Weatherdata and Work only the last
+> two show up. I am using 0.10.4 on Mandriva 2010.0. Any ideas?
+> 
+> Stuart
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+Hello Stuart,
+
+this is a very strange problem. I haven't experienced it and cannot reproduce 
+it here. Could you please provide the shell output produced by the following 
+command:
+
+$ net share list -l -p 139 -w <SERVER'S_DOMAIN> -S <SERVER> -I <SERVER'S_IP> -
+U <USER>%<PASS>
+
+If that command does not work, try replacing the port number 139 by 445. Is 
+anything missing in the list of shared resources?
+
+Have you set up the W2k PC as domain master browser or is there anything else 
+that is special?
+
+Cheers
+Alexander
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+From stuart at stella-maris.org.uk  Sun Nov 15 18:03:19 2009
+From: stuart at stella-maris.org.uk (Stuart T Rogers)
+Date: Sun, 15 Nov 2009 17:03:19 +0000
+Subject: [smb4k-general] SMB4K not showing share in neighbourhood
+In-Reply-To: <200911151731.29404.alexander.reinholdt@t-online.de>
+References: <4B001274.1030204@stella-maris.org.uk>
+	<200911151731.29404.alexander.reinholdt@t-online.de>
+Message-ID: <4B003457.2050600@stella-maris.org.uk>
+
+The output is
+
+Share name   Type     Description
+----------   ----     -----------
+E$           Disk     Default share
+IPC$         IPC      Remote IPC
+D$           Disk     Default share
+Work         Disk
+F$           Disk     Default share
+ADMIN$       Disk     Remote Admin
+C$           Disk     Default share
+WeatherData  Disk
+Programs     Disk
+
+It's Programs which is not showing up unless I search. I get the same 
+output with port 445 as well.
+
+There is no special setup for Master Browser if the Linux box is not up 
+then it would be this remote PC as it is the only one on 24x7
+
+Stuart
+
+Alexander Reinholdt wrote:
+> Am Sonntag, 15. November 2009 schrieb Stuart T Rogers:
+>> I can see my network OK and can see the Windows 2000 PC OK but it only
+>> seems to show two of its three ordinary shares. If I search for this PC
+>> the search panel results show all the shares hidden and the 3 I expect.
+>> I have tried removing the shares on the W2K PC and setting them up again
+>> but still it will show only 2 of the 3 shares, usually the last two
+>> alphabetically, so if I have Programs Weatherdata and Work only the last
+>> two show up. I am using 0.10.4 on Mandriva 2010.0. Any ideas?
+>>
+>> Stuart
+>> _______________________________________________
+>> Smb4K-general mailing list
+>> Smb4K-general at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>>
+> Hello Stuart,
+> 
+> this is a very strange problem. I haven't experienced it and cannot reproduce 
+> it here. Could you please provide the shell output produced by the following 
+> command:
+> 
+> $ net share list -l -p 139 -w <SERVER'S_DOMAIN> -S <SERVER> -I <SERVER'S_IP> -
+> U <USER>%<PASS>
+> 
+> If that command does not work, try replacing the port number 139 by 445. Is 
+> anything missing in the list of shared resources?
+> 
+> Have you set up the W2k PC as domain master browser or is there anything else 
+> that is special?
+> 
+> Cheers
+> Alexander
+
+
+From alexander.reinholdt at t-online.de  Mon Nov 16 18:01:57 2009
+From: alexander.reinholdt at t-online.de (alexander.reinholdt at t-online.de)
+Date: Mon, 16 Nov 2009 18:01:57 +0100
+Subject: [smb4k-general]
+ =?iso-8859-15?q?SMB4K_not_showing_share_in_neighb?=
+ =?iso-8859-15?q?ourhood?=
+In-Reply-To: <4B003457.2050600@stella-maris.org.uk>
+References: <4B003457.2050600@stella-maris.org.uk>
+Message-ID: <1NA4xh-1Qvfdo0@fwd11.aul.t-online.de>
+
+OK, it seems that something is wrong with the code that exams the shell output and extracts the share names. I'll have a look at this next week. 
+
+Alexander
+
+-----Original-Nachricht-----
+Subject: Re: [smb4k-general] SMB4K not showing share in neighbourhood
+Date: Sun, 15 Nov 2009 18:03:19 +0100
+From: Stuart T Rogers <stuart at stella-maris.org.uk>
+To: "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+
+The output is
+
+Share name   Type     Description
+----------   ----     -----------
+E$           Disk     Default share
+IPC$         IPC      Remote IPC
+D$           Disk     Default share
+Work         Disk
+F$           Disk     Default share
+ADMIN$       Disk     Remote Admin
+C$           Disk     Default share
+WeatherData  Disk
+Programs     Disk
+
+It's Programs which is not showing up unless I search. I get the same 
+output with port 445 as well.
+
+There is no special setup for Master Browser if the Linux box is not up 
+then it would be this remote PC as it is the only one on 24x7
+
+Stuart
+
+Alexander Reinholdt wrote:
+> Am Sonntag, 15. November 2009 schrieb Stuart T Rogers:
+>> I can see my network OK and can see the Windows 2000 PC OK but it only
+>> seems to show two of its three ordinary shares. If I search for this PC
+>> the search panel results show all the shares hidden and the 3 I expect.
+>> I have tried removing the shares on the W2K PC and setting them up again
+>> but still it will show only 2 of the 3 shares, usually the last two
+>> alphabetically, so if I have Programs Weatherdata and Work only the last
+>> two show up. I am using 0.10.4 on Mandriva 2010.0. Any ideas?
+>>
+>> Stuart
+>> _______________________________________________
+>> Smb4K-general mailing list
+>> Smb4K-general at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>>
+> Hello Stuart,
+> 
+> this is a very strange problem. I haven't experienced it and cannot reproduce 
+> it here. Could you please provide the shell output produced by the following 
+> command:
+> 
+> $ net share list -l -p 139 -w <SERVER'S_DOMAIN> -S <SERVER> -I <SERVER'S_IP> -
+> U <USER>%<PASS>
+> 
+> If that command does not work, try replacing the port number 139 by 445. Is 
+> anything missing in the list of shared resources?
+> 
+> Have you set up the W2k PC as domain master browser or is there anything else 
+> that is special?
+> 
+> Cheers
+> Alexander
+_______________________________________________
+Smb4K-general mailing list
+Smb4K-general at lists.berlios.de
+https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+
+
+
+From stuart at stella-maris.org.uk  Sat Nov 21 16:26:15 2009
+From: stuart at stella-maris.org.uk (Stuart T Rogers)
+Date: Sat, 21 Nov 2009 15:26:15 +0000
+Subject: [smb4k-general] Crash in 0.10.4
+Message-ID: <4B080697.9000900@stella-maris.org.uk>
+
+I was re-booting a Windows 2000 PC which had a mounted share using SMB4K 
+and I forgot to unmount it in Linux. After rebooting the PC and 
+switching back to Linux I found SMB4K had crashed. Dont have the crash 
+data as I dont have the debugger installed. I can attempt to recreate 
+sometime if it would be useful. I am using 0.10.4 on Mandriva 2010.0.
+
+Stuart
+
+
+From alexander.reinholdt at t-online.de  Tue Nov 24 10:36:53 2009
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Tue, 24 Nov 2009 10:36:53 +0100
+Subject: [smb4k-general] Crash in 0.10.4
+In-Reply-To: <4B080697.9000900@stella-maris.org.uk>
+References: <4B080697.9000900@stella-maris.org.uk>
+Message-ID: <200911241036.53870.alexander.reinholdt@t-online.de>
+
+Am Samstag 21 November 2009 16:26:15 schrieb Stuart T Rogers:
+> I was re-booting a Windows 2000 PC which had a mounted share using SMB4K
+> and I forgot to unmount it in Linux. After rebooting the PC and
+> switching back to Linux I found SMB4K had crashed. Dont have the crash
+> data as I dont have the debugger installed. I can attempt to recreate
+> sometime if it would be useful. I am using 0.10.4 on Mandriva 2010.0.
+> 
+> Stuart
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+
+Hello Stuart,
+
+I would be grateful if you could provide the backtrace. It would help greatly 
+on tracking down the bug.
+
+Greetings
+Alexander
+
+
+

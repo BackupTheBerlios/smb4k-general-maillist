@@ -1,0 +1,25 @@
+From arnim.laeuger at gmx.net  Wed Dec  1 21:53:41 2010
+From: arnim.laeuger at gmx.net (=?ISO-8859-1?Q?Arnim_L=E4uger?=)
+Date: Wed, 01 Dec 2010 21:53:41 +0100
+Subject: [smb4k-general] Can't mount share, permission denied
+In-Reply-To: <4CEADA35.2080508@gmx.net>
+References: <4CE97D0B.2090700@gmx.net>	<201011222030.15826.alexander.reinholdt@t-online.de>
+	<4CEADA35.2080508@gmx.net>
+Message-ID: <4CF6B5D5.6060605@gmx.net>
+
+> So to solve the root cause I need to understand why mounting only works
+> if the mount point has drwxrwxrwx permissions.
+
+I've narrowed this a bit down. Switched from umask 007 to 022, so the
+directories for the mount points are created with permissions
+drwxr-xr-x. This seems to be enough for smb4k_mount to succeed.
+Interestingly, this umask setting results in the same directory mask
+bits for the mount point that's set in the mounting options of Smb4k.
+Although 0755 is requested as the directory mask in the mount options,
+the mount point dir is not created using this mask. Instead, it's
+influenced by the umask setting.
+
+Cheers
+Arnim
+
+

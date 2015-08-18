@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] [Smb4K-bugs] Can not see my linux from my	windows computer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20%5BSmb4K-bugs%5D%20Can%20not%20see%20my%20linux%20from%20my%0A%09windows%20computer&In-Reply-To=%3C200811301741.37178.alexander.reinholdt%40t-online.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000044.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] [Smb4K-bugs] Can not see my linux from my	windows computer</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20%5BSmb4K-bugs%5D%20Can%20not%20see%20my%20linux%20from%20my%0A%09windows%20computer&In-Reply-To=%3C200811301741.37178.alexander.reinholdt%40t-online.de%3E"
+       TITLE="[smb4k-general] [Smb4K-bugs] Can not see my linux from my	windows computer">alexander.reinholdt at t-online.de
+       </A><BR>
+    <I>Sun Nov 30 17:41:36 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000044.html">[smb4k-general] error message libsmb4kcore.so.3.0.0
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Yiannis,
+
+to be able to &quot;see&quot; your Linux server, you need a full Samba install that 
+includes the daemons smbd and nmbd. The required package should be called 
+&quot;samba&quot; or similar. Also, you need to configure Samba. I suggest the swat 
+utility that provides an easy-to-use web interface. With Smb4K you cannot 
+configure Samba permanently, it only passes arguments to the client programs 
+on runtime. 
+
+If you have installed and configured Samba properly and you still cannot &quot;see&quot; 
+the server, make sure that your firewall - if installed - permits SMB 
+connections (ports 139 (TCP) and 445 (UDP) must be enabled).
+
+Hope this helps.
+
+Best regards
+Alexander
+
+Am Sonntag 30 November 2008 schrieb GIANNiS botetsios:
+&gt;<i> Hi
+</I>&gt;<i> I m trying a long time now to solve this problem
+</I>&gt;<i> I can access other user's share folders from my smb4k linux
+</I>&gt;<i> but i can not see my linux computer from the other computers with windows
+</I>&gt;<i> distribution.
+</I>&gt;<i>
+</I>&gt;<i> Why?
+</I>&gt;<i> What do i have to do?
+</I>&gt;<i> Please help me
+</I>&gt;<i>
+</I>&gt;<i> I can not even see the name of my linux computer through windows
+</I>&gt;<i>
+</I>&gt;<i> Thanks in advance
+</I>&gt;<i>
+</I>&gt;<i> Yiannis
+</I>
+
+-- 
+&quot;Never argue with idiots. They drag you down to their level and beat you with 
+experience...&quot; (unknown)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000044.html">[smb4k-general] error message libsmb4kcore.so.3.0.0
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

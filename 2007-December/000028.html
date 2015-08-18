@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] How does smb4k perform authentication and	authorization when accessing a shared resource?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20How%20does%20smb4k%20perform%20authentication%20and%0A%09authorization%20when%20accessing%20a%20shared%20resource%3F&In-Reply-To=%3C200712311433.17463.alexander.reinholdt%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000026.html">
+   <LINK REL="Next"  HREF="000029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] How does smb4k perform authentication and	authorization when accessing a shared resource?</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20How%20does%20smb4k%20perform%20authentication%20and%0A%09authorization%20when%20accessing%20a%20shared%20resource%3F&In-Reply-To=%3C200712311433.17463.alexander.reinholdt%40web.de%3E"
+       TITLE="[smb4k-general] How does smb4k perform authentication and	authorization when accessing a shared resource?">alexander.reinholdt at web.de
+       </A><BR>
+    <I>Mon Dec 31 14:33:17 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000026.html">[smb4k-general] Smb4k 0.9.0 compile error under FreeBSD 6.3-PRERELEASE
+</A></li>
+        <LI>Next message: <A HREF="000029.html">[smb4k-general] How does smb4k perform authentication and	authorization when accessing a shared resource?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am Dienstag 01 Januar 2008 schrieb legolas wood:
+&gt;<i> Hi
+</I>&gt;<i> Thank you for reading my post.
+</I>&gt;<i> Can you please let me know whether smb4k support authentication when it
+</I>&gt;<i> want to access a shared folder?
+</I>&gt;<i> for example, does it integrate with
+</I>&gt;<i> <A HREF="http://www.likewisesoftware.com/community/index.php/download/">http://www.likewisesoftware.com/community/index.php/download/</A> for
+</I>&gt;<i> authentication?
+</I>&gt;<i> What I can not understand is whether this package integrate our linux
+</I>&gt;<i> desktop with active directory or not?
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Smb4K-general mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>
+Authentication is supported. An authentication dialog will pop up asking you 
+for the login and password. If both are correct, the host will list its 
+shares resources/the share will be mounted. You can also define a default 
+login and password in the configuration dialog. This is useful in NT domains, 
+AD environments, etc. where you only have one login and password.
+
+Active Directory environments are supported by Smb4K, although not entirely. 
+Browsing and mounting, however, should work, although sometimes it is 
+necessary to switch from the RPC to the RAP protocol in the configuration 
+dialog.
+
+For further information I suggest you read the online version of the handbook: 
+<A HREF="http://smb4k.berlios.de/handbook/index.html.">http://smb4k.berlios.de/handbook/index.html.</A>
+
+If you have further questions or if you run into trouble using Smb4K, please 
+do not hesitate to ask for help or file a bug report.
+
+Best regards
+Alexander
+-- 
+&quot;Never argue with idiots. They drag you down to their level and beat you with
+experience...&quot; (unknown)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000026.html">[smb4k-general] Smb4k 0.9.0 compile error under FreeBSD 6.3-PRERELEASE
+</A></li>
+	<LI>Next message: <A HREF="000029.html">[smb4k-general] How does smb4k perform authentication and	authorization when accessing a shared resource?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

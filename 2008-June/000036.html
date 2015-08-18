@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Mount error=2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Mount%20error%3D2&In-Reply-To=%3C200806102026.18468.alexander.reinholdt%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000035.html">
+   <LINK REL="Next"  HREF="000037.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Mount error=2</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Mount%20error%3D2&In-Reply-To=%3C200806102026.18468.alexander.reinholdt%40web.de%3E"
+       TITLE="[smb4k-general] Mount error=2">alexander.reinholdt at web.de
+       </A><BR>
+    <I>Tue Jun 10 20:26:18 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000035.html">[smb4k-general] Mount error=2
+</A></li>
+        <LI>Next message: <A HREF="000037.html">[smb4k-general] Mount error=2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I guess that this is an authentication issue of some kind, but I'm not sure. 
+In order to help you, I need to know a few things:
+
+How is your network neighborhood organized? Is it an NT domain, an Active 
+Directory environment or are there just a few workgroups (no domain and no 
+Active Directory)? 
+
+Which version of Smb4K are you using? Have you tried the latest version?
+
+By the way, Smb4K does not report the command that it executes. You need to 
+modify the source code in the Smb4KMounter::mount() function (in 
+smb4k/core/smb4kmounter.cpp) to make it do this. Modify the end of the 
+function so that it looks like this:
+
+#endif
+  // Report the command that will be executed:
+  kdDebug() &lt;&lt; command &lt;&lt; endl;
+
+  // Start the mount process:
+  *m_proc &lt;&lt; command;
+
+  startProcess( Mount );
+}
+
+After that you need to recompile the source with debug symbols, that means you 
+need to add the --enable-debug=full argument to the configure command. After 
+you installed Smb4K, it should produce an output with the command when started 
+from a terminal.
+
+Best regards
+Alexander
+ 
+
+Am Monday 09 June 2008 schrieb Jos Ewert:
+&gt;<i> when i try to mount a ( password proteced ) share smb4k fails with the
+</I>&gt;<i> error :
+</I>&gt;<i> mount error 2 = No such file or directory
+</I>&gt;<i> Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+</I>&gt;<i>
+</I>&gt;<i> however when i run
+</I>&gt;<i> smb4k_mount -s -t cifs -o user=user%password //host/share
+</I>&gt;<i>                         e /smb4k
+</I>&gt;<i>
+</I>&gt;<i> it works flawlessly, after running that command I can even mount from
+</I>&gt;<i> within smb4k.
+</I>&gt;<i>
+</I>&gt;<i> once I restart smb4k I cannot mount the shares anymore.
+</I>&gt;<i>
+</I>&gt;<i> Is there a way to exactly see what command smb4k wants to execute ?
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Smb4K-general mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>
+
+-- 
+&quot;Never argue with idiots. They drag you down to their level and beat you with 
+experience...&quot; (unknown)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000035.html">[smb4k-general] Mount error=2
+</A></li>
+	<LI>Next message: <A HREF="000037.html">[smb4k-general] Mount error=2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

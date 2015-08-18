@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Mount error=2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Mount%20error%3D2&In-Reply-To=%3C484FB683.5060908%40flami.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000036.html">
+   <LINK REL="Next"  HREF="000038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Mount error=2</H1>
+    <B>Jos Ewert</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Mount%20error%3D2&In-Reply-To=%3C484FB683.5060908%40flami.net%3E"
+       TITLE="[smb4k-general] Mount error=2">flami at flami.net
+       </A><BR>
+    <I>Wed Jun 11 13:26:59 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000036.html">[smb4k-general] Mount error=2
+</A></li>
+        <LI>Next message: <A HREF="000038.html">[smb4k-general] Mount error=2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It is a little network with a few workgroups , and I try to mount shares
+from a windows vista box.
+Smb4k 0.9.4
+
+I guess Ill try it with 0.9.5.
+
+about the command , I wanted to find out what it does ( unfortunately
+strace cuts out the important bits , even with -fv ) so i could try
+running it by hand and see what happens.
+
+Alexander Reinholdt wrote:
+&gt;<i> I guess that this is an authentication issue of some kind, but I'm not sure. 
+</I>&gt;<i> In order to help you, I need to know a few things:
+</I>&gt;<i> 
+</I>&gt;<i> How is your network neighborhood organized? Is it an NT domain, an Active 
+</I>&gt;<i> Directory environment or are there just a few workgroups (no domain and no 
+</I>&gt;<i> Active Directory)? 
+</I>&gt;<i> 
+</I>&gt;<i> Which version of Smb4K are you using? Have you tried the latest version?
+</I>&gt;<i> 
+</I>&gt;<i> By the way, Smb4K does not report the command that it executes. You need to 
+</I>&gt;<i> modify the source code in the Smb4KMounter::mount() function (in 
+</I>&gt;<i> smb4k/core/smb4kmounter.cpp) to make it do this. Modify the end of the 
+</I>&gt;<i> function so that it looks like this:
+</I>&gt;<i> 
+</I>&gt;<i> #endif
+</I>&gt;<i>   // Report the command that will be executed:
+</I>&gt;<i>   kdDebug() &lt;&lt; command &lt;&lt; endl;
+</I>&gt;<i> 
+</I>&gt;<i>   // Start the mount process:
+</I>&gt;<i>   *m_proc &lt;&lt; command;
+</I>&gt;<i> 
+</I>&gt;<i>   startProcess( Mount );
+</I>&gt;<i> }
+</I>&gt;<i> 
+</I>&gt;<i> After that you need to recompile the source with debug symbols, that means you 
+</I>&gt;<i> need to add the --enable-debug=full argument to the configure command. After 
+</I>&gt;<i> you installed Smb4K, it should produce an output with the command when started 
+</I>&gt;<i> from a terminal.
+</I>&gt;<i> 
+</I>&gt;<i> Best regards
+</I>&gt;<i> Alexander
+</I>&gt;<i>  
+</I>&gt;<i> 
+</I>&gt;<i> Am Monday 09 June 2008 schrieb Jos Ewert:
+</I>&gt;&gt;<i> when i try to mount a ( password proteced ) share smb4k fails with the
+</I>&gt;&gt;<i> error :
+</I>&gt;&gt;<i> mount error 2 = No such file or directory
+</I>&gt;&gt;<i> Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> however when i run
+</I>&gt;&gt;<i> smb4k_mount -s -t cifs -o user=user%password //host/share
+</I>&gt;&gt;<i>                         e /smb4k
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> it works flawlessly, after running that command I can even mount from
+</I>&gt;&gt;<i> within smb4k.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> once I restart smb4k I cannot mount the shares anymore.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is there a way to exactly see what command smb4k wants to execute ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Smb4K-general mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000036.html">[smb4k-general] Mount error=2
+</A></li>
+	<LI>Next message: <A HREF="000038.html">[smb4k-general] Mount error=2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

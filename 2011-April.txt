@@ -1,0 +1,44 @@
+From alexander.reinholdt at t-online.de  Sat Apr  9 11:29:38 2011
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Sat, 9 Apr 2011 11:29:38 +0200
+Subject: [smb4k-general] Can't mount share, permission denied
+In-Reply-To: <4CF6B5D5.6060605@gmx.net>
+References: <4CE97D0B.2090700@gmx.net> <4CEADA35.2080508@gmx.net>
+	<4CF6B5D5.6060605@gmx.net>
+Message-ID: <201104091129.38833.alexander.reinholdt@t-online.de>
+
+Am Mittwoch 01 Dezember 2010, 21:53:41 schrieb Arnim L?uger:
+> > So to solve the root cause I need to understand why mounting only works
+> > if the mount point has drwxrwxrwx permissions.
+> 
+> I've narrowed this a bit down. Switched from umask 007 to 022, so the
+> directories for the mount points are created with permissions
+> drwxr-xr-x. This seems to be enough for smb4k_mount to succeed.
+> Interestingly, this umask setting results in the same directory mask
+> bits for the mount point that's set in the mounting options of Smb4k.
+> Although 0755 is requested as the directory mask in the mount options,
+> the mount point dir is not created using this mask. Instead, it's
+> influenced by the umask setting.
+> 
+> Cheers
+> Arnim
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+Sorry that it took so long.
+
+I tried to reproduce this problem with the development version of Smb4K that 
+uses the KAuth framework instead of smb4k_mount/smb4k_umount. The good news is 
+that it does not seem to be affected. So, maybe you want to consider to 
+download the latest alpha release and give it a try.
+
+I haven't had the time to pinpoint the problem with Smb4K 0.10.x. But since it 
+will soon be superseded by Smb4K 1.0.0 I'm not sure if it is worth the 
+effort...
+
+Best regards
+Alexander
+
+

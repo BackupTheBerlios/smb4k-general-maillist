@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] Can't mount share, permission denied
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C4CF6B5D5.6060605%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] Can't mount share, permission denied</H1>
+    <B>Arnim L&#228;uger</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20Can%27t%20mount%20share%2C%20permission%20denied&In-Reply-To=%3C4CF6B5D5.6060605%40gmx.net%3E"
+       TITLE="[smb4k-general] Can't mount share, permission denied">arnim.laeuger at gmx.net
+       </A><BR>
+    <I>Wed Dec  1 21:53:41 CET 2010</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#74">[ date ]</a>
+              <a href="thread.html#74">[ thread ]</a>
+              <a href="subject.html#74">[ subject ]</a>
+              <a href="author.html#74">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> So to solve the root cause I need to understand why mounting only works
+</I>&gt;<i> if the mount point has drwxrwxrwx permissions.
+</I>
+I've narrowed this a bit down. Switched from umask 007 to 022, so the
+directories for the mount points are created with permissions
+drwxr-xr-x. This seems to be enough for smb4k_mount to succeed.
+Interestingly, this umask setting results in the same directory mask
+bits for the mount point that's set in the mounting options of Smb4k.
+Although 0755 is requested as the directory mask in the mount options,
+the mount point dir is not created using this mask. Instead, it's
+influenced by the umask setting.
+
+Cheers
+Arnim
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#74">[ date ]</a>
+              <a href="thread.html#74">[ thread ]</a>
+              <a href="subject.html#74">[ subject ]</a>
+              <a href="author.html#74">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,52 @@
+From alexander.reinholdt at web.de  Tue May  6 06:11:58 2008
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Tue, 6 May 2008 06:11:58 +0200
+Subject: [smb4k-general] Smb4k can only use CIFS
+In-Reply-To: <481CB2BC.8080300@softhome.net>
+References: <481CB2BC.8080300@softhome.net>
+Message-ID: <200805060611.58809.alexander.reinholdt@web.de>
+
+Hello Cristian,
+
+Ubuntu (and Debian for that matter) has removed SMBFS support. Although there 
+is a mount.smbfs present if you install Samba, it is a copy of mount.cifs. 
+Thus all shares mounted with mount.smbfs have CIFS as their file system.
+
+Smb4K checks on start-up for the existence of mount.smbfs and mount.cifs to 
+determine if SMBFS and CIFS can be used. So, it is OK, that you can choose 
+between both. However, that the SMBFS options are greyed out when you reopen 
+the configuration dialog seems strange to me and I have to have a look at 
+this.
+
+I hope I could help.
+
+Best regards
+Alexander
+
+Am Samstag 03 Mai 2008 schrieben Sie:
+> Hello,
+> I have been using Smb4k for a long time with Kubuntu, versions 7.04
+> first and then 7.10.
+> Now I use 8.04 and have a strange problem. In Settings/Configure
+> smb4k/Samba/mount there is a drop-down box to select CIFS or SMBFS. And
+> at the bottom of the window, there are two sections for the two File
+> Systems, and the appropriate one is grayed out.
+> The problem is that I can only connect using CIFS. I have installed
+> samba on the system. If I select SMBFS, it seems to be accepted, and the
+> CIFS options are grayed out and the SMBFS options become black; but it
+> still mounts shares as CIFS, and if I go back to the config page, I can
+> see that the SMBFS options are grayed out again.
+> I asked on the Kubuntu forums but got no reply. Do you know if it's a
+> problem with Kubuntu, with smb4k, or with my machine? Any idea how I
+> could fix it?
+>
+> Thanks,
+> Cristian Arezzini
+
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+
+

@@ -1,0 +1,41 @@
+From alexander.reinholdt at t-online.de  Fri Aug  6 08:27:19 2010
+From: alexander.reinholdt at t-online.de (alexander.reinholdt at t-online.de)
+Date: Fri, 06 Aug 2010 08:27:19 +0200
+Subject: [smb4k-general] Error display... cannot connect to server.
+In-Reply-To: <SNT101-W4444D48ED64FB85BD83EB0F5900@phx.gbl>
+References: <SNT101-W4444D48ED64FB85BD83EB0F5900@phx.gbl>
+Message-ID: <1OhGOl-2Ks1Vg0@fwd07.aul.t-online.de>
+
+Hello Ezequiel,
+
+you most like performed an update lately and pulled in the new cifs-utils package, that includes mount.cifs. Due to security concerns upstream, some newer versions of this package do not support user mounts, i.e. it is not possible to set the suid root bit for mount.cifs. 
+
+What you can do to make Smb4K mount shares again is to use sudo. Go to Smb4K's configuration dialog, choose the "Super User" page and tick the "Use super user privileges to mount shares" option. If this does not work, please drop a note.
+
+Best regards from Germany
+Alexander
+
+-----Original-Nachricht-----
+Subject: Error display... cannot connect to server.
+Date: Fri, 06 Aug 2010 00:03:33 +0200
+From: Ezequiel Partida <ezequiel_partida at hotmail.com>
+To: <dustpuppy at users.berlios.de>, <massimocallegari at yahoo.it>
+
+Hello,
+
+I cannot connect to my server.. I used to connect fine with my old
+PC.
+
+The new one shows the next error on my screen grab (screegrab
+attached)
+
+Please advice..
+
+Regards & greetings from Mexico
+Ezequiel (Ezekiel) Partida
+
+
+
+
+
+

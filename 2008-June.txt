@@ -1,0 +1,258 @@
+From flami at flami.net  Mon Jun  9 19:49:44 2008
+From: flami at flami.net (Jos Ewert)
+Date: Mon, 09 Jun 2008 19:49:44 +0200
+Subject: [smb4k-general] Mount error=2
+Message-ID: <484D6D38.8080708@flami.net>
+
+when i try to mount a ( password proteced ) share smb4k fails with the
+error :
+mount error 2 = No such file or directory
+Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+
+however when i run
+smb4k_mount -s -t cifs -o user=user%password //host/share
+                        e /smb4k
+
+it works flawlessly, after running that command I can even mount from
+within smb4k.
+
+once I restart smb4k I cannot mount the shares anymore.
+
+Is there a way to exactly see what command smb4k wants to execute ?
+
+
+
+From alexander.reinholdt at web.de  Tue Jun 10 20:26:18 2008
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Tue, 10 Jun 2008 20:26:18 +0200
+Subject: [smb4k-general] Mount error=2
+In-Reply-To: <484D6D38.8080708@flami.net>
+References: <484D6D38.8080708@flami.net>
+Message-ID: <200806102026.18468.alexander.reinholdt@web.de>
+
+I guess that this is an authentication issue of some kind, but I'm not sure. 
+In order to help you, I need to know a few things:
+
+How is your network neighborhood organized? Is it an NT domain, an Active 
+Directory environment or are there just a few workgroups (no domain and no 
+Active Directory)? 
+
+Which version of Smb4K are you using? Have you tried the latest version?
+
+By the way, Smb4K does not report the command that it executes. You need to 
+modify the source code in the Smb4KMounter::mount() function (in 
+smb4k/core/smb4kmounter.cpp) to make it do this. Modify the end of the 
+function so that it looks like this:
+
+#endif
+  // Report the command that will be executed:
+  kdDebug() << command << endl;
+
+  // Start the mount process:
+  *m_proc << command;
+
+  startProcess( Mount );
+}
+
+After that you need to recompile the source with debug symbols, that means you 
+need to add the --enable-debug=full argument to the configure command. After 
+you installed Smb4K, it should produce an output with the command when started 
+from a terminal.
+
+Best regards
+Alexander
+ 
+
+Am Monday 09 June 2008 schrieb Jos Ewert:
+> when i try to mount a ( password proteced ) share smb4k fails with the
+> error :
+> mount error 2 = No such file or directory
+> Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+>
+> however when i run
+> smb4k_mount -s -t cifs -o user=user%password //host/share
+>                         e /smb4k
+>
+> it works flawlessly, after running that command I can even mount from
+> within smb4k.
+>
+> once I restart smb4k I cannot mount the shares anymore.
+>
+> Is there a way to exactly see what command smb4k wants to execute ?
+>
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+
+From flami at flami.net  Wed Jun 11 13:26:59 2008
+From: flami at flami.net (Jos Ewert)
+Date: Wed, 11 Jun 2008 13:26:59 +0200
+Subject: [smb4k-general] Mount error=2
+In-Reply-To: <200806102026.18468.alexander.reinholdt@web.de>
+References: <484D6D38.8080708@flami.net>
+	<200806102026.18468.alexander.reinholdt@web.de>
+Message-ID: <484FB683.5060908@flami.net>
+
+It is a little network with a few workgroups , and I try to mount shares
+from a windows vista box.
+Smb4k 0.9.4
+
+I guess Ill try it with 0.9.5.
+
+about the command , I wanted to find out what it does ( unfortunately
+strace cuts out the important bits , even with -fv ) so i could try
+running it by hand and see what happens.
+
+Alexander Reinholdt wrote:
+> I guess that this is an authentication issue of some kind, but I'm not sure. 
+> In order to help you, I need to know a few things:
+> 
+> How is your network neighborhood organized? Is it an NT domain, an Active 
+> Directory environment or are there just a few workgroups (no domain and no 
+> Active Directory)? 
+> 
+> Which version of Smb4K are you using? Have you tried the latest version?
+> 
+> By the way, Smb4K does not report the command that it executes. You need to 
+> modify the source code in the Smb4KMounter::mount() function (in 
+> smb4k/core/smb4kmounter.cpp) to make it do this. Modify the end of the 
+> function so that it looks like this:
+> 
+> #endif
+>   // Report the command that will be executed:
+>   kdDebug() << command << endl;
+> 
+>   // Start the mount process:
+>   *m_proc << command;
+> 
+>   startProcess( Mount );
+> }
+> 
+> After that you need to recompile the source with debug symbols, that means you 
+> need to add the --enable-debug=full argument to the configure command. After 
+> you installed Smb4K, it should produce an output with the command when started 
+> from a terminal.
+> 
+> Best regards
+> Alexander
+>  
+> 
+> Am Monday 09 June 2008 schrieb Jos Ewert:
+>> when i try to mount a ( password proteced ) share smb4k fails with the
+>> error :
+>> mount error 2 = No such file or directory
+>> Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+>>
+>> however when i run
+>> smb4k_mount -s -t cifs -o user=user%password //host/share
+>>                         e /smb4k
+>>
+>> it works flawlessly, after running that command I can even mount from
+>> within smb4k.
+>>
+>> once I restart smb4k I cannot mount the shares anymore.
+>>
+>> Is there a way to exactly see what command smb4k wants to execute ?
+>>
+>> _______________________________________________
+>> Smb4K-general mailing list
+>> Smb4K-general at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+> 
+
+
+
+From flami at flami.net  Thu Jun 12 21:54:52 2008
+From: flami at flami.net (Jos Ewert)
+Date: Thu, 12 Jun 2008 21:54:52 +0200
+Subject: [smb4k-general] Mount error=2
+In-Reply-To: <484FB683.5060908@flami.net>
+References: <484D6D38.8080708@flami.net>	<200806102026.18468.alexander.reinholdt@web.de>
+	<484FB683.5060908@flami.net>
+Message-ID: <48517F0C.5040106@flami.net>
+
+After some tries I found out that the option : "port=139" is the cause
+of the error, I tried exactly the same line smb4k will use without the
+port option and the share is mounted without any problem.
+Now I am wondering what might cause this , and how I could avoid this error.
+
+the line that works is :
+smb4k_mount -n -t cifs -o
+netbiosname='JACKFLASH',uid=1000,gid=1000,rw,file_mode=0755,dir_mode=0755,perm,nosetuids,noserverino,nomapchars,domain='WORKGROUP',ip=192.168.178.22,user=User
+-- //'host'/'share' '/mount/point/'
+
+it does not work for :
+smb4k_mount -n -t cifs -o
+netbiosname='JACKFLASH',uid=1000,gid=1000,port=139,rw,file_mode=0755,dir_mode=0755,perm,nosetuids,noserverino,nomapchars,domain='WORKGROUP',ip=192.168.178.22,user=User
+-- //'host'/'share' '/mount/point'
+
+
+
+Greetings,
+Jos Ewert
+
+
+From alexander.reinholdt at web.de  Sat Jun 14 08:53:19 2008
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Sat, 14 Jun 2008 08:53:19 +0200
+Subject: [smb4k-general] Mount error=2
+In-Reply-To: <48517F0C.5040106@flami.net>
+References: <484D6D38.8080708@flami.net> <484FB683.5060908@flami.net>
+	<48517F0C.5040106@flami.net>
+Message-ID: <200806140853.19786.alexander.reinholdt@web.de>
+
+You can set the port globally in the configuration dialog (Samba->General 
+Options), or you can define a custom port for a particular server with the 
+Custom Options menu entry (Network Browser->popup menu->Custom Options, 
+recommended). The port that you need to set should be 445.
+
+Smb4K always sends the port, so its usage cannot be switched off.
+
+I hope this helps.
+
+Alexander
+
+Am Thursday 12 June 2008 schrieb Jos Ewert:
+> After some tries I found out that the option : "port=139" is the cause
+> of the error, I tried exactly the same line smb4k will use without the
+> port option and the share is mounted without any problem.
+> Now I am wondering what might cause this , and how I could avoid this
+> error.
+>
+> the line that works is :
+> smb4k_mount -n -t cifs -o
+> netbiosname='JACKFLASH',uid=1000,gid=1000,rw,file_mode=0755,dir_mode=0755,p
+>erm,nosetuids,noserverino,nomapchars,domain='WORKGROUP',ip=192.168.178.22,us
+>er=User -- //'host'/'share' '/mount/point/'
+>
+> it does not work for :
+> smb4k_mount -n -t cifs -o
+> netbiosname='JACKFLASH',uid=1000,gid=1000,port=139,rw,file_mode=0755,dir_mo
+>de=0755,perm,nosetuids,noserverino,nomapchars,domain='WORKGROUP',ip=192.168.
+>178.22,user=User -- //'host'/'share' '/mount/point'
+>
+>
+>
+> Greetings,
+> Jos Ewert
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with 
+experience..." (unknown)
+
+
+

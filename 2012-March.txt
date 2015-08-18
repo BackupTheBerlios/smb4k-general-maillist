@@ -1,0 +1,44 @@
+From bogus@does.not.exist.com  Wed Mar 14 16:14:51 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 15:14:51 -0000
+Subject: No subject
+Message-ID: <mailman.0.1331738091.11741.smb4k-general@lists.berlios.de>
+
+get files, put files, etc.
+
+smb4k worked for a while, but started to get confused when I was accessing
+shares on my home network (which is WORKGROUP based, not DOMAIN based), and
+then returning to work and trying to connect there.  I have a laptop.
+
+I tried smbmount, which also fails. Right now smbclient seems to be the only
+app that can connect.
+
+Any help or troubleshooting tips you can send my way would be greatly
+appreciated.
+
+regards.
+
+
+-- 
+Marc Provencher
+provencher.marc at gmail.com
+
+You drive fine without knowing how the engine works?
+Build a web business without knowing the details.
+Visit www.WebIncomeForDummies.com
+
+------=_Part_187084_11092527.1185478287826
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+I&#39;m trying to connect to a Windows Server share with smb4k, and cannot get past the authentication dialog. I can browse servers on my network, but when I try to mount a share which I know I have access to, I keep getting the authentication dialog.
+<br><br>The share I&#39;m trying to access works fine with smbclient. <br><br>I type:<br>smbclient //JUPITER/Seng -U arc/provencher<br><br>It asks for my password, and the response is <br>Domain=[ARC] OS=[Windows Server 2003 R2 3790 Service Pack 2] Server=[Windows Server 2003 R2 
+5.2]<br>From here on I can use all the smbclient commands, to navigate directories, get files, put files, etc.<br><br>smb4k worked for a while, but started to get confused when I was accessing shares on my home network (which is WORKGROUP based, not DOMAIN based), and then returning to work and trying to connect there.&nbsp; I have a laptop.
+<br><br>I tried smbmount, which also fails. Right now smbclient seems to be the only app that can connect.<br><br>Any help or troubleshooting tips you can send my way would be greatly appreciated.<br><br>regards.<br><br clear="all">
+<br>-- <br>Marc Provencher<br><a href="mailto:provencher.marc at gmail.com">provencher.marc at gmail.com</a><br><br>You drive fine without knowing how the engine works?<br>Build a web business without knowing the details.<br>Visit 
+<a href="http://www.WebIncomeForDummies.com">www.WebIncomeForDummies.com</a>
+
+------=_Part_187084_11092527.1185478287826--
+
+

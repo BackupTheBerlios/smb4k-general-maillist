@@ -1,0 +1,363 @@
+From achilov-rn at askd.ru  Mon Jul 23 14:42:26 2007
+From: achilov-rn at askd.ru (Rashid N. Achilov)
+Date: Mon, 23 Jul 2007 19:42:26 +0700
+Subject: [smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD 6.2-RELEASE
+Message-ID: <200707231942.26850.achilov-rn@askd.ru>
+
+Subj.
+
+if /bin/sh /usr/local/bin/libtool --silent --tag=CXX --mode=compile 
+c++ -DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+smb4kmounter.lo -MD -MP -MF ".deps/smb4kmounter.Tpo" -c -o smb4kmounter.lo 
+smb4kmounter.cpp; \
+        then mv -f ".deps/smb4kmounter.Tpo" ".deps/smb4kmounter.Plo"; else 
+rm -f ".deps/smb4kmounter.Tpo"; exit 1; fi
+smb4kmounter.cpp: In member function `void Smb4KMounter::processMount()':
+smb4kmounter.cpp:1197: error: no matching function for call to 
+`Smb4KPasswordHandler::readAuth(const QString&, const QString&, const 
+QString&)'
+smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo* 
+Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+smb4kmounter.cpp:1264: error: no matching function for call to 
+`Smb4KPasswordHandler::readAuth(const QString&, const QString&, const 
+QString&)'
+smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo* 
+Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+gmake[3]: *** [smb4kmounter.lo] Error 1
+gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k/core'
+gmake[2]: *** [all-recursive] Error 1
+gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k'
+gmake[1]: *** [all-recursive] Error 1
+gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4'
+gmake: *** [all] Error 2
+*** Error code 2
+
+Stop in /usr/ports/net/smb4k.
+
+-- 
+   With Best Regards.
+   Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+   OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+   PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+
+
+From alexander.reinholdt at web.de  Mon Jul 23 16:37:47 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Mon, 23 Jul 2007 16:37:47 +0200
+Subject: [smb4k-general]
+ =?iso-8859-15?q?SMB4K_0=2E8=2E4_failed_to_compile?=
+ =?iso-8859-15?q?_on_FreeBSD_6=2E2-RELEASE?=
+Message-ID: <1079551707@web.de>
+
+Ooops... Thank you for reporting this. I will try to fix this today, but it may also take
+a bit longer. Sorry for the inconvenience.
+
+Regards
+Alexander
+
+
+> -----Urspr?ngliche Nachricht-----
+> Von: "Achilov, Rashid" <achilov-rn at askd.ru>, "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+> Gesendet: 23.07.07 15:16:07
+> An: smb4k-general at lists.berlios.de
+> Betreff: [smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD 6.2-RELEASE
+
+
+> Subj.
+> 
+> if /bin/sh /usr/local/bin/libtool --silent --tag=CXX --mode=compile 
+> c++ -DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+> smb4kmounter.lo -MD -MP -MF ".deps/smb4kmounter.Tpo" -c -o smb4kmounter.lo 
+> smb4kmounter.cpp; \
+>         then mv -f ".deps/smb4kmounter.Tpo" ".deps/smb4kmounter.Plo"; else 
+> rm -f ".deps/smb4kmounter.Tpo"; exit 1; fi
+> smb4kmounter.cpp: In member function `void Smb4KMounter::processMount()':
+> smb4kmounter.cpp:1197: error: no matching function for call to 
+> `Smb4KPasswordHandler::readAuth(const QString&, const QString&, const 
+> QString&)'
+> smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo* 
+> Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+> smb4kmounter.cpp:1264: error: no matching function for call to 
+> `Smb4KPasswordHandler::readAuth(const QString&, const QString&, const 
+> QString&)'
+> smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo* 
+> Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+> gmake[3]: *** [smb4kmounter.lo] Error 1
+> gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k/core'
+> gmake[2]: *** [all-recursive] Error 1
+> gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k'
+> gmake[1]: *** [all-recursive] Error 1
+> gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4'
+> gmake: *** [all] Error 2
+> *** Error code 2
+> 
+> Stop in /usr/ports/net/smb4k.
+> 
+> -- 
+>    With Best Regards.
+>    Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+>    OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+>    PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+
+
+______________________________________________________________________
+XXL-Speicher, PC-Virenschutz, Spartarife & mehr: Nur im WEB.DE Club!		
+Jetzt testen! http://produkte.web.de/club/?mc=021130
+
+
+
+From provencher.marc at gmail.com  Thu Jul 26 21:31:27 2007
+From: provencher.marc at gmail.com (Marc Provencher)
+Date: Thu, 26 Jul 2007 13:31:27 -0600
+Subject: [smb4k-general] smb4k not working, smbclient working fine
+Message-ID: <d041a9000707261231j402fa247meb0d95a5cfbfc01f@mail.gmail.com>
+
+I'm trying to connect to a Windows Server share with smb4k, and cannot get
+past the authentication dialog. I can browse servers on my network, but when
+I try to mount a share which I know I have access to, I keep getting the
+authentication dialog.
+
+The share I'm trying to access works fine with smbclient.
+
+I type:
+smbclient //JUPITER/Seng -U arc/provencher
+
+It asks for my password, and the response is
+Domain=[ARC] OS=[Windows Server 2003 R2 3790 Service Pack 2] Server=[Windows
+Server 2003 R2 5.2]
+
+From alexander.reinholdt at web.de  Fri Jul 27 08:15:38 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Fri, 27 Jul 2007 08:15:38 +0200
+Subject: [smb4k-general] smb4k not working, smbclient working fine
+In-Reply-To: <d041a9000707261231j402fa247meb0d95a5cfbfc01f@mail.gmail.com>
+References: <d041a9000707261231j402fa247meb0d95a5cfbfc01f@mail.gmail.com>
+Message-ID: <200707270815.38802.alexander.reinholdt@web.de>
+
+Windows Server 2003 does not allow you to mount shares with the SMBFS file 
+system. That means, smbmount won't work and you have to use the CIFS file 
+system. It can be enabled in the configuration dialog under 
+Samba->mount->File System. 
+
+The only drawback of using the CIFS file system is, that mounting shares from 
+W9x servers will stop working. However, you can use the "Custom Options" 
+entry in tool bar/menu of the network browser to adjust the settings.
+
+Hope this helps.
+
+Regards
+Alexander
+
+Am Donnerstag 26 Juli 2007 schrieb Marc Provencher:
+> I'm trying to connect to a Windows Server share with smb4k, and cannot get
+> past the authentication dialog. I can browse servers on my network, but
+> when I try to mount a share which I know I have access to, I keep getting
+> the authentication dialog.
+>
+> The share I'm trying to access works fine with smbclient.
+>
+> I type:
+> smbclient //JUPITER/Seng -U arc/provencher
+>
+> It asks for my password, and the response is
+> Domain=[ARC] OS=[Windows Server 2003 R2 3790 Service Pack 2]
+> Server=[Windows Server 2003 R2 5.2]
+> From here on I can use all the smbclient commands, to navigate directories,
+> get files, put files, etc.
+>
+> smb4k worked for a while, but started to get confused when I was accessing
+> shares on my home network (which is WORKGROUP based, not DOMAIN based), and
+> then returning to work and trying to connect there.  I have a laptop.
+>
+> I tried smbmount, which also fails. Right now smbclient seems to be the
+> only app that can connect.
+>
+> Any help or troubleshooting tips you can send my way would be greatly
+> appreciated.
+>
+> regards.
+
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+
+
+From provencher.marc at gmail.com  Fri Jul 27 17:41:00 2007
+From: provencher.marc at gmail.com (Marc Provencher)
+Date: Fri, 27 Jul 2007 09:41:00 -0600
+Subject: [smb4k-general] smb4k not working, smbclient working fine
+In-Reply-To: <200707270815.38802.alexander.reinholdt@web.de>
+References: <d041a9000707261231j402fa247meb0d95a5cfbfc01f@mail.gmail.com>
+	<200707270815.38802.alexander.reinholdt@web.de>
+Message-ID: <d041a9000707270841t59ea909ewfc74414ec0cf4535@mail.gmail.com>
+
+Thanks for your reply, Alexander.
+
+It turns out my problem was a combination of old passwords cached in the KDE
+wallet, combined with the fact that I was inconsistent as to where I
+specified the domain name.
+
+If I specify a domain in the Samba tab of smb4k's config screens, then I
+must not specifiy the domain in front of the username when I specify my
+credentials. Those credentials get stored in the KDE wallet.
+
+What tipped me off was the fact that smbmount wasn't working when I
+specified my username as domain/username (ie "-o username=domain/username"),
+but did work when I gave them as " -o username=myname,workgroup=mydomain".
+
+Everything works fine now.
+
+Cheers,
+Marc.
+
+
+On 7/27/07, Alexander Reinholdt <alexander.reinholdt at web.de> wrote:
+>
+> Windows Server 2003 does not allow you to mount shares with the SMBFS file
+> system. That means, smbmount won't work and you have to use the CIFS file
+> system. It can be enabled in the configuration dialog under
+> Samba->mount->File System.
+>
+> The only drawback of using the CIFS file system is, that mounting shares
+> from
+> W9x servers will stop working. However, you can use the "Custom Options"
+> entry in tool bar/menu of the network browser to adjust the settings.
+>
+> Hope this helps.
+>
+> Regards
+> Alexander
+>
+> Am Donnerstag 26 Juli 2007 schrieb Marc Provencher:
+> > I'm trying to connect to a Windows Server share with smb4k, and cannot
+> get
+> > past the authentication dialog. I can browse servers on my network, but
+> > when I try to mount a share which I know I have access to, I keep
+> getting
+> > the authentication dialog.
+> >
+> > The share I'm trying to access works fine with smbclient.
+> >
+> > I type:
+> > smbclient //JUPITER/Seng -U arc/provencher
+> >
+> > It asks for my password, and the response is
+> > Domain=[ARC] OS=[Windows Server 2003 R2 3790 Service Pack 2]
+> > Server=[Windows Server 2003 R2 5.2]
+> > From here on I can use all the smbclient commands, to navigate
+> directories,
+> > get files, put files, etc.
+> >
+> > smb4k worked for a while, but started to get confused when I was
+> accessing
+> > shares on my home network (which is WORKGROUP based, not DOMAIN based),
+> and
+> > then returning to work and trying to connect there.  I have a laptop.
+> >
+> > I tried smbmount, which also fails. Right now smbclient seems to be the
+> > only app that can connect.
+> >
+> > Any help or troubleshooting tips you can send my way would be greatly
+> > appreciated.
+> >
+> > regards.
+>
+>
+>
+> --
+> "Never argue with idiots. They drag you down to their level and beat you
+> with
+> experience..." (unknown)
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+
+
+
+-- 
+Marc Provencher
+provencher.marc at gmail.com
+
+You drive fine without knowing how the engine works?
+Build a web business without knowing the details.
+Visit www.WebIncomeForDummies.com
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20070727/2f40ea00/attachment.html>
+
+From alexander.reinholdt at web.de  Sun Jul 29 10:23:09 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Sun, 29 Jul 2007 10:23:09 +0200
+Subject: [smb4k-general] SMB4K 0.8.4 failed to compile on FreeBSD
+	6.2-RELEASE
+In-Reply-To: <200707231942.26850.achilov-rn@askd.ru>
+References: <200707231942.26850.achilov-rn@askd.ru>
+Message-ID: <200707291023.09487.alexander.reinholdt@web.de>
+
+I fixed this problem. Find the patch attached. It took a little bit longer 
+than expected, because my FreeBSD box does not work at the moment. :(
+
+Please let my know if all problems have been ironed out.
+
+Regards
+Alexander
+
+Am Montag 23 Juli 2007 schrieb Rashid N. Achilov:
+> Subj.
+>
+> if /bin/sh /usr/local/bin/libtool --silent --tag=CXX --mode=compile
+> c++ -DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/local/kde3/include
+> -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include 
+> -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include
+> -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H
+> -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2
+> -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor
+> -fno-exceptions -fno-check-new -fno-common  -MT smb4kmounter.lo -MD -MP -MF
+> ".deps/smb4kmounter.Tpo" -c -o smb4kmounter.lo smb4kmounter.cpp; \
+>         then mv -f ".deps/smb4kmounter.Tpo" ".deps/smb4kmounter.Plo"; else
+> rm -f ".deps/smb4kmounter.Tpo"; exit 1; fi
+> smb4kmounter.cpp: In member function `void Smb4KMounter::processMount()':
+> smb4kmounter.cpp:1197: error: no matching function for call to
+> `Smb4KPasswordHandler::readAuth(const QString&, const QString&, const
+> QString&)'
+> smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo*
+> Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+> smb4kmounter.cpp:1264: error: no matching function for call to
+> `Smb4KPasswordHandler::readAuth(const QString&, const QString&, const
+> QString&)'
+> smb4kpasswordhandler.h:142: note: candidates are: Smb4KAuthInfo*
+> Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)
+> gmake[3]: *** [smb4kmounter.lo] Error 1
+> gmake[3]: Leaving directory
+> `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k/core' gmake[2]: ***
+> [all-recursive] Error 1
+> gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k'
+> gmake[1]: *** [all-recursive] Error 1
+> gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4'
+> gmake: *** [all] Error 2
+> *** Error code 2
+>
+> Stop in /usr/ports/net/smb4k.
+
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: smb4k-0.8.4-freebsd-fix.diff
+Type: text/x-diff
+Size: 1156 bytes
+Desc: not available
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20070729/f25c7f61/attachment.diff>
+

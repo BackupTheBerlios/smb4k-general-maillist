@@ -1,0 +1,190 @@
+From achilov-rn at askd.ru  Wed Dec 26 13:58:10 2007
+From: achilov-rn at askd.ru (Rashid N. Achilov)
+Date: Wed, 26 Dec 2007 18:58:10 +0600
+Subject: [smb4k-general] Smb4k 0.9.0 compile error under FreeBSD
+	6.3-PRERELEASE
+Message-ID: <200712261858.11366.achilov-rn@askd.ru>
+
+I had have just tried to compile smb4k-0.9.0 under FreeBSD 6.3-PRE. Compile 
+with error:
+
+/usr/X11R6/qt33/bin/moc ./smb4kpasswordhandler.h -o smb4kpasswordhandler.moc
+/bin/sh /usr/local/bin/libtool --silent --tag=CXX   --mode=compile 
+c++ -DHAVE_CONFIG_H -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+smb4kpasswordhandler.lo -MD -MP -MF .deps/smb4kpasswordhandler.Tpo -c -o 
+smb4kpasswordhandler.lo smb4kpasswordhandler.cpp
+smb4kpasswordhandler.cpp: In member function `void 
+Smb4KPasswordHandler::writeAuth(Smb4KAuthInfo*)':
+smb4kpasswordhandler.cpp:550: error: `auth' was not declared in this scope
+smb4kpasswordhandler.cpp:550: warning: unused variable 'auth'
+gmake[3]: *** [smb4kpasswordhandler.lo] Error 1
+gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0/smb4k/core'
+gmake[2]: *** [all-recursive] Error 1
+gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0/smb4k'
+gmake[1]: *** [all-recursive] Error 1
+gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0'
+gmake: *** [all] Error 2
+*** Error code 2
+
+Stop in /usr/ports/net/smb4k.
+
+-- 
+   With Best Regards.
+   Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+   OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+   PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+
+
+From alexander.reinholdt at web.de  Thu Dec 27 00:18:05 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Thu, 27 Dec 2007 00:18:05 +0100
+Subject: [smb4k-general]
+ =?iso-8859-15?q?Smb4k_0=2E9=2E0_compile_error_und?=
+ =?iso-8859-15?q?er_FreeBSD_6=2E3-PRERELEASE?=
+Message-ID: <1319079924@web.de>
+
+Damn. Again!
+
+I will fix this as soon as I am back home. Expect version 0.9.1
+at around the 29th.
+
+Sorry for any inconvenience.
+
+Regards
+Alexander
+
+> -----Urspr?ngliche Nachricht-----
+> Von: "Achilov, Rashid" <achilov-rn at askd.ru>, "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+> Gesendet: 26.12.07 13:59:12
+> An: smb4k-general at lists.berlios.de
+> Betreff: [smb4k-general] Smb4k 0.9.0 compile error under FreeBSD 6.3-PRERELEASE
+
+> 
+> I had have just tried to compile smb4k-0.9.0 under FreeBSD 6.3-PRE. Compile 
+> with error:
+> 
+> /usr/X11R6/qt33/bin/moc ./smb4kpasswordhandler.h -o smb4kpasswordhandler.moc
+> /bin/sh /usr/local/bin/libtool --silent --tag=CXX   --mode=compile 
+> c++ -DHAVE_CONFIG_H -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+> smb4kpasswordhandler.lo -MD -MP -MF .deps/smb4kpasswordhandler.Tpo -c -o 
+> smb4kpasswordhandler.lo smb4kpasswordhandler.cpp
+> smb4kpasswordhandler.cpp: In member function `void 
+> Smb4KPasswordHandler::writeAuth(Smb4KAuthInfo*)':
+> smb4kpasswordhandler.cpp:550: error: `auth' was not declared in this scope
+> smb4kpasswordhandler.cpp:550: warning: unused variable 'auth'
+> gmake[3]: *** [smb4kpasswordhandler.lo] Error 1
+> gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0/smb4k/core'
+> gmake[2]: *** [all-recursive] Error 1
+> gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0/smb4k'
+> gmake[1]: *** [all-recursive] Error 1
+> gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.9.0'
+> gmake: *** [all] Error 2
+> *** Error code 2
+> 
+> Stop in /usr/ports/net/smb4k.
+> 
+> -- 
+>    With Best Regards.
+>    Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+>    OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+>    PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+
+
+______________________________________________________________________
+XXL-Speicher, PC-Virenschutz, Spartarife & mehr: Nur im WEB.DE Club!		
+Jetzt testen! http://produkte.web.de/club/?mc=021130
+
+
+
+From alexander.reinholdt at web.de  Mon Dec 31 14:33:17 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Mon, 31 Dec 2007 14:33:17 +0100
+Subject: [smb4k-general] How does smb4k perform authentication and
+	authorization when accessing a shared resource?
+In-Reply-To: <477A2637.4040902@gmail.com>
+References: <477A2637.4040902@gmail.com>
+Message-ID: <200712311433.17463.alexander.reinholdt@web.de>
+
+Am Dienstag 01 Januar 2008 schrieb legolas wood:
+> Hi
+> Thank you for reading my post.
+> Can you please let me know whether smb4k support authentication when it
+> want to access a shared folder?
+> for example, does it integrate with
+> http://www.likewisesoftware.com/community/index.php/download/ for
+> authentication?
+> What I can not understand is whether this package integrate our linux
+> desktop with active directory or not?
+>
+> Thanks
+>
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+Authentication is supported. An authentication dialog will pop up asking you 
+for the login and password. If both are correct, the host will list its 
+shares resources/the share will be mounted. You can also define a default 
+login and password in the configuration dialog. This is useful in NT domains, 
+AD environments, etc. where you only have one login and password.
+
+Active Directory environments are supported by Smb4K, although not entirely. 
+Browsing and mounting, however, should work, although sometimes it is 
+necessary to switch from the RPC to the RAP protocol in the configuration 
+dialog.
+
+For further information I suggest you read the online version of the handbook: 
+http://smb4k.berlios.de/handbook/index.html.
+
+If you have further questions or if you run into trouble using Smb4K, please 
+do not hesitate to ask for help or file a bug report.
+
+Best regards
+Alexander
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+
+
+From alexander.reinholdt at web.de  Mon Dec 31 14:37:45 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Mon, 31 Dec 2007 14:37:45 +0100
+Subject: [smb4k-general] How does smb4k perform authentication and
+	authorization when accessing a shared resource?
+In-Reply-To: <477A2637.4040902@gmail.com>
+References: <477A2637.4040902@gmail.com>
+Message-ID: <200712311437.45282.alexander.reinholdt@web.de>
+
+Am Dienstag 01 Januar 2008 schrieb legolas wood:
+> Hi
+> Thank you for reading my post.
+> Can you please let me know whether smb4k support authentication when it
+> want to access a shared folder?
+> for example, does it integrate with
+> http://www.likewisesoftware.com/community/index.php/download/ for
+> authentication?
+> What I can not understand is whether this package integrate our linux
+> desktop with active directory or not?
+>
+> Thanks
+>
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+I fogot to answer your question about the Likewise Open package. To be honest, 
+I don't know if Smb4K works with it, because I don't know it. Smb4K does not 
+use it.
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+
+

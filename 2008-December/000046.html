@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] error message libsmb4kcore.so.3.0.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20error%20message%20libsmb4kcore.so.3.0.0&In-Reply-To=%3C200812100206.46586.moerf%40t-burg.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000047.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] error message libsmb4kcore.so.3.0.0</H1>
+    <B>moerf</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20error%20message%20libsmb4kcore.so.3.0.0&In-Reply-To=%3C200812100206.46586.moerf%40t-burg.de%3E"
+       TITLE="[smb4k-general] error message libsmb4kcore.so.3.0.0">moerf at t-burg.de
+       </A><BR>
+    <I>Wed Dec 10 02:06:46 CET 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000047.html">[smb4k-general] error message libsmb4kcore.so.3.0.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>If I do this, I get these two error messages:
+
+[ 28%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kscanner.o
+In file included from /home/moerf/smb4k-0.10.1/core/smb4kscanner.cpp:1740:
+/home/moerf/smb4k-0.10.1/core/smb4kscanner.moc: In member function &#187;virtual 
+int Smb4KScanner::qt_metacall(QMetaObject::Call, int, void**)&#171;:
+/home/moerf/smb4k-0.10.1/core/smb4kscanner.moc:90: Warnung: &#187;void 
+Smb4KScanner::ipAddress(Smb4KHost*)&#171; ist veraltet (deklariert bei 
+/home/moerf/smb4k-0.10.1/core/smb4kscanner.h:205)
+[ 29%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kscanner_p.o
+[ 31%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4ksearch.o
+[ 32%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kshare.o
+[ 33%] Building CXX object 
+core/CMakeFiles/smb4kcore.dir/smb4ksudowriterinterface.o
+[ 35%] Building CXX object 
+core/CMakeFiles/smb4kcore.dir/smb4ksynchronizationinfo.o
+[ 36%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4ksynchronizer.o
+[ 37%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4kworkgroup.o
+[ 38%] Building CXX object core/CMakeFiles/smb4kcore.dir/smb4ksettings.o
+make[2]: *** Keine Regel vorhanden, um das Target 
+&#187;/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so&#171;,
+  ben&#246;tigt von &#187;lib/libsmb4kcore.so.3.0.0&#171;, zu erstellen.  Schluss.
+make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+make: *** [all] Fehler 2
+
+If there is no solution for this, I continue using cifs. It just would have 
+been nice to mount my samba share on startup with smb4k.
+
+Thank you for taking the time to have a look on this issue.
+
+regards
+moerf
+
+Am Samstag 29 November 2008 10:52:57 schrieb Alexander Reinholdt:
+&gt;<i> Sorry that it took me so long to answer.
+</I>&gt;<i>
+</I>&gt;<i> I tried to compile Smb4K on Kubuntu 8.10, and at first I had the same
+</I>&gt;<i> problem you reported. However, if you do an in-source build, then
+</I>&gt;<i> everything is fine.
+</I>&gt;<i>
+</I>&gt;<i> So, you might want to try the following:
+</I>&gt;<i> - Change into Smb4K's source directory.
+</I>&gt;<i> - Run cmake like this:
+</I>&gt;<i>   $ cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` \
+</I>&gt;<i>     -DCMAKE_BUILD_TYPE=Release .
+</I>&gt;<i> - Run
+</I>&gt;<i>   $ make
+</I>&gt;<i> - Install the compiled source with either
+</I>&gt;<i>   $ sudo make install
+</I>&gt;<i>   or
+</I>&gt;<i>   $ sudo checkinstall
+</I>&gt;<i>
+</I>&gt;<i> Hope this helps.
+</I>&gt;<i>
+</I>&gt;<i> Best regards
+</I>&gt;<i> Alexander
+</I>&gt;<i>
+</I>&gt;<i> Am Dienstag 25 November 2008 schrieb moerf:
+</I>&gt;<i> &gt; Hi Alexander,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; thanks for your reply. I'm using kubuntu intrepid.
+</I>&gt;<i> &gt; regards
+</I>&gt;<i> &gt; moerf
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; On Monday 24 November 2008 22:25:48 Alexander Reinholdt wrote:
+</I>&gt;<i> &gt; &gt; Hello!
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I haven't experienced such a problem until now. Could you please tell
+</I>&gt;<i> &gt; &gt; me which distribution you are using?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Best regards
+</I>&gt;<i> &gt; &gt; Alexander
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Am Sonntag 23 November 2008 schrieb moerf:
+</I>&gt;<i> &gt; &gt; &gt; Hi,
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; today I tried to compile smb4k 0.10.1 and got the follwoing error
+</I>&gt;<i> &gt; &gt; &gt; message:
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; ~/Dokumente/smb4k/smb4k-0.10.1/build$ make &amp;&amp; sudo make install
+</I>&gt;<i> &gt; &gt; &gt; make[2]: *** Keine Regel vorhanden, um das Target
+</I>&gt;<i> &gt; &gt; &gt; &#187;/build/buildd/kde4libs-4.1.2/obj-i486-linux-gnu/lib/libkdecore.so&#171;,
+</I>&gt;<i> &gt; &gt; &gt;   ben&#246;tigt von &#187;lib/libsmb4kcore.so.3.0.0&#171;, zu erstellen.  Schluss.
+</I>&gt;<i> &gt; &gt; &gt; make[1]: *** [core/CMakeFiles/smb4kcore.dir/all] Fehler 2
+</I>&gt;<i> &gt; &gt; &gt; make: *** [all] Fehler 2
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; In the handbook on <A HREF="http://smb4k.berlios.de/handbook/index.html">http://smb4k.berlios.de/handbook/index.html</A> I
+</I>&gt;<i> &gt; &gt; &gt; didn't find a solution for this error message and therefore ask if
+</I>&gt;<i> &gt; &gt; &gt; somebody on this mailing list could give me further information about
+</I>&gt;<i> &gt; &gt; &gt; this issue.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; regards
+</I>&gt;<i> &gt; &gt; &gt; moerf
+</I>&gt;<i> &gt; &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; &gt; Smb4K-general mailing list
+</I>&gt;<i> &gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Smb4K-general mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000047.html">[smb4k-general] error message libsmb4kcore.so.3.0.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

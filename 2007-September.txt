@@ -1,0 +1,134 @@
+From yohonet at gmail.com  Mon Sep 17 11:31:25 2007
+From: yohonet at gmail.com (Vincent Panel)
+Date: Mon, 17 Sep 2007 11:31:25 +0200
+Subject: [smb4k-general] Extend smb4k to other protocols ?
+Message-ID: <15116fd10709170231i3ca55c8et470b2b0c67ba70fb@mail.gmail.com>
+
+Hi,
+
+I love smb4k as I'm now able to quickly mount my shares at work and
+access them seemlessly through my filesystem without being root.
+
+I'm working in a mixed windows / unix environment and I have to access
+several smb shares as well as several ssh shares.
+
+Do you think extending the possibilties of smb4k to other protocols as
+well (ftp and ssh comes to my mind) would be interesting ? Now that
+the kernel integrates "fuse", it's probably easier to handle and most
+of the code probably already exists into smb4k.
+
+What do you think about it ?
+
+
+From provencher.marc at gmail.com  Mon Sep 17 17:52:45 2007
+From: provencher.marc at gmail.com (Marc Provencher)
+Date: Mon, 17 Sep 2007 09:52:45 -0600
+Subject: [smb4k-general] Extend smb4k to other protocols ?
+In-Reply-To: <15116fd10709170231i3ca55c8et470b2b0c67ba70fb@mail.gmail.com>
+References: <15116fd10709170231i3ca55c8et470b2b0c67ba70fb@mail.gmail.com>
+Message-ID: <d041a9000709170852k2a6a20f0j4e8669d8a3573509@mail.gmail.com>
+
+Konqueror already has support for ssh, with fish.
+
+Typing "fish://myname at my.domain.com"  will ppen a fully graphical ssh
+session within konqueror, no need for smb4k.
+
+Marc
+
+On 9/17/07, Vincent Panel <yohonet at gmail.com> wrote:
+>
+> Hi,
+>
+> I love smb4k as I'm now able to quickly mount my shares at work and
+> access them seemlessly through my filesystem without being root.
+>
+> I'm working in a mixed windows / unix environment and I have to access
+> several smb shares as well as several ssh shares.
+>
+> Do you think extending the possibilties of smb4k to other protocols as
+> well (ftp and ssh comes to my mind) would be interesting ? Now that
+> the kernel integrates "fuse", it's probably easier to handle and most
+> of the code probably already exists into smb4k.
+>
+> What do you think about it ?
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+
+
+
+-- 
+Marc Provencher
+provencher.marc at gmail.com
+
+You drive fine without knowing how the engine works?
+Build a web business without knowing the details.
+Visit www.WebIncomeForDummies.com
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: <https://lists.berlios.de/pipermail/smb4k-general/attachments/20070917/0629140d/attachment.html>
+
+From yohonet at gmail.com  Mon Sep 17 18:10:42 2007
+From: yohonet at gmail.com (Vincent Panel)
+Date: Mon, 17 Sep 2007 18:10:42 +0200
+Subject: [smb4k-general] Extend smb4k to other protocols ?
+In-Reply-To: <d041a9000709170852k2a6a20f0j4e8669d8a3573509@mail.gmail.com>
+References: <15116fd10709170231i3ca55c8et470b2b0c67ba70fb@mail.gmail.com>
+	<d041a9000709170852k2a6a20f0j4e8669d8a3573509@mail.gmail.com>
+Message-ID: <15116fd10709170910t6991868bxadcd89c79cb0e33d@mail.gmail.com>
+
+I know, but konqi supports ssh shares the same way it supports samba
+shares : it won't "mount" an ssh share and add it to your filesystem.
+That's what I'm looking for, so we need to use fuse-ssh / sshfs for
+this, not konqi.
+
+2007/9/17, Marc Provencher <provencher.marc at gmail.com>:
+> Konqueror already has support for ssh, with fish.
+>
+> Typing "fish://myname at my.domain.com"  will ppen a fully graphical ssh
+> session within konqueror, no need for smb4k.
+>
+> Marc
+>
+>
+> On 9/17/07, Vincent Panel <yohonet at gmail.com> wrote:
+> >
+> > Hi,
+> >
+> > I love smb4k as I'm now able to quickly mount my shares at work and
+> > access them seemlessly through my filesystem without being root.
+> >
+> > I'm working in a mixed windows / unix environment and I have to access
+> > several smb shares as well as several ssh shares.
+> >
+> > Do you think extending the possibilties of smb4k to other protocols as
+> > well (ftp and ssh comes to my mind) would be interesting ? Now that
+> > the kernel integrates "fuse", it's probably easier to handle and most
+> > of the code probably already exists into smb4k.
+> >
+> > What do you think about it ?
+> > _______________________________________________
+> > Smb4K-general mailing list
+> > Smb4K-general at lists.berlios.de
+> > https://lists.berlios.de/mailman/listinfo/smb4k-general
+> >
+>
+>
+>
+> --
+> Marc Provencher
+>  provencher.marc at gmail.com
+>
+> You drive fine without knowing how the engine works?
+> Build a web business without knowing the details.
+> Visit www.WebIncomeForDummies.com
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+>
+
+

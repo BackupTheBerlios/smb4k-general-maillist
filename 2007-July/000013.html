@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] smb4k not working, smbclient working fine
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20smb4k%20not%20working%2C%20smbclient%20working%20fine&In-Reply-To=%3C200707270815.38802.alexander.reinholdt%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000011.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] smb4k not working, smbclient working fine</H1>
+    <B>Alexander Reinholdt</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20smb4k%20not%20working%2C%20smbclient%20working%20fine&In-Reply-To=%3C200707270815.38802.alexander.reinholdt%40web.de%3E"
+       TITLE="[smb4k-general] smb4k not working, smbclient working fine">alexander.reinholdt at web.de
+       </A><BR>
+    <I>Fri Jul 27 08:15:38 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000011.html">[smb4k-general] smb4k not working, smbclient working fine
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[smb4k-general] smb4k not working, smbclient working fine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Windows Server 2003 does not allow you to mount shares with the SMBFS file 
+system. That means, smbmount won't work and you have to use the CIFS file 
+system. It can be enabled in the configuration dialog under 
+Samba-&gt;mount-&gt;File System. 
+
+The only drawback of using the CIFS file system is, that mounting shares from 
+W9x servers will stop working. However, you can use the &quot;Custom Options&quot; 
+entry in tool bar/menu of the network browser to adjust the settings.
+
+Hope this helps.
+
+Regards
+Alexander
+
+Am Donnerstag 26 Juli 2007 schrieb Marc Provencher:
+&gt;<i> I'm trying to connect to a Windows Server share with smb4k, and cannot get
+</I>&gt;<i> past the authentication dialog. I can browse servers on my network, but
+</I>&gt;<i> when I try to mount a share which I know I have access to, I keep getting
+</I>&gt;<i> the authentication dialog.
+</I>&gt;<i>
+</I>&gt;<i> The share I'm trying to access works fine with smbclient.
+</I>&gt;<i>
+</I>&gt;<i> I type:
+</I>&gt;<i> smbclient //JUPITER/Seng -U arc/provencher
+</I>&gt;<i>
+</I>&gt;<i> It asks for my password, and the response is
+</I>&gt;<i> Domain=[ARC] OS=[Windows Server 2003 R2 3790 Service Pack 2]
+</I>&gt;<i> Server=[Windows Server 2003 R2 5.2]
+</I>&gt;<i> From here on I can use all the smbclient commands, to navigate directories,
+</I>&gt;<i> get files, put files, etc.
+</I>&gt;<i>
+</I>&gt;<i> smb4k worked for a while, but started to get confused when I was accessing
+</I>&gt;<i> shares on my home network (which is WORKGROUP based, not DOMAIN based), and
+</I>&gt;<i> then returning to work and trying to connect there.  I have a laptop.
+</I>&gt;<i>
+</I>&gt;<i> I tried smbmount, which also fails. Right now smbclient seems to be the
+</I>&gt;<i> only app that can connect.
+</I>&gt;<i>
+</I>&gt;<i> Any help or troubleshooting tips you can send my way would be greatly
+</I>&gt;<i> appreciated.
+</I>&gt;<i>
+</I>&gt;<i> regards.
+</I>
+
+
+-- 
+&quot;Never argue with idiots. They drag you down to their level and beat you with
+experience...&quot; (unknown)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000011.html">[smb4k-general] smb4k not working, smbclient working fine
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[smb4k-general] smb4k not working, smbclient working fine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

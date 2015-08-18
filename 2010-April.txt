@@ -1,0 +1,394 @@
+From stuart at stella-maris.org.uk  Mon Apr  5 09:53:14 2010
+From: stuart at stella-maris.org.uk (Stuart T Rogers)
+Date: Mon, 05 Apr 2010 08:53:14 +0100
+Subject: [smb4k-general] Unable to unmount shares in 0.10.6
+In-Reply-To: <4B080697.9000900@stella-maris.org.uk>
+References: <4B080697.9000900@stella-maris.org.uk>
+Message-ID: <4BB996EA.3090107@stella-maris.org.uk>
+
+I have just installed the latest smb4k 0.10.6 having I think 
+successfully compiled it, at least it runs and mounts shares OK. However 
+I have a problem unmounting the shares and get
+
+/usr/bin/smb4k_umount: invalid option -- 'n'
+
+or this from force
+
+smb4k_umount: invalid option -- 's'
+
+as an error in a popup. What have I done wrong here? Is there something 
+I have not installed?
+
+Stuart
+-- 
+Website: http://www.stella-maris.org.uk
+or:      http://www.broadstairs.org
+
+
+From alexander.reinholdt at t-online.de  Tue Apr  6 09:17:19 2010
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Tue, 6 Apr 2010 09:17:19 +0200
+Subject: [smb4k-general] Unable to unmount shares in 0.10.6
+In-Reply-To: <4BB996EA.3090107@stella-maris.org.uk>
+References: <4B080697.9000900@stella-maris.org.uk>
+	<4BB996EA.3090107@stella-maris.org.uk>
+Message-ID: <201004060917.19325.alexander.reinholdt@t-online.de>
+
+Am Montag 05 April 2010 09:53:14 schrieb Stuart T Rogers:
+> I have just installed the latest smb4k 0.10.6 having I think
+> successfully compiled it, at least it runs and mounts shares OK. However
+> I have a problem unmounting the shares and get
+> 
+> /usr/bin/smb4k_umount: invalid option -- 'n'
+> 
+> or this from force
+> 
+> smb4k_umount: invalid option -- 's'
+> 
+> as an error in a popup. What have I done wrong here? Is there something
+> I have not installed?
+> 
+> Stuart
+
+You haven't done anything wrong. Actually, you found a bug. I fixed some issues 
+in smb4k_umount in SVN HEAD and just copied it to the 0.10 branch. However, 
+the version from SVN HEAD is incompatible with Smb4K 0.10.x and I did not 
+remember that. :( 
+
+I will release a new version shortly where this issue will be fixed.
+
+Alexander 
+
+
+From stuart at stella-maris.org.uk  Tue Apr  6 09:22:49 2010
+From: stuart at stella-maris.org.uk (Stuart T Rogers)
+Date: Tue, 06 Apr 2010 08:22:49 +0100
+Subject: [smb4k-general] Unable to unmount shares in 0.10.6
+In-Reply-To: <201004060917.19325.alexander.reinholdt@t-online.de>
+References: <4B080697.9000900@stella-maris.org.uk>	<4BB996EA.3090107@stella-maris.org.uk>
+	<201004060917.19325.alexander.reinholdt@t-online.de>
+Message-ID: <4BBAE149.6060903@stella-maris.org.uk>
+
+Alexander
+
+I am relieved about that since I'm new to all this compiling stuff. I'll 
+watch out for a new verion and have another go then.
+
+Stuart
+
+On 06/04/10 08:17, Alexander Reinholdt wrote:
+> Am Montag 05 April 2010 09:53:14 schrieb Stuart T Rogers:
+>> I have just installed the latest smb4k 0.10.6 having I think
+>> successfully compiled it, at least it runs and mounts shares OK. However
+>> I have a problem unmounting the shares and get
+>>
+>> /usr/bin/smb4k_umount: invalid option -- 'n'
+>>
+>> or this from force
+>>
+>> smb4k_umount: invalid option -- 's'
+>>
+>> as an error in a popup. What have I done wrong here? Is there something
+>> I have not installed?
+>>
+>> Stuart
+>
+> You haven't done anything wrong. Actually, you found a bug. I fixed some issues
+> in smb4k_umount in SVN HEAD and just copied it to the 0.10 branch. However,
+> the version from SVN HEAD is incompatible with Smb4K 0.10.x and I did not
+> remember that. :(
+>
+> I will release a new version shortly where this issue will be fixed.
+>
+> Alexander
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+
+-- 
+Website: http://www.stella-maris.org.uk
+or:      http://www.broadstairs.org
+
+
+From stuart at stella-maris.org.uk  Wed Apr  7 14:05:01 2010
+From: stuart at stella-maris.org.uk (Stuart T Rogers)
+Date: Wed, 07 Apr 2010 13:05:01 +0100
+Subject: [smb4k-general] Unable to unmount shares in 0.10.6
+In-Reply-To: <4BBAE149.6060903@stella-maris.org.uk>
+References: <4B080697.9000900@stella-maris.org.uk>	<4BB996EA.3090107@stella-maris.org.uk>	<201004060917.19325.alexander.reinholdt@t-online.de>
+	<4BBAE149.6060903@stella-maris.org.uk>
+Message-ID: <4BBC74ED.4050300@stella-maris.org.uk>
+
+Have just install 0.10.7 and it works fine, however I did have a problem 
+using checkinstall as below
+
+CMake Error at doc/en/smb4k/cmake_install.cmake:36 (FILE): 
+
+   file INSTALL cannot find 
+
+ 
+"/home/stuart/smb4k-0.10.7/doc/en/smb4k/dialog_synchronization_input.png". 
+
+Call Stack (most recent call first): 
+
+   doc/en/cmake_install.cmake:37 (INCLUDE) 
+
+   doc/cmake_install.cmake:37 (INCLUDE) 
+
+   cmake_install.cmake:41 (INCLUDE) 
+
+
+
+make: *** [install] Error 1
+
+****  Installation failed. Aborting package creation.
+
+Cleaning up...OK
+
+Bye.
+
+again dont know if this is me or a bug.
+
+Stuart
+
+On 06/04/10 08:22, Stuart T Rogers wrote:
+> Alexander
+>
+> I am relieved about that since I'm new to all this compiling stuff. I'll
+> watch out for a new verion and have another go then.
+>
+> Stuart
+>
+> On 06/04/10 08:17, Alexander Reinholdt wrote:
+>> Am Montag 05 April 2010 09:53:14 schrieb Stuart T Rogers:
+>>> I have just installed the latest smb4k 0.10.6 having I think
+>>> successfully compiled it, at least it runs and mounts shares OK. However
+>>> I have a problem unmounting the shares and get
+>>>
+>>> /usr/bin/smb4k_umount: invalid option -- 'n'
+>>>
+>>> or this from force
+>>>
+>>> smb4k_umount: invalid option -- 's'
+>>>
+>>> as an error in a popup. What have I done wrong here? Is there something
+>>> I have not installed?
+>>>
+>>> Stuart
+>>
+>> You haven't done anything wrong. Actually, you found a bug. I fixed
+>> some issues
+>> in smb4k_umount in SVN HEAD and just copied it to the 0.10 branch.
+>> However,
+>> the version from SVN HEAD is incompatible with Smb4K 0.10.x and I did not
+>> remember that. :(
+>>
+>> I will release a new version shortly where this issue will be fixed.
+>>
+>> Alexander
+>> _______________________________________________
+>> Smb4K-general mailing list
+>> Smb4K-general at lists.berlios.de
+>> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>>
+>
+
+-- 
+Website: http://www.stella-maris.org.uk
+or:      http://www.broadstairs.org
+
+
+From alexander.reinholdt at t-online.de  Wed Apr  7 14:37:59 2010
+From: alexander.reinholdt at t-online.de (Alexander Reinholdt)
+Date: Wed, 7 Apr 2010 14:37:59 +0200
+Subject: [smb4k-general] Unable to unmount shares in 0.10.6
+In-Reply-To: <4BBC74ED.4050300@stella-maris.org.uk>
+References: <4B080697.9000900@stella-maris.org.uk>
+	<4BBAE149.6060903@stella-maris.org.uk>
+	<4BBC74ED.4050300@stella-maris.org.uk>
+Message-ID: <201004071437.59229.alexander.reinholdt@t-online.de>
+
+Hm... I don't know. I haven't experienced this kind of failure. But I think, 
+if Smb4K works fine, you can ignore it.
+
+
+Am Mittwoch 07 April 2010 14:05:01 schrieb Stuart T Rogers:
+> Have just install 0.10.7 and it works fine, however I did have a problem
+> using checkinstall as below
+> 
+> CMake Error at doc/en/smb4k/cmake_install.cmake:36 (FILE):
+> 
+>    file INSTALL cannot find
+> 
+> 
+> "/home/stuart/smb4k-0.10.7/doc/en/smb4k/dialog_synchronization_input.png".
+> 
+> Call Stack (most recent call first):
+> 
+>    doc/en/cmake_install.cmake:37 (INCLUDE)
+> 
+>    doc/cmake_install.cmake:37 (INCLUDE)
+> 
+>    cmake_install.cmake:41 (INCLUDE)
+> 
+> 
+> 
+> make: *** [install] Error 1
+> 
+> ****  Installation failed. Aborting package creation.
+> 
+> Cleaning up...OK
+> 
+> Bye.
+> 
+> again dont know if this is me or a bug.
+> 
+> Stuart
+> 
+> On 06/04/10 08:22, Stuart T Rogers wrote:
+> > Alexander
+> > 
+> > I am relieved about that since I'm new to all this compiling stuff. I'll
+> > watch out for a new verion and have another go then.
+> > 
+> > Stuart
+> > 
+> > On 06/04/10 08:17, Alexander Reinholdt wrote:
+> >> Am Montag 05 April 2010 09:53:14 schrieb Stuart T Rogers:
+> >>> I have just installed the latest smb4k 0.10.6 having I think
+> >>> successfully compiled it, at least it runs and mounts shares OK.
+> >>> However I have a problem unmounting the shares and get
+> >>> 
+> >>> /usr/bin/smb4k_umount: invalid option -- 'n'
+> >>> 
+> >>> or this from force
+> >>> 
+> >>> smb4k_umount: invalid option -- 's'
+> >>> 
+> >>> as an error in a popup. What have I done wrong here? Is there something
+> >>> I have not installed?
+> >>> 
+> >>> Stuart
+> >> 
+> >> You haven't done anything wrong. Actually, you found a bug. I fixed
+> >> some issues
+> >> in smb4k_umount in SVN HEAD and just copied it to the 0.10 branch.
+> >> However,
+> >> the version from SVN HEAD is incompatible with Smb4K 0.10.x and I did
+> >> not remember that. :(
+> >> 
+> >> I will release a new version shortly where this issue will be fixed.
+> >> 
+> >> Alexander
+> >> _______________________________________________
+> >> Smb4K-general mailing list
+> >> Smb4K-general at lists.berlios.de
+> >> https://lists.berlios.de/mailman/listinfo/smb4k-general
+
+
+
+From stuart at stella-maris.org.uk  Wed Apr  7 19:25:34 2010
+From: stuart at stella-maris.org.uk (Stuart T Rogers)
+Date: Wed, 07 Apr 2010 18:25:34 +0100
+Subject: [smb4k-general] Unable to unmount shares in 0.10.6
+In-Reply-To: <201004071437.59229.alexander.reinholdt@t-online.de>
+References: <4B080697.9000900@stella-maris.org.uk>	<4BBAE149.6060903@stella-maris.org.uk>	<4BBC74ED.4050300@stella-maris.org.uk>
+	<201004071437.59229.alexander.reinholdt@t-online.de>
+Message-ID: <4BBCC00E.3060000@stella-maris.org.uk>
+
+Just to confirm I had to do a sudo make install in order to get it 
+working which means it is not in my repository. But it's no big deal.
+
+Stuart
+
+On 07/04/10 13:37, Alexander Reinholdt wrote:
+> Hm... I don't know. I haven't experienced this kind of failure. But I think,
+> if Smb4K works fine, you can ignore it.
+>
+>
+> Am Mittwoch 07 April 2010 14:05:01 schrieb Stuart T Rogers:
+>> Have just install 0.10.7 and it works fine, however I did have a problem
+>> using checkinstall as below
+>>
+>> CMake Error at doc/en/smb4k/cmake_install.cmake:36 (FILE):
+>>
+>>     file INSTALL cannot find
+>>
+>>
+>> "/home/stuart/smb4k-0.10.7/doc/en/smb4k/dialog_synchronization_input.png".
+>>
+>> Call Stack (most recent call first):
+>>
+>>     doc/en/cmake_install.cmake:37 (INCLUDE)
+>>
+>>     doc/cmake_install.cmake:37 (INCLUDE)
+>>
+>>     cmake_install.cmake:41 (INCLUDE)
+>>
+>>
+>>
+>> make: *** [install] Error 1
+>>
+>> ****  Installation failed. Aborting package creation.
+>>
+>> Cleaning up...OK
+>>
+>> Bye.
+>>
+>> again dont know if this is me or a bug.
+>>
+>> Stuart
+>>
+>> On 06/04/10 08:22, Stuart T Rogers wrote:
+>>> Alexander
+>>>
+>>> I am relieved about that since I'm new to all this compiling stuff. I'll
+>>> watch out for a new verion and have another go then.
+>>>
+>>> Stuart
+>>>
+>>> On 06/04/10 08:17, Alexander Reinholdt wrote:
+>>>> Am Montag 05 April 2010 09:53:14 schrieb Stuart T Rogers:
+>>>>> I have just installed the latest smb4k 0.10.6 having I think
+>>>>> successfully compiled it, at least it runs and mounts shares OK.
+>>>>> However I have a problem unmounting the shares and get
+>>>>>
+>>>>> /usr/bin/smb4k_umount: invalid option -- 'n'
+>>>>>
+>>>>> or this from force
+>>>>>
+>>>>> smb4k_umount: invalid option -- 's'
+>>>>>
+>>>>> as an error in a popup. What have I done wrong here? Is there something
+>>>>> I have not installed?
+>>>>>
+>>>>> Stuart
+>>>>
+>>>> You haven't done anything wrong. Actually, you found a bug. I fixed
+>>>> some issues
+>>>> in smb4k_umount in SVN HEAD and just copied it to the 0.10 branch.
+>>>> However,
+>>>> the version from SVN HEAD is incompatible with Smb4K 0.10.x and I did
+>>>> not remember that. :(
+>>>>
+>>>> I will release a new version shortly where this issue will be fixed.
+>>>>
+>>>> Alexander
+>>>> _______________________________________________
+>>>> Smb4K-general mailing list
+>>>> Smb4K-general at lists.berlios.de
+>>>> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+>
+
+-- 
+Website: http://www.stella-maris.org.uk
+or:      http://www.broadstairs.org
+
+

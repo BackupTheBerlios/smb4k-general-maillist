@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [smb4k-general] SMB4K not showing share in neighbourhood
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/smb4k-general/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20SMB4K%20not%20showing%20share%20in%20neighbourhood&In-Reply-To=%3C4B93ED83.4090004%40stella-maris.org.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000058.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[smb4k-general] SMB4K not showing share in neighbourhood</H1>
+    <B>Stuart T Rogers</B> 
+    <A HREF="mailto:smb4k-general%40lists.berlios.de?Subject=Re%3A%20%5Bsmb4k-general%5D%20SMB4K%20not%20showing%20share%20in%20neighbourhood&In-Reply-To=%3C4B93ED83.4090004%40stella-maris.org.uk%3E"
+       TITLE="[smb4k-general] SMB4K not showing share in neighbourhood">stuart at stella-maris.org.uk
+       </A><BR>
+    <I>Sun Mar  7 19:16:35 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000058.html">[smb4k-general] SMB4K not showing share in neighbourhood
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Just wondered if you have got anywhere with this problem as I still have 
+it on 10.5.
+
+Regards   Stuart
+
+On 16/11/09 17:01, <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">alexander.reinholdt at t-online.de</A> wrote:
+&gt;<i> OK, it seems that something is wrong with the code that exams the shell output and extracts the share names. I'll have a look at this next week.
+</I>&gt;<i>
+</I>&gt;<i> Alexander
+</I>&gt;<i>
+</I>&gt;<i> -----Original-Nachricht-----
+</I>&gt;<i> Subject: Re: [smb4k-general] SMB4K not showing share in neighbourhood
+</I>&gt;<i> Date: Sun, 15 Nov 2009 18:03:19 +0100
+</I>&gt;<i> From: Stuart T Rogers&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">stuart at stella-maris.org.uk</A>&gt;
+</I>&gt;<i> To: &quot;General discussion, help, support, etc.&quot;&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">smb4k-general at lists.berlios.de</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> The output is
+</I>&gt;<i>
+</I>&gt;<i> Share name   Type     Description
+</I>&gt;<i> ----------   ----     -----------
+</I>&gt;<i> E$           Disk     Default share
+</I>&gt;<i> IPC$         IPC      Remote IPC
+</I>&gt;<i> D$           Disk     Default share
+</I>&gt;<i> Work         Disk
+</I>&gt;<i> F$           Disk     Default share
+</I>&gt;<i> ADMIN$       Disk     Remote Admin
+</I>&gt;<i> C$           Disk     Default share
+</I>&gt;<i> WeatherData  Disk
+</I>&gt;<i> Programs     Disk
+</I>&gt;<i>
+</I>&gt;<i> It's Programs which is not showing up unless I search. I get the same
+</I>&gt;<i> output with port 445 as well.
+</I>&gt;<i>
+</I>&gt;<i> There is no special setup for Master Browser if the Linux box is not up
+</I>&gt;<i> then it would be this remote PC as it is the only one on 24x7
+</I>&gt;<i>
+</I>&gt;<i> Stuart
+</I>&gt;<i>
+</I>&gt;<i> Alexander Reinholdt wrote:
+</I>&gt;&gt;<i> Am Sonntag, 15. November 2009 schrieb Stuart T Rogers:
+</I>&gt;&gt;&gt;<i> I can see my network OK and can see the Windows 2000 PC OK but it only
+</I>&gt;&gt;&gt;<i> seems to show two of its three ordinary shares. If I search for this PC
+</I>&gt;&gt;&gt;<i> the search panel results show all the shares hidden and the 3 I expect.
+</I>&gt;&gt;&gt;<i> I have tried removing the shares on the W2K PC and setting them up again
+</I>&gt;&gt;&gt;<i> but still it will show only 2 of the 3 shares, usually the last two
+</I>&gt;&gt;&gt;<i> alphabetically, so if I have Programs Weatherdata and Work only the last
+</I>&gt;&gt;&gt;<i> two show up. I am using 0.10.4 on Mandriva 2010.0. Any ideas?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Stuart
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Smb4K-general mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Hello Stuart,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> this is a very strange problem. I haven't experienced it and cannot reproduce
+</I>&gt;&gt;<i> it here. Could you please provide the shell output produced by the following
+</I>&gt;&gt;<i> command:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $ net share list -l -p 139 -w&lt;SERVER'S_DOMAIN&gt;  -S&lt;SERVER&gt;  -I&lt;SERVER'S_IP&gt;  -
+</I>&gt;&gt;<i> U&lt;USER&gt;%&lt;PASS&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If that command does not work, try replacing the port number 139 by 445. Is
+</I>&gt;&gt;<i> anything missing in the list of shared resources?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Have you set up the W2k PC as domain master browser or is there anything else
+</I>&gt;&gt;<i> that is special?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Cheers
+</I>&gt;&gt;<i> Alexander
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Smb4K-general mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Smb4K-general mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">Smb4K-general at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/smb4k-general">https://lists.berlios.de/mailman/listinfo/smb4k-general</A>
+</I>&gt;<i>
+</I>
+-- 
+Website: <A HREF="http://www.stella-maris.org.uk">http://www.stella-maris.org.uk</A>
+or:      <A HREF="http://www.broadstairs.org">http://www.broadstairs.org</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000058.html">[smb4k-general] SMB4K not showing share in neighbourhood
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/smb4k-general">More information about the Smb4K-general
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,140 @@
+From achilov-rn at askd.ru  Thu Aug  2 05:34:55 2007
+From: achilov-rn at askd.ru (Rashid N. Achilov)
+Date: Thu, 2 Aug 2007 10:34:55 +0700
+Subject: [smb4k-general] SMB4K 0.8.4 still does not compile on FreeBSD
+	6.2-RELEASE
+Message-ID: <200708021034.56366.achilov-rn@askd.ru>
+
+I have applied patch to smb4kmounter.cpp, but SMB4K still does not compile 
+because smb4kpasswordhandler.cpp still comtains an error
+
+/usr/X11R6/qt33/bin/moc ./smb4kpasswordhandler.h -o smb4kpasswordhandler.moc
+if /bin/sh /usr/local/bin/libtool --silent --tag=CXX --mode=compile 
+c++ -DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+smb4kpasswordhandler.lo -MD -MP -MF ".deps/smb4kpasswordhandler.Tpo" -c -o 
+smb4kpasswordhandler.lo smb4kpasswordhandler.cpp; \
+        then 
+mv -f ".deps/smb4kpasswordhandler.Tpo" ".deps/smb4kpasswordhandler.Plo"; else 
+rm -f ".deps/smb4kpasswordhandler.Tpo"; exit 1; fi
+smb4kpasswordhandler.cpp: In member function `Smb4KAuthInfo* 
+Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)':
+smb4kpasswordhandler.cpp:490: error: `auth' was not declared in this scope
+smb4kpasswordhandler.cpp:490: warning: unused variable 'auth'
+gmake[3]: *** [smb4kpasswordhandler.lo] Error 1
+gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k/core'
+gmake[2]: *** [all-recursive] Error 1
+gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k'
+gmake[1]: *** [all-recursive] Error 1
+gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4'
+gmake: *** [all] Error 2
+*** Error code 2
+
+Stop in /usr/ports/net/smb4k.
+
+-- 
+   With Best Regards.
+   Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+   OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+   PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+
+
+From alexander.reinholdt at web.de  Thu Aug  2 14:51:00 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Thu, 02 Aug 2007 14:51:00 +0200
+Subject: [smb4k-general]
+ =?iso-8859-15?q?SMB4K_0=2E8=2E4_still_does_not_co?=
+ =?iso-8859-15?q?mpile_on_FreeBSD_6=2E2-RELEASE?=
+Message-ID: <1091775163@web.de>
+
+I have fixed this particular bug this morning, but I will test the code before I send 
+you the patch. It seems my FreeBSD box will be back this evening or tomorrow...
+
+
+
+> -----Urspr?ngliche Nachricht-----
+> Von: "Achilov, Rashid" <achilov-rn at askd.ru>, "General discussion, help, support, etc." <smb4k-general at lists.berlios.de>
+> Gesendet: 02.08.07 05:35:09
+> An: smb4k-general at lists.berlios.de
+> Betreff: [smb4k-general] SMB4K 0.8.4 still does not compile on FreeBSD 6.2-RELEASE
+
+
+> 
+> I have applied patch to smb4kmounter.cpp, but SMB4K still does not compile 
+> because smb4kpasswordhandler.cpp still comtains an error
+> 
+> /usr/X11R6/qt33/bin/moc ./smb4kpasswordhandler.h -o smb4kpasswordhandler.moc
+> if /bin/sh /usr/local/bin/libtool --silent --tag=CXX --mode=compile 
+> c++ -DHAVE_CONFIG_H -I. -I. -I../.. -I/usr/local/kde3/include -I/usr/X11R6/qt33/include -I/usr/X11R6/include  -I/usr/local/include  -D_THREAD_SAFE -pthread -DQT_THREAD_SUPPORT   -I/usr/local/include -I/usr/local/kde3/include  -I/usr/X11R6/qt33/include -D_GETOPT_H -D_THREAD_SAFE   -Wno-long-long -Wundef -Wall -W -Wpointer-arith -O2 -O2 -fno-strict-aliasing -pipe -march=pentium4 -Wno-non-virtual-dtor -fno-exceptions -fno-check-new -fno-common  -MT 
+> smb4kpasswordhandler.lo -MD -MP -MF ".deps/smb4kpasswordhandler.Tpo" -c -o 
+> smb4kpasswordhandler.lo smb4kpasswordhandler.cpp; \
+>         then 
+> mv -f ".deps/smb4kpasswordhandler.Tpo" ".deps/smb4kpasswordhandler.Plo"; else 
+> rm -f ".deps/smb4kpasswordhandler.Tpo"; exit 1; fi
+> smb4kpasswordhandler.cpp: In member function `Smb4KAuthInfo* 
+> Smb4KPasswordHandler::readAuth(Smb4KAuthInfo*)':
+> smb4kpasswordhandler.cpp:490: error: `auth' was not declared in this scope
+> smb4kpasswordhandler.cpp:490: warning: unused variable 'auth'
+> gmake[3]: *** [smb4kpasswordhandler.lo] Error 1
+> gmake[3]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k/core'
+> gmake[2]: *** [all-recursive] Error 1
+> gmake[2]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4/smb4k'
+> gmake[1]: *** [all-recursive] Error 1
+> gmake[1]: Leaving directory `/usr/ports/net/smb4k/work/smb4k-0.8.4'
+> gmake: *** [all] Error 2
+> *** Error code 2
+> 
+> Stop in /usr/ports/net/smb4k.
+> 
+> -- 
+>    With Best Regards.
+>    Rashid N. Achilov (RNA1-RIPE), Web: http://www.askd.ru/~shelton
+>    OOO "ACK" telecommunications administrator, e-mail: achilov-rn [at] askd.ru
+>    PGP: 83 CD E2 A7 37 4A D5 81 D6 D6 52 BF C9 2F 85 AF 97 BE CB 0A
+> _______________________________________________
+> Smb4K-general mailing list
+> Smb4K-general at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/smb4k-general
+> 
+
+
+_____________________________________________________________________
+Der WEB.DE SmartSurfer hilft bis zu 70% Ihrer Onlinekosten zu sparen!
+http://smartsurfer.web.de/?mc=100071&distributionid=000000000066
+
+
+
+From alexander.reinholdt at web.de  Fri Aug 17 10:32:09 2007
+From: alexander.reinholdt at web.de (Alexander Reinholdt)
+Date: Fri, 17 Aug 2007 10:32:09 +0200
+Subject: [smb4k-general] Thanks!
+In-Reply-To: <001101c7e007$03863b30$1900a8c0@Poste1>
+References: <001101c7e007$03863b30$1900a8c0@Poste1>
+Message-ID: <200708171032.10340.alexander.reinholdt@web.de>
+
+Hello!
+
+Thank you for the positive feedback, it is much appreciated. I'm pleased to 
+see that our software could help you.
+
+Best regards,
+Alexander
+
+Am Donnerstag 16 August 2007 schrieb Marco Laverdi?re:
+> Hi,
+>
+> This is not really original, nor helpful, but I just want to thanks the
+> developers for Smb4K:  it made my day while I was struggling with my Iomega
+> NAS 100D server and Kubuntu.  Everything is working now!
+>
+> Thanks!
+>
+> --
+> Marco Laverdi?re
+
+
+
+-- 
+"Never argue with idiots. They drag you down to their level and beat you with
+experience..." (unknown)
+
+
